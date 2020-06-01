@@ -5,6 +5,8 @@ const userTodoRoutes = require('./userTodoRoutes');
 
 const userRoutes = require('./userRoutes');
 
+
+// '/api' prepended
 router.use('/todos', todoRoutes);
 router.use('/auth', authRoutes);
 router.use('/user', userTodoRoutes);

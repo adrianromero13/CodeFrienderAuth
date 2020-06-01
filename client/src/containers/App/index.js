@@ -6,7 +6,7 @@ import { Grid } from 'semantic-ui-react';
 // import AllTodosList from '../AllTodosList';
 // import UserTodoList from '../UserTodoList';
 
-// import SignUp from '../SignUp';
+import SignUp from '../SignUp';
 // import SignOut from '../SignOut';
 // import SignIn from '../SignIn';
 // import Navbar from './../../components/Navbar';
@@ -17,7 +17,10 @@ import Banner from '../../components/Banner';
 class App extends Component {
   render () {
     return (
-      <Banner/>
+      <div>
+        <Banner/>
+        <SignUp/>
+      </div>
     );
   }
 }

@@ -5,16 +5,16 @@ const dbController = require('./../../../controller/dbController');
 
 //'/api/ucbxusers' prepended to every route.
 router.route('/')
-    .get(dbController.getUser)
-    .postMessage(dbController.insertUser);
+  .get(dbController.getUser)
+  .postMessage(dbController.insertUser);
 
 router.route('/bestmatches') //collaborate
-    .post(dbController.getBestMatches);
+  .post(dbController.getBestMatches);
 
 router.route('/matchesforthem') //mentor
-    .post(dbController.getMatchesForThem);
+  .post(dbController.getMatchesForThem);
 
-router.route('matchesforme') //apprentice
-    .post(dbController.getMatchesForMe);
+router.route('/matchesforme') //apprentice
+  .post(dbController.getMatchesForMe);
 
 module.exports = router;

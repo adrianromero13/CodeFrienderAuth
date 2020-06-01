@@ -3,10 +3,11 @@ import { reducer as formReducer } from 'redux-form';
 import counterReducer from './counterReducer';
 import todosReducer from './todosReducer';
 import authReducer from './authReducer';
-
 import { ADD_TODO } from '../actions/types';
+import skillsReducer from './skillsReducer';
 
 export default combineReducers({
+  skills: skillsReducer,
   auth: authReducer,
   todos: todosReducer,
   counter: counterReducer,

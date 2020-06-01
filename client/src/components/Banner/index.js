@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, Header, Container, Icon } from 'semantic-ui-react'
+import { Menu, Header, Segment, Icon } from 'semantic-ui-react'
+
 
 export default class Banner extends Component {
   state = { activeItem: 'home' }
@@ -11,8 +12,9 @@ export default class Banner extends Component {
     const { activeItem } = this.state
 
     return (
-      <Container fluid>
-        <Menu inverted size='large'>
+      <Segment inverted fluid>
+        <Menu inverted pointing secondary size='large'>
+          <Menu.Item>
           <Header as="h3" inverted >
             <Icon name='code branch' />
             <Header.Content>
@@ -20,6 +22,8 @@ export default class Banner extends Component {
           <Header.Subheader>Mentor | Collaborate | Apprentice</Header.Subheader>
             </Header.Content>
           </Header>
+          </Menu.Item>
+
           <Link to="/">
             <Menu.Item
               name='home'
@@ -42,7 +46,7 @@ export default class Banner extends Component {
             />
           </Link>
         </Menu>
-      </Container>
+      </Segment>
     )
   }
 }
