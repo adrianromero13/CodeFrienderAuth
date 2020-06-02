@@ -1,17 +1,13 @@
 const router = require('express').Router();
-const todoRoutes = require('./todoRoutes');
 const authRoutes = require('./authRoutes');
-const userTodoRoutes = require('./userTodoRoutes');
 
 const userRoutes = require('./userRoutes');
 
 
 // '/api' prepended
-router.use('/todos', todoRoutes);
 router.use('/auth', authRoutes);
-router.use('/user', userTodoRoutes);
 
-//declare '/api/ucbxusers
-router.use('/ucbxusers', userRoutes);
+//declare '/api/users
+router.use('/users', userRoutes);
 
 module.exports = router;

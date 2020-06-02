@@ -13,7 +13,7 @@ class SignIn extends Component {
       const { data } = await axios.post('/api/auth/signin', formValues);
       //set the token in a key valued pair inside of local storage 
       localStorage.setItem('token', data.token);
-      dispatch({ type: AUTH_USER, payload: data.token})
+      dispatch({ type: AUTH_USER, payload: data})
       this.props.history.push('/counter'); //redirects user to counter page
     } catch (e) {
       //error catching different for signing in

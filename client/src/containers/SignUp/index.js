@@ -13,7 +13,7 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
       //formvalues looks like this { email: 'someEmail@.com, password: '123456' }
       const { data } = await axios.post('/api/auth/signup', formValues);
       localStorage.setItem('token', data.token);
-      dispatch({ type: AUTH_USER, payload: data.token });
+      dispatch({ type: AUTH_USER, payload: data });
       this.props.history.push('/counter');
     } catch (e) {
       dispatch({ type: AUTH_USER_ERROR, payload: e });
@@ -100,11 +100,11 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
       <Form size='large' onSubmit={handleSubmit(this.onSubmit)} >
         <Segment stacked>
           <Field
-            name='first'
+            name='firstName'
             component={this.renderFirst}
           />
           <Field
-            name='last'
+            name='lastName'
             component={this.renderLast}
             />
           <Field
@@ -157,12 +157,12 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
 
 const asyncValidate = async formValues => {
   try {
-    const { data } = await axios.get(`/api/user/emails?email=${formValues.email}`);
+    const { data } = await axios.get(`/api/users/emails?email=${formValues.email}`);
     if (data) {
-      throw new Error();
+      throw new Error('Email already exists, please sign up with a different email');
     }
   } catch (e) {
-    throw { email: 'Email already exists, please sign up with a different email' };
+    throw e;
   }
 }
 
