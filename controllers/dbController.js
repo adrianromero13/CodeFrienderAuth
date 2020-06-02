@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const connection = require('./../config/connection');
+// const connection = require('./../config/connection');
 
 const ucbxQueries = require('./../db/ucbxQueries');
 
