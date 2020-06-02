@@ -2,7 +2,7 @@ const { isEmail, isLength } = require('validator');
 const jwt = require('jwt-simple');
 const axios = require('axios');
 const { User } = require('../models');
-const { secret } = require('../config');
+const { secret, GITHUB_CLIENT_SECRET } = require('../config');
 
 function tokenForUser(user) {
   // 1st argument is the information we want to encode

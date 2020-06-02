@@ -1,7 +1,8 @@
 const passport = require('passport');
 const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
 const LocalStrategy = require('passport-local');
-const { secret } = require('../config');
+const GithubStrategy = require('passport-github');
+const { secret, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } = require('../config');
 const User = require('../models/User');
 
 // Setup options for JwT
@@ -51,6 +52,22 @@ const localLogin = new LocalStrategy(localOptions, async (email, password, done)
     return done(e);
   }
 });
+
+// const githubLogin = new GithubStrategy ({
+//   clientID: GITHUB_CLIENT_ID,
+//   clientSecret: GITHUB_CLIENT_SECRET,
+//   callbackURL: "https://codefriender-auth.herokuapp.com/login/callback"
+// },
+//   async (email, password , profile, done) => {
+//     try {
+//       const user = await User.find({ githubId: profile.id });
+//       if (!user) { return done(null, false) }
+//       return done(null, user);
+//     } catch (e) {
+//       return done(e);
+//     }
+//   }
+// )
 
 // Let's passport know that we have a 'jwt' strategy defined
 passport.use(jwtLogin);
