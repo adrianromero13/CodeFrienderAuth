@@ -3,7 +3,7 @@ const { requireAuth } = require('./../../../middlewares/authMiddlewares');
 const { getUsers, getMatches, getAllUserEmails } = require('./../../../controllers/userController');
 
 
-// '/api/ucbxusers' prepended to every route.
+// '/api/users' prepended to every route.
 router.route('/')
   .get(getUsers);
 
