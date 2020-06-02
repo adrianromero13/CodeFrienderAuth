@@ -1,5 +1,6 @@
 const { isEmail, isLength } = require('validator');
 const jwt = require('jwt-simple');
+const axios = require('axios');
 const { User } = require('../models');
 const { secret } = require('../config');
 
@@ -17,7 +18,11 @@ function tokenForUser(user) {
 
 module.exports = {
   signUp: async (req, res) => {
-    const { email, password } = req.body;
+    const {
+      firstName, lastName, email, password, github, strength, weakness, bio,
+    } = req.body;
+    const gitData = await axios.get(`https://api.github.com/users/${req.body.github}`);
+    const badge = gitData.data.avatar_url;
 
     if (!email || !password) {
       return res.status(422).json({ error: 'You must provide email and password' });
@@ -35,12 +40,18 @@ module.exports = {
       // See if a user with the given email exists
       const existingUser = await User.findOne({ email });
       if (existingUser) { return res.status(403).json({ error: 'User already exists' }); }
-      const user = await new User({ email, password }).save();
+      const user = await new User({
+        firstName, lastName, email, password, github, strength, weakness, bio, badge,
+      }).save();
+      const currentUser = await User.findById(user._id).select('-password');
       // Eventually we will send a token
-      return res.json({ token: tokenForUser(user) });
+      return res.json({ token: tokenForUser(user), user: currentUser });
     } catch (e) {
       return res.status(403).json({ e });
     }
   },
-  signIn: (req, res) => res.json({ token: tokenForUser(req.user) }),
+  signIn: async (req, res) => {
+    const currentUser = await User.findById(req.user._id).select('-password');
+    res.json({ token: tokenForUser(req.user), user: currentUser });
+  },
 };

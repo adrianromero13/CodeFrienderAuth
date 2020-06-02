@@ -16,18 +16,35 @@ const UserSchema = new Schema({
     required: [true, 'You must provide a password'],
     validate: [(value) => isLength(value, { min: 6 }), 'Your password must be at least 6 characters long'],
   },
+  firstName: {
+    type: String,
+  },
+  lastName: {
+    type: String,
+  },
+  github: {
+    type: String,
+  },
+  strength: {
+    type: String,
+  },
+  weakness: {
+    type: String,
+  },
+  bio: {
+    type: String,
+  },
+  badge: {
+    type: String,
+  },
   dateCreated: {
     type: Date,
     default: Date.now(),
   },
-  todos: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Todo',
-  }],
 });
 
 UserSchema.methods.toJSON = function() {
-  var obj = this.toObject();
+  const obj = this.toObject();
   delete obj.password;
   return obj;
 };
