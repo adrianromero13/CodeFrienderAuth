@@ -1,20 +1,15 @@
 const router = require('express').Router();
+const { requireAuth } = require('./../../../middlewares/authMiddlewares');
+const { getUsers, getMatches, getAllUserEmails } = require('./../../../controllers/userController');
 
-const dbController = require('./../../../controllers/dbController');
 
-
-//'/api/ucbxusers' prepended to every route.
+// '/api/ucbxusers' prepended to every route.
 router.route('/')
-  .get(dbController.getUser)
-  .postMessage(dbController.insertUser);
+  .get(getUsers);
 
-router.route('/bestmatches') //collaborate
-  .post(dbController.getBestMatches);
+router.route('/matches') // collaborate
+  .get(requireAuth, getMatches);
 
-router.route('/matchesforthem') //mentor
-  .post(dbController.getMatchesForThem);
-
-router.route('/matchesforme') //apprentice
-  .post(dbController.getMatchesForMe);
+router.get('/emails', getAllUserEmails);
 
 module.exports = router;
