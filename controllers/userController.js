@@ -32,4 +32,12 @@ module.exports = {
       return res.status(403).json({ e });
     }
   },
+  getAllUserGitHub: async (req, res) => {
+    try {
+      const userGitHub = await User.findOne({ github: req.query.github }, 'github');
+      return res.status(200).json(userGitHub);
+    } catch (e) {
+      return res.status(403).json({ e });
+    }
+  },
 };

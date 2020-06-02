@@ -7,7 +7,7 @@ const userRoutes = require('./userRoutes');
 // '/api' prepended
 router.use('/auth', authRoutes);
 
-//declare '/api/users
+// declare '/api/users
 router.use('/users', userRoutes);
 
 module.exports = router;

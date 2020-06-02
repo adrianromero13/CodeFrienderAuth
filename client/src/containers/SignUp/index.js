@@ -58,7 +58,6 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
       />
     );
   }
-
   renderPassword = ({ input, meta }) => {
     return (
       <Form.Input
@@ -74,49 +73,13 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
       />
     )
   }
-  renderGitHub = ({ input, meta }) => {
-    return (
-      <Form.Input
-        {...input}
-        error={meta.touched && meta.error}
-        label='github Username'
-        type='username'
-        icon='github'
-        placeholder='github username'
-        autoComplete='off'
-        iconPosition='left'
-      />
-    )
-  }
-  // renderFirst = ({ input, meta }) => {
-  //   return (
-  //     <Form.Input
-  //       {...input}
-  //       label='First Name'
-  //       error={meta.touched && meta.error}
-  //       type='name'
-  //       placeholder='First Name'
-  //       autoComplete='off'
-  //     />
-  //   )
-  // }
-  // renderLast = ({ input, meta }) => {
-  //   return (
-  //     <Form.Input
-  //       {...input}
-  //       label='Last Name'
-  //       error={meta.touched && meta.error}
-  //       type='name'
-  //       placeholder='Last Name'
-  //       autoComplete='off'
-  //     />
-  //   )
-  // }
-  renderInput = ({ input, meta, label }) => {
+  renderInput = ({ input, meta, label, icon, iconPosition }) => {
     return (
       <Form.Input
         {...input}
         label={label}
+        icon={icon}
+        iconPosition={iconPosition}
         error={meta.touched && meta.error}
         type='name'
         placeholder={label}
@@ -124,27 +87,14 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
       />
     )
   }
-  renderStrength = ({ select, meta }) => {
+  renderSkills = ({ select, meta, label }) => {
     return (
       <Form.Select
         {...select}
-        label='Strength'
+        label={label}
         error={meta.touced && meta.error}
         type='option'
-        placeholder='Strength'
-        autoComplete='off'
-        options={this.skills}
-      />
-    )
-  }
-  renderWeakness = ({ select, meta }) => {
-    return (
-      <Form.Select
-        {...select}
-        label='Weakness'
-        error={meta.touced && meta.error}
-        type='option'
-        placeholder='Weakness'
+        placeholder={label}
         autoComplete='off'
         options={this.skills}
       />
@@ -168,6 +118,26 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
               name='lastName'
               label='Last Name'
               component={this.renderInput}
+            />
+            <Field
+              name='strength'
+              label='Strength'
+              component={this.renderSkills}
+              validate={
+                [
+                  required({ msg: 'You must select a Strength' }),
+                ]
+              }
+            />
+            <Field 
+              name='weakness'
+              label='Weakness'
+              component={this.renderSkills}
+              validate={
+                [
+                  required({ msg: 'You must select a Weakness' }),
+                ]
+              }
             />
             <Field
               name='email'
@@ -194,30 +164,20 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
             />
             <Field
               name='github'
-              component={this.renderGitHub}
+              label='GitHub'
+              icon='github'
+              iconPosition='left'
+              component={this.renderInput}
               validate={
                 [
                   required({ msg: 'You must provide a github username' }),
                 ]
               }
             />
-            <Field
-              name='strength'
-              component={this.renderStrength}
-              validate={
-                [
-                  required({ msg: 'You must select a Strength' }),
-                ]
-              }
-            />
             <Field 
-              name='weakness'
-              component={this.renderWeakness}
-              validate={
-                [
-                  required({ msg: 'You must select a Weakness' }),
-                ]
-              }
+              name='bio'
+              label='Bio'
+              component={this.renderInput}
             />
             <Button
               content='Sign up'
