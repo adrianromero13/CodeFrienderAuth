@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const dbController = require('./../../../controller/dbController');
+const dbController = require('./../../../controllers/dbController');
 
 
 //'/api/ucbxusers' prepended to every route.
