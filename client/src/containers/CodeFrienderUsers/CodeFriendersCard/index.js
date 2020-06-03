@@ -3,22 +3,28 @@ import { Header, Icon, Card, Image } from 'semantic-ui-react';
 
 
 export default (props) => {
+  console.log('inside of cardrender', props);
+  if (props.allUsers.allUsers.length === 0) {
+    return <Header content='No users yet, please wait for new Users'/>
+  } else {
+    return props.allUsers.allUsers.map(({_id, badge, firstName, lastName, strength, weakness, bio, email}) => {
     return (
-      <Card centered color={'red'} key={props.allUsers._id}>
-        <Image src={props.allUsers.badge} wrapped ui={false} />
+      <Card centered color={'red'} key={_id}>
+        <Image src={badge} wrapped ui={false} />
         <Card.Content>
-          <Card.Header>{props.allUsers.firstName} {props.allUsers.lastName}</Card.Header>
+          <Card.Header>{firstName} {lastName}</Card.Header>
           <Card.Meta>
-            <span>Strength: {props.allUsers.strength} </span>
+            <span>Strength: {strength} </span>
             <br />
-            <span>Weakness: {props.allUsers.weakness} </span>
+            <span>Weakness: {weakness} </span>
           </Card.Meta>
-          <Card.Description>{props.allUsers.bio}</Card.Description>
+          <Card.Description>{bio}</Card.Description>
         </Card.Content>
         <Card.Content extra link>
           <Icon name='user secret' iconPosition='left' />
-          {props.allUsers.email}
+          {email}
         </Card.Content>
       </Card>
-    );
+    )})
+  };
 };

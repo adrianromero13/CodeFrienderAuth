@@ -26,6 +26,7 @@ class AllCodeFrienders extends Component {
   }
 
   render() {
+    console.log('onsignin',this.props.allUsers.allUsers.length);
         return (
           <>
             <Container>
@@ -45,7 +46,7 @@ class AllCodeFrienders extends Component {
                     {/* create responsive for smaller screens */}
                     <Responsive>
                       <Card.Group fluid itemsPerRow={2}>
-                        <CodeFriendersCard allUsers={this.props.allUsers}/>
+                        <CodeFriendersCard allUsers={this.props.allUsers }/>
                       </Card.Group>
                     </Responsive>
                   </Grid.Column>
