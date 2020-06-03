@@ -9,6 +9,10 @@ export const WEAKNESS = 'WEAKNESS';
 export const GET_ALL_TODOS = 'GET_ALL_TODOS';
 export const GET_ALL_TODOS_ERROR = 'GET_ALL_TODOS_ERROR';
 
+// Users Section
+export const GET_USERS = 'GET_USERS';
+export const GET_USERS_ERROR = 'GET_USERS_ERROR';
+
 // User Todos Section
 export const GET_USER_TODOS = 'GET_USER_TODOS';
 export const GET_USER_TODOS_ERROR = 'GET_USER_TODOS_ERROR';
