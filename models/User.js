@@ -24,12 +24,16 @@ const UserSchema = new Schema({
   },
   github: {
     type: String,
+    unique: true,
+    required: [true, 'You must provide a GitHub username'],
   },
   strength: {
     type: String,
+    required: [true, 'You must select a Strength'],
   },
   weakness: {
     type: String,
+    required: [true, 'You must select a Weakness'],
   },
   bio: {
     type: String,

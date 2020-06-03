@@ -10,6 +10,7 @@ import SignUp from '../SignUp';
 // import SignOut from '../SignOut';
 // import SignIn from '../SignIn';
 // import Navbar from './../../components/Navbar';
+import AllCodeFrienders from './../CodeFrienderUsers'
 
 import { connect } from 'react-redux';
 import Banner from '../../components/Banner';
@@ -20,6 +21,7 @@ class App extends Component {
       <div>
         <Banner/>
         <SignUp/>
+        <AllCodeFrienders/>
       </div>
     );
   }
