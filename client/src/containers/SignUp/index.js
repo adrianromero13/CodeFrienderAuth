@@ -3,13 +3,9 @@ import { Field, reduxForm } from 'redux-form'; // Higher order component HOA
 import { Form, Segment, Button, Container } from 'semantic-ui-react';
 import { email, length, required } from 'redux-form-validators'; //validators  
 
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-
 import axios from 'axios';
 
 import { AUTH_USER, AUTH_USER_ERROR, STRENGTH, WEAKNESS } from '../../actions/types';
-import { strength, weakness } from '../../actions/skills';
 import { STATES } from 'mongoose';
 
 
