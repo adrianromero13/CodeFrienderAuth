@@ -6,7 +6,7 @@ import {
 
 
 const INITIAL_STATE = {
-    users: [],
+    allUsers: [],
     getUsersError: '',
 };
 
@@ -14,7 +14,7 @@ const INITIAL_STATE = {
 export default function (state = INITIAL_STATE, action) {
     switch (action.type) {
         case GET_USERS:
-            return { ...state, users: action.payload, getUsersError: '' };
+            return { ...state, allUsers: action.payload, getUsersError: '' };
         case GET_USERS_ERROR:
             return { ...state, getUsersError: action.payload };
         default:
