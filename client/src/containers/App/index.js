@@ -21,7 +21,7 @@ class App extends Component {
       <div>
         <Banner/>
         <Route exact path='/signUp' component={SignUp}/>
-        <Route exact path='/profiles' component={AllCodeFrienders}/>
+        <Route exact path='/profile' component={AllCodeFrienders}/>
       </div>
     );
   }
