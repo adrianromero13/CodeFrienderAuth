@@ -31,6 +31,7 @@ class SignIn extends Component {
         {...input}
         error={meta.touched && meta.error}
         icon='user'
+        style={{maxWidth: 'auto'}}
         label={label}
         iconPosition='left'
         autoComplete='off'
@@ -45,6 +46,7 @@ class SignIn extends Component {
         error={meta.touched && meta.error}
         type='password'
         icon='lock'
+        style={{maxWidth: 'auto'}}
         placeholder='password'
         autoComplete='off'
         iconPosition='left'
@@ -55,33 +57,29 @@ class SignIn extends Component {
     const { invalid, submitting, submitFailed, handleSubmit } = this.props;
     return (
       <Form size='small' onSubmit={handleSubmit(this.onSubmit)}>
-        <Form.Group widths='equal'>
+        <Form.Group inline>
           <Field
             name='email'
             component={this.renderEmail}
-            validate={
-              [
-                required({ msg: 'Email is required' }),
-                email({ msg: 'You must provide a valid email address' })
-              ]
-            }
+            // validate={
+            //   [
+            //     required({ msg: 'Email is required' }),
+            //     email({ msg: 'You must provide a valid email address' })
+            //   ]
+            // }
           />
           <Field
             name='password'
             component={this.renderPassword}
-            validate={
-              [
-                required({ msg: 'You must provide a password' })
-              ]
-            }
+            // validate={
+            //   [
+            //     required({ msg: 'You must provide a password' })
+            //   ]
+            // }
           />
-        </Form.Group>
-        <Form.Group>
-
           <Button
             content='Sign In'
             color='teal'
-            fluid
             size='tiny'
             type='submit'
             disabled={submitting}

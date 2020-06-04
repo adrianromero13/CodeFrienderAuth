@@ -11,20 +11,26 @@ import SignOut from '../SignOut';
 // import SignOut from '../SignOut';
 // import SignIn from '../SignIn';
 // import Navbar from './../../components/Navbar';
-import AllCodeFrienders from './../CodeFrienderUsers'
-
-import Match from './../Match'
-
 import { connect } from 'react-redux';
-import Banner from '../../components/Banner';
+
+import SignIn from './../SignIn';
+import AllCodeFrienders from './../CodeFrienderUsers'
+import Match from './../Match'
+import Banner from '../Banner';
+import HomePage from '../HomePage';
 
 class App extends Component {
   render () {
     return (
       <div>
-        <Banner/>
+        {/* <Banner/> */}
+        <Route exact path='/homepage' component={HomePage}/>
+        <Route exact path='/profile' component={Banner}/>
+        <Route exact path='/match' component={Banner}/>
+        <Route exact path='/signUp' component={Banner}/>
+        <Route exact path='/home' component={SignIn}/>
         <Route exact path='/signOut' component={SignOut}/>
-        <Route exact path='/' component={SignUp}/>
+        <Route exact path='/signUp' component={SignUp}/>
         <Route exact path='/profile' component={AllCodeFrienders}/>
         <Route exact path='/match' component={Match}/>
       </div>
