@@ -28,6 +28,7 @@ export default class Banner extends Component {
 
           <Link to="/">
             <Menu.Item
+              link={false}
               name='home'
               active={activeItem === 'home'}
               onClick={this.handleItemClick}
@@ -35,6 +36,7 @@ export default class Banner extends Component {
           </Link>
           <Link to="/match">
             <Menu.Item
+              link={false}
               name='match'
               active={activeItem === 'match'}
               onClick={this.handleItemClick}
@@ -42,6 +44,7 @@ export default class Banner extends Component {
           </Link>
           <Link to="/profile">
             <Menu.Item
+              link={false}
               name='allProfiles'
               active={activeItem === 'allProfiles'}
               onClick={this.handleItemClick}

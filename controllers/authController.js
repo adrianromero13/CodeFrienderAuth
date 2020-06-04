@@ -16,33 +16,44 @@ function tokenForUser(user) {
   return jwt.encode({ sub: user._id, iat: timeStamp }, process.env.SECRET || secret);
 }
 
+async function getBadge(github) {
+  try {
+    const gitData = await axios.get(`https://api.github.com/users/${github}`);
+    return gitData.data.avatar_url || '';
+  } catch (e) {
+    return '';
+  }
+}
+
 module.exports = {
   signUp: async (req, res) => {
     const {
       firstName, lastName, email, password, github, strength, weakness, bio,
     } = req.body;
-    const gitData = await axios.get(`https://api.github.com/users/${req.body.github}`);
-    const badge = gitData.data.avatar_url;
-
+    const badge = await getBadge(github);
     if (!email || !password) {
       return res.status(422).json({ error: 'You must provide email and password' });
     }
 
     if (!isEmail(email)) {
+      console.log('email error', email);
       return res.status(403).json({ error: 'You must provide a valid email address' });
     }
 
     if (!isLength(password, { min: 6 })) {
+      console.log('password error', password);
       return res.status(403).json({ error: 'Your password must be at least 6 characters long' });
     }
 
     try {
       // See if a user with the given email exists
       const existingUser = await User.findOne({ email });
+      console.log('existingUser', existingUser);
       if (existingUser) { return res.status(403).json({ error: 'User already exists' }); }
       const user = await new User({
         firstName, lastName, email, password, github, strength, weakness, bio, badge,
       }).save();
+      console.log('user', user);
       const currentUser = await User.findById(user._id).select('-password');
       // Eventually we will send a token
       return res.json({ token: tokenForUser(user), user: currentUser });

@@ -76,7 +76,7 @@ function mapStateToProps(state) {
 
 export default compose(
   connect(mapStateToProps, { getAllUsers }),
-  // requireAuth
+  requireAuth
 )(AllCodeFrienders);
 // function mapStateToProps({ users: allUsers, getUsersError }) {
 //   return {
