@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
+// import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
-import { Grid, Container, Responsive, Segment, Card, Header } from 'semantic-ui-react';
+import { Grid, Container, Responsive, Card } from 'semantic-ui-react';
 
-import { compose } from 'redux';
-import axios from 'axios';
+// import { compose } from 'redux';
+// import axios from 'axios';
 
 import requireAuth from '../../hoc/requireAuth';
 import { getAllUsers } from '../../actions/users';
 
 import { GET_USERS, GET_USERS_ERROR } from '../../actions/types';
-import CodeFriendersCard from './CodeFriendersCard';
+
 import AllProfileHeader from '../../components/AllProfileHeader';
+import CodeFriendersCard from './CodeFriendersCard';
+import UsersCard from './UsersCard';
 
 class AllCodeFrienders extends Component {
 
@@ -38,14 +40,16 @@ class AllCodeFrienders extends Component {
 
                   <Grid.Column width={4}>
                     <Responsive minWidth={768}>
-                      <p>This is Where the User Profile Goes</p>
+                      
+                      {/* <UsersCard/> */}
+
                     </Responsive>
                   </Grid.Column>
 
                   <Grid.Column width={12}>
                     {/* create responsive for smaller screens */}
                     <Responsive>
-                      <Card.Group fluid itemsPerRow={2}>
+                      <Card.Group fluid itemsPerRow={3}>
                         <CodeFriendersCard allUsers={this.props.allUsers }/>
                       </Card.Group>
                     </Responsive>
