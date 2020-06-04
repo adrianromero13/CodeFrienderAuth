@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+
+import requireAuth from './../../hoc/requireAuth';
+
 import { Grid, Header, Container } from 'semantic-ui-react';
+
+import { getAllMatches } from './../../actions/users';
+import { GET_MATCHES, GET_MATCHES_ERROR } from '../../actions/types';
 
 // { headers: { 'authorization': localStorage.getItem('token') } }
 
 
-export default class Match extends Component {
+class Match extends Component {
 
-    async componentDidMount() {
-        try {
-            const { data } = await axios.get('/api/users/matches', { headers: { 'authorization': localStorage.getItem('token') } });
-            console.log('data', data);
-        } catch (e) {
-            console.log(e)
-        }
+    componentDidMount() {
+        this.props.getAllMatches();
+        // try {
+        //     const { data } = await axios.get('/api/users/matches', { headers: { 'authorization': localStorage.getItem('token') } });
+        //     console.log('data', data);
+        // } catch (e) {
+        //     console.log(e)
+        // }
     }
 
 
@@ -56,3 +65,12 @@ export default class Match extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return { allMatches: state.users.allMatches, allMatchesError: state.users.allMatchesError };
+  }
+
+export default compose(
+    connect(mapStateToProps, { getAllMatches }),
+    requireAuth
+  )(Match);
