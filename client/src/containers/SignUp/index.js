@@ -6,7 +6,7 @@ import { email, length, required } from 'redux-form-validators'; //validators
 import axios from 'axios';
 
 import { AUTH_USER, AUTH_USER_ERROR, STRENGTH, WEAKNESS } from '../../actions/types';
-import { STATES } from 'mongoose';
+// import { STATES } from 'mongoose';
 
 
 class SignUp extends Component { //Must define statelss funciton outside of the render()
@@ -28,6 +28,7 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
   ]
 //set const for dropdown
   onSubmit = async (formValues, dispatch) => {
+    console.log('formvalues', formValues);
     try {
       //formvalues looks like this { email: 'someEmail@.com, password: '123456' }
       const { data } = await axios.post('/api/auth/signup', formValues);
@@ -83,14 +84,17 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
       />
     )
   }
-  renderSkills = ({ select, meta, label }) => {
+  renderSkills = (field) => {
+    console.log('field',field);
     return (
       <Form.Select
-        {...select}
-        label={label}
-        error={meta.touced && meta.error}
+        {...field.input}
+        value={field.input.value}
+        //redux form with semantic drop down select
+        onChange={(param,data) => field.input.onChange(data.value)}
+        label={field.label}
         type='option'
-        placeholder={label}
+        placeholder={field.label}
         autoComplete='off'
         options={this.skills}
       />
@@ -181,8 +185,7 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
               fluid
               size='large'
               type='submit'
-              disabled={invalid || submitting || submitFailed}
-
+              disabled={ invalid || submitting || submitFailed}
             />
           </Segment>
         </Form>
