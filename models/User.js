@@ -41,13 +41,31 @@ const UserSchema = new Schema({
   badge: {
     type: String,
   },
+  events: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'event',
+    },
+  ],
+  attending: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'event',
+    },
+  ],
+  message: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'message',
+    },
+  ],
   dateCreated: {
     type: Date,
     default: Date.now(),
   },
 });
 
-UserSchema.methods.toJSON = function() {
+UserSchema.methods.toJSON = function () {
   const obj = this.toObject();
   delete obj.password;
   return obj;
