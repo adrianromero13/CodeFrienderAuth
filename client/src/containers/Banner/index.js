@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu, Header, Segment, Icon } from 'semantic-ui-react'
 
-import SignIn from './../../containers/SignIn';
-
 
 export default class Banner extends Component {
   state = { activeItem: 'home' }
@@ -25,37 +23,27 @@ export default class Banner extends Component {
             </Header.Content>
           </Header>
           </Menu.Item>
-
-          <Link to="/">
             <Menu.Item
-              link={false}
+              as={Link}
+              to='/signUp'
               name='home'
               active={activeItem === 'home'}
               onClick={this.handleItemClick}
             />
-          </Link>
-          <Link to="/match">
             <Menu.Item
-              link={false}
+              as={Link}
+              to='/match'
               name='match'
               active={activeItem === 'match'}
               onClick={this.handleItemClick}
-            />
-          </Link>
-          <Link to="/profile">
+            />          
             <Menu.Item
-              link={false}
+              as={Link}
+              to='/profile'
               name='allProfiles'
               active={activeItem === 'allProfiles'}
               onClick={this.handleItemClick}
             />
-          </Link>
-          <Menu.Item
-          fitted='horizontally'
-
-          >
-            <SignIn/>
-          </Menu.Item>
         </Menu>
       </Segment>
     )
