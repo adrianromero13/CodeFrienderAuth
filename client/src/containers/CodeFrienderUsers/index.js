@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 // import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+
 import { Grid, Container, Responsive, Card } from 'semantic-ui-react';
 
-// import { compose } from 'redux';
 // import axios from 'axios';
 
 import requireAuth from '../../hoc/requireAuth';
@@ -71,8 +72,12 @@ function mapStateToProps(state) {
   return { allUsers: state.users, getUsersError: state.users.getUsersError };
 }
 
-export default connect(mapStateToProps, { getAllUsers })(AllCodeFrienders);
+// export default connect(mapStateToProps, { getAllUsers })(AllCodeFrienders);
 
+export default compose(
+  connect(mapStateToProps, { getAllUsers }),
+  // requireAuth
+)(AllCodeFrienders);
 // function mapStateToProps({ users: allUsers, getUsersError }) {
 //   return {
 //     users: allUsers,

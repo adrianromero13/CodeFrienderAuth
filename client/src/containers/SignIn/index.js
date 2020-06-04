@@ -14,7 +14,7 @@ class SignIn extends Component {
       //set the token in a key valued pair inside of local storage 
       localStorage.setItem('token', data.token);
       dispatch({ type: AUTH_USER, payload: data})
-      this.props.history.push('/counter'); //redirects user to counter page
+      this.props.history.push('/profile'); //redirects user to counter page
     } catch (e) {
       //error catching different for signing in
       throw new SubmissionError({
@@ -30,7 +30,6 @@ class SignIn extends Component {
       <Form.Input
         {...input}
         error={meta.touched && meta.error}
-        fluid
         icon='user'
         iconPosition='left'
         autoComplete='off'
@@ -43,7 +42,6 @@ class SignIn extends Component {
       <Form.Input
         {...input}
         error={meta.touched && meta.error}
-        fluid
         type='password'
         icon='lock'
         placeholder='password'
@@ -55,11 +53,11 @@ class SignIn extends Component {
   render() {
     const { invalid, submitting, submitFailed, handleSubmit } = this.props;
     return (
-      <Form size='large' onSubmit={handleSubmit(this.onSubmit)}>
-        <Segment stacked>
+      <Form size='small' onSubmit={handleSubmit(this.onSubmit)}>
+        <Form.Group widths='equal'>
+        <Segment piled>
           <Field
             name='email'
-            iscool='mannyiscool'
             component={ this.renderEmail }
             validate={
               [
@@ -81,11 +79,12 @@ class SignIn extends Component {
             content='Sign In'
             color='teal'
             fluid
-            size='large'
+          size='small'
             type='submit'
             disabled={ submitting }
           />
         </Segment>
+        </Form.Group>
       </Form>
     );
   }
