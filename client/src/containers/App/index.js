@@ -20,8 +20,8 @@ class App extends Component {
     return (
       <div>
         <Banner/>
-        <SignUp/>
-        <AllCodeFrienders/>
+        <Route exact path='/signUp' component={SignUp}/>
+        <Route exact path='/profiles' component={AllCodeFrienders}/>
       </div>
     );
   }

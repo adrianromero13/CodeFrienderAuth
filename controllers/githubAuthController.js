@@ -22,7 +22,7 @@ async function getAccessToken(code) {
 }
 
 async function getGithubUserToken (access_token) {
-  const req = fetch('https://api.githuv.com/user', {})
+  const req = fetch('https://api.githuv.com/user', {});
 }
 
 module.exports = {
@@ -39,6 +39,5 @@ module.exports = {
     const token = await getAccessToken(code);
     res.json({ token });
   },
-
 
 };
