@@ -29,7 +29,7 @@ class AllCodeFrienders extends Component {
   }
 
   render() {
-    console.log('onsignin',this.props.allUsers.allUsers.length);
+    console.log('onsignin',this.props.allUsers.length);
         return (
           <>
             <Container>
@@ -51,7 +51,7 @@ class AllCodeFrienders extends Component {
                     {/* create responsive for smaller screens */}
                     <Responsive>
                       <Card.Group fluid itemsPerRow={3}>
-                        <CodeFriendersCard allUsers={this.props.allUsers }/>
+                        <CodeFriendersCard allUsers={this.props.allUsers}/>
                       </Card.Group>
                     </Responsive>
                   </Grid.Column>
@@ -69,7 +69,7 @@ class AllCodeFrienders extends Component {
 
 
 function mapStateToProps(state) {
-  return { allUsers: state.users, getUsersError: state.users.getUsersError };
+  return { allUsers: state.users.allUsers, getUsersError: state.users.getUsersError };
 }
 
 // export default connect(mapStateToProps, { getAllUsers })(AllCodeFrienders);
