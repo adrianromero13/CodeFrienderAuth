@@ -13,6 +13,8 @@ import SignOut from '../SignOut';
 // import Navbar from './../../components/Navbar';
 import AllCodeFrienders from './../CodeFrienderUsers'
 
+import Match from './../Match'
+
 import { connect } from 'react-redux';
 import Banner from '../../components/Banner';
 
@@ -24,6 +26,7 @@ class App extends Component {
         <Route exact path='/signOut' component={SignOut}/>
         <Route exact path='/' component={SignUp}/>
         <Route exact path='/profile' component={AllCodeFrienders}/>
+        <Route exact path='/match' component={Match}/>
       </div>
     );
   }

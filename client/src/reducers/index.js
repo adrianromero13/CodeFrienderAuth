@@ -5,12 +5,14 @@ import todosReducer from './todosReducer';
 import authReducer from './authReducer';
 import { ADD_TODO } from '../actions/types';
 import usersReducer from './usersReducer';
+import matchesReducer from './matchesReducer';
 
 export default combineReducers({
   users: usersReducer,
   auth: authReducer,
   todos: todosReducer,
   counter: counterReducer,
+  matches: matchesReducer,
   form: formReducer.plugin({
     'addTodo': (state, action) => {
       switch(action.type) {
