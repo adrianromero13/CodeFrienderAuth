@@ -24,7 +24,7 @@ class App extends Component {
     return (
       <div>
         {/* <Banner/> */}
-        <Route exact path='/homepage' component={HomePage}/>
+        <Route exact path='/' component={HomePage}/>
         <Route exact path='/profile' component={Banner}/>
         <Route exact path='/match' component={Banner}/>
         <Route exact path='/signUp' component={Banner}/>

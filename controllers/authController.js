@@ -53,7 +53,7 @@ module.exports = {
       const user = await new User({
         firstName, lastName, email, password, github, strength, weakness, bio, badge,
       }).save();
-      console.log('user', user);
+      console.log('user', currentUser);
       const currentUser = await User.findById(user._id).select('-password');
       // Eventually we will send a token
       return res.json({ token: tokenForUser(user), user: currentUser });

@@ -11,6 +11,7 @@ class SignIn extends Component {
   onSubmit = async (formValues, dispatch) => {
     try {
       const { data } = await axios.post('/api/auth/signin', formValues);
+      console.log(data);
       //set the token in a key valued pair inside of local storage 
       localStorage.setItem('token', data.token);
       dispatch({ type: AUTH_USER, payload: data })
