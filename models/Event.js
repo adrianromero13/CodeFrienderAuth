@@ -9,14 +9,18 @@ const EventSchema = new Schema({
     type: Date,
 
   },
-  startTime: {
+  time: {
     type: String,
 
+  },
+  location: {
+    type: String,
   },
   description: {
     type: String,
   },
   attending: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   message: [{ type: Schema.Types.ObjectId, ref: 'Message' }],
   pin: {
     type: Number,

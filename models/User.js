@@ -54,10 +54,16 @@ const UserSchema = new Schema({
       ref: 'event',
     },
   ],
-  message: [
+  messages: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'message',
+      ref: 'Message',
+    },
+  ],
+  tasks: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Task',
     },
   ],
   dateCreated: {
