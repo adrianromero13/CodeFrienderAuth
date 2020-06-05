@@ -23,28 +23,27 @@ export default class Banner extends Component {
             </Header.Content>
           </Header>
           </Menu.Item>
-
-          <Link to="/">
             <Menu.Item
+              as={Link}
+              to='/signUp'
               name='home'
               active={activeItem === 'home'}
               onClick={this.handleItemClick}
             />
-          </Link>
-          <Link to="/match">
             <Menu.Item
+              as={Link}
+              to='/match'
               name='match'
               active={activeItem === 'match'}
               onClick={this.handleItemClick}
-            />
-          </Link>
-          <Link to="/profile">
+            />          
             <Menu.Item
+              as={Link}
+              to='/profile'
               name='allProfiles'
               active={activeItem === 'allProfiles'}
               onClick={this.handleItemClick}
             />
-          </Link>
         </Menu>
       </Segment>
     )

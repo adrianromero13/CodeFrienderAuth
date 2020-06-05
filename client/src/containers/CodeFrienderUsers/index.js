@@ -1,138 +1,92 @@
 import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
+// import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
-import { Grid, Container, Responsive, Segment, Card } from 'semantic-ui-react';
-
 import { compose } from 'redux';
-import axios from 'axios';
+
+import { Grid, Container, Responsive, Card } from 'semantic-ui-react';
+
+// import axios from 'axios';
 
 import requireAuth from '../../hoc/requireAuth';
-import { getAllUsers } from '../../actions/Users';
+import { getAllUsers } from '../../actions/users';
 
 import { GET_USERS, GET_USERS_ERROR } from '../../actions/types';
+
+import AllProfileHeader from '../../components/AllProfileHeader';
 import CodeFriendersCard from './CodeFriendersCard';
-import AllProfileHeader from './AllProfileHeader';
+import UsersCard from './UsersCard';
 
 class AllCodeFrienders extends Component {
 
-  state = {
-    activePage: 1,
-    start: 0,
-    end: 10
-  }
-
-  //   onSubmit = async (formValues, dispatch) => {
-  //     try {
-  //       await axios.post('/api/user/todos', formValues, { headers: { 'authorization': localStorage.getItem('token')}} );
-  //       dispatch({ type: ADD_TODO });
-  //       this.props.getUserTodos();
-  //     } catch (e) {
-  //       dispatch({ type: ADD_TODO_ERROR, payload: e });
-  //     }
-  //   }
-
-  // componentDidMount() {
-  //     this.props.getUsers();
+  // state = {
+  //   activePage: 1,
+  //   start: 0,
+  //   end: 10
   // }
 
-  //   renderAddTodo = ({ input, meta }) => {
-  //     return (
-  //       <>
-  //         <Form.Input
-  //           {...input}
-  //           error={ meta.touched && meta.error }
-  //           fluid
-  //           autoComplete='off'
-  //           placeholder='Add a todo'
-  //         />
-  //       </>
-  //     )
-  //   }
-
-  //   handlePageChange = (event, data) => {
-  //     this.setState({
-  //       activePage: data.activePage,
-  //       start: data.activePage === 1 ? 0 : data.activePage * 10 - 10,
-  //       end: data.activePage * 10
-  //     });
-  //   }
+  componentDidMount() {
+    this.props.getAllUsers();
+  }
 
   render() {
-    return (
-      <>
-        <Container>
-          <Grid columns={2}>
-            <AllProfileHeader/>
-          </Grid>
-          {/* ---------------------HEEEEEERRREEEEEEE---------------- */}
-        </Container>
-      </>
+    console.log('onsignin',this.props.allUsers.length);
+        return (
+          <>
+            <Container>
+              <Grid columns={2}>
+                <AllProfileHeader/>
+              </Grid>
+              <Grid.Row>
+                <Grid columns={2}>
 
-      // <Container>
-      //   <Grid columns={2}>
-      //     <AllProfileHeader />
+                  <Grid.Column width={4}>
+                    <Responsive minWidth={768}>
+                      
+                      {/* <UsersCard/> */}
 
-      //   </Grid>
-      //   <Grid.Row>
-      //     <Grid columns={2}>
+                    </Responsive>
+                  </Grid.Column>
 
-      //       <Grid.Column width={4}>
-      //         <Responsive minWidth={768}>
-      //           {this.state.currentUser.length && <CurrentUserCard currentUser={this.state.currentUser[0]} />}
-      //         </Responsive>
-      //       </Grid.Column>
+                  <Grid.Column width={12}>
+                    {/* create responsive for smaller screens */}
+                    <Responsive>
+                      <Card.Group fluid itemsPerRow={3}>
+                        <CodeFriendersCard allUsers={this.props.allUsers}/>
+                      </Card.Group>
+                    </Responsive>
+                  </Grid.Column>
+                </Grid>
+              </Grid.Row>
+            </Container>
+          </>
+          //           {this.state.allUsers.length && this.state.allUsers.slice(0, this.state.allUsers.length - 1).map(CodeFrienderUsers => (
+          //             <CodeFriendersCard codeFrienderUsers={CodeFrienderUsers} />
+          //             )
+          //             )}
+        )
+    }
+  };
 
-      //       <Grid.Column width={12}>  
 
-
-
-      //         <Responsive
-      //         fireOnMount
-      //         onUpdate={this.handleOnUpdate}
-      //         >
-
-      //         <Card.Group fluid  itemsPerRow={itemsPerRow}>
-
-      //           {this.state.allUsers.length && this.state.allUsers.slice(0, this.state.allUsers.length - 1).map(CodeFrienderUsers => (
-      //             <CodeFriendersCard codeFrienderUsers={CodeFrienderUsers} />
-      //             )
-      //             )}
-      //         </Card.Group>
-      //             </Responsive>
-      //       </Grid.Column>
-      //       </Grid>
-      //   </Grid.Row>
-      // </Container>
-    )
-  }
+function mapStateToProps(state) {
+  return { allUsers: state.users.allUsers, getUsersError: state.users.getUsersError };
 }
 
-// function mapStateToProps(state) {
+// export default connect(mapStateToProps, { getAllUsers })(AllCodeFrienders);
+
+export default compose(
+  connect(mapStateToProps, { getAllUsers }),
+  requireAuth
+)(AllCodeFrienders);
+// function mapStateToProps({ users: allUsers, getUsersError }) {
 //   return {
-//     todos: state.todos.userTodos,
-//     clientError: state.todos.getUserTodosClientError,
-//     serverError: state.todos.getUserTodosServerError
+//     users: allUsers,
+//     error: getUsersError,
 //   };
 // }
 
-function mapStateToProps({ users: getUsers }) {
-  return {
-    users: getUsers,
-  };
-}
-
-// const composedComponent = connect(mapStateToProps, { getUserTodos })(UserTodoList);
-
-
-// 1 way
-// export default reduxForm({ form: 'addTodo' })(connect(mapStateToProps, { getUserTodos })(UserTodoList));
-
-// 2nd way
-// const composedComponent = connect(mapStateToProps, { getUserTodos })(UserTodoList);
-// export default reduxForm({ form: 'addTodo'})(composedComponent);
-
-export default compose(
-  //   reduxForm({ form: 'addTodo' }),
-  // requireAuth,
-  connect(mapStateToProps, { getAllUsers })
-)(AllCodeFrienders);
+// export default compose(
+//   //   reduxForm({ form: 'addTodo' }),
+//   // requireAuth,
+//   connect(mapStateToProps, { getAllUsers })
+// )(AllCodeFrienders);
