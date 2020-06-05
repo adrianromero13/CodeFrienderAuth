@@ -2,8 +2,9 @@ const { User, Event } = require('../models/index');
 
 module.exports = {
   getEvent: async (req, res) => {
+    console.log(req.user.events);
     try {
-      const events = await Event.find({ attending: req.user._id });
+      const events = await Event.find({ attending: req.user._id }, { events: req.user.events });
 
       return res.json(events);
     } catch (e) {
@@ -11,6 +12,7 @@ module.exports = {
     }
   },
   createEvent: async (req, res) => {
+    console.log(req.user.events);
     const { title, description, date, pin } = req.body;
     if (!title || !description || !date || !pin) {
       return res
@@ -34,17 +36,11 @@ module.exports = {
         host: req.user._id,
         userName: req.user.userName,
       }).save();
-
-      const newEventId = newEvent._id;
-
-      // pushing the user's specific ID into the attending field
-      const updateAttending = await Event.findByIdAndUpdate(newEventId, {
-        $push: { attending: req.user._id },
-      });
-      return res.status(200).json(updateAttending);
+      req.user.events.push(newEvent);
+      await req.user.save();
+      return res.status(200).json(req.user);
     } catch (e) {
       return res.status(403).json({ e });
     }
-    // they're creating a pin and creating an event name
   },
 };
