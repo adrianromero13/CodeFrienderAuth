@@ -2,9 +2,8 @@ const { User, Event } = require('../models/index');
 
 module.exports = {
   getEvent: async (req, res) => {
-    console.log(req.user.events);
     try {
-      const events = await Event.find({ attending: req.user._id }, { events: req.user.events });
+      const events = await Event.find({ attending: req.user._id });
 
       return res.json(events);
     } catch (e) {
@@ -12,12 +11,19 @@ module.exports = {
     }
   },
   createEvent: async (req, res) => {
-    console.log(req.user.events);
-    const { title, description, date, pin } = req.body;
-    if (!title || !description || !date || !pin) {
+    const {
+      title,
+      date,
+      time,
+      location,
+      description,
+      pin,
+
+    } = req.body;
+    if (!pin) {
       return res
         .status(400)
-        .json({ error: "You must input a title, description, date, and pin!" });
+        .json({ error: "You must input a pin!" });
     }
     try {
       const existingPin = await Event.findOne({
@@ -25,20 +31,27 @@ module.exports = {
         userName: req.user.userName,
       });
       if (existingPin) {
-        return res.status(403).json({ error: "You used this pin already" });
+        return res.status(403).json({ error: "pin already in use, please provide a different pin" });
       }
 
       const newEvent = await new Event({
         title,
-        description,
         date,
+        time,
+        location,
+        description,
         pin,
         host: req.user._id,
         userName: req.user.userName,
       }).save();
-      req.user.events.push(newEvent);
-      await req.user.save();
-      return res.status(200).json(req.user);
+
+      const newEventId = newEvent._id;
+
+      // pushing the userID into the attending field
+      const updateAttending = await Event.findByIdAndUpdate(newEventId, {
+        $push: { attending: req.user._id },
+      });
+      return res.status(200).json(updateAttending);
     } catch (e) {
       return res.status(403).json({ e });
     }
