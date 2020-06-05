@@ -24,15 +24,17 @@ const UserSchema = new Schema({
   },
   github: {
     type: String,
-    required: [true, 'You must provide a GitHub username'],
+    unique: true,
+    // required: [true, 'You must provide a GitHub username'],
+
   },
   strength: {
     type: String,
-    required: [true, 'You must select a Strength'],
+    // required: [true, 'You must select a Strength'],
   },
   weakness: {
     type: String,
-    required: [true, 'You must select a Weakness'],
+    // required: [true, 'You must select a Weakness'],
   },
   bio: {
     type: String,
@@ -40,13 +42,37 @@ const UserSchema = new Schema({
   badge: {
     type: String,
   },
+  events: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'event',
+    },
+  ],
+  attending: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'event',
+    },
+  ],
+  messages: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Message',
+    },
+  ],
+  tasks: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Task',
+    },
+  ],
   dateCreated: {
     type: Date,
     default: Date.now(),
   },
 });
 
-UserSchema.methods.toJSON = function() {
+UserSchema.methods.toJSON = function () {
   const obj = this.toObject();
   delete obj.password;
   return obj;
