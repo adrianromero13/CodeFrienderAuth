@@ -7,7 +7,7 @@ import requireAuth from './../../hoc/requireAuth';
 
 import { Grid, Header, Container } from 'semantic-ui-react';
 
-import { getAllMatches } from './../../actions/users';
+import { getAllMatches } from '../../actions/users';
 import { GET_MATCHES, GET_MATCHES_ERROR } from '../../actions/types';
 
 import matchesCard from './matchesCard';

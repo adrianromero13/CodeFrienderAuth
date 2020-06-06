@@ -3,7 +3,7 @@ const { sendMessage, getAllMessages } = require('../../../controllers/messageCon
 const { requireAuth } = require('../../../middlewares/authMiddlewares');
 
 
-// '/messages' prepended
+// 'api/messages' prepended
 router.route('/')
   .get(requireAuth, getAllMessages)
   .post(requireAuth, sendMessage);
