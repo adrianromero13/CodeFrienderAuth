@@ -12,9 +12,8 @@ module.exports = {
   },
 
   getCurrentUser: async (req, res) => {
-    const id = req.params;
     try {
-      const userData = await User.find({ _id: id  });
+      const userData = await User.find({ currentUser: req.user._id });
       return res.json(userData);
     } catch (e) {
       return res.status(403).json({ e });

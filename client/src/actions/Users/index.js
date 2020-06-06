@@ -21,7 +21,7 @@ export const getAllUsers = () => async dispatch => {
 
 export const getCurrentUserData = (id) => async dispatch => {
     try {
-        const { data } = await axios.get(`/api/users/${id}`);
+        const { data } = await axios.get(`/api/users/${id}`, { headers: { 'authorization': localStorage.getItem('token') } });
         dispatch({ type: GET_CURRENT_USER, payload: data });
     } catch (e) {
         dispatch({ type: GET_CURRENT_USER_ERROR, payload: 'Something went wrong, please refresh and try again' })

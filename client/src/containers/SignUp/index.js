@@ -43,10 +43,9 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
   renderEmail = ({ input, meta }) => {
     return (
       <Form.Input
-        //spread out form props
         {...input}
         label='Email Adress'
-        error={meta.touched && meta.error} //error prop {boolean}
+        error={meta.touched && meta.error}
         fluid
         icon='user'
         iconPosition='left'
@@ -141,9 +140,8 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
             />
             <Field
               name='email'
-              component={this.renderEmail} //this needs to be defined outside of render^
+              component={this.renderEmail}
               validate={
-                //you can pass an array of validations
                 [
                   required({ msg: 'Email is required' }), //add settings ie. msg
                   email({ msg: 'You must provide a valid email address' })  //is this email?

@@ -7,7 +7,7 @@ import requireAuth from './../../hoc/requireAuth';
 
 import { Grid, Header, Container } from 'semantic-ui-react';
 
-import { getAllMatches } from '../../actions/users';
+import { getAllMatches, getCurrentUserData } from './../../actions/users';
 import { GET_MATCHES, GET_MATCHES_ERROR } from '../../actions/types';
 
 import matchesCard from './matchesCard';
@@ -23,6 +23,10 @@ class Match extends Component {
         // } catch (e) {
         //     console.log(e)
         // }
+    }
+
+    componentWillMount() {
+        this.props.getCurrentUserData();
     }
 
 
@@ -62,10 +66,15 @@ class Match extends Component {
 }
 
 function mapStateToProps(state) {
-    return { allMatches: state.users.allMatches, allMatchesError: state.users.allMatchesError };
+    return { 
+        allMatches: state.users.allMatches,
+        allMatchesError: state.users.allMatchesError,
+        currentUser: state.users.currentUser,
+        getCurrentUserError: state.users.getCurrentUserError,
+    };
 }
 
 export default compose(
-    connect(mapStateToProps, { getAllMatches }),
+    connect(mapStateToProps, { getAllMatches, getCurrentUserData }),
     requireAuth
 )(Match);

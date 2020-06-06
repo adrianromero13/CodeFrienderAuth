@@ -8,8 +8,6 @@ import requireAuth from '../../hoc/requireAuth';
 import DatePicker from 'react-datepicker';
 import './createevent.css'
 import { compose } from 'redux';
-import "react-datepicker/dist/react-datepicker.css";
-
 import { getUserEvents, selectEvent, selectedEvent } from '../../actions/event'
 
 import { ADD_USER_EVENT } from '../../actions/types'
