@@ -13,10 +13,6 @@ export const GET_CURRENT_USER_ERROR = 'GET_CURRENT_USER_ERROR';
 export const GET_USERS = 'GET_USERS';
 export const GET_USERS_ERROR = 'GET_USERS_ERROR';
 
-// Current User Section
-export const GET_CURRENT_USER = 'GET_CURRENT_USER';
-export const GET_CURRENT_USER_ERROR = 'GET_CURRENT_USER_ERROR';
-
 // Matches Section
 export const GET_MATCHES = 'GET_MATCHES';
 export const GET_MATCHES_ERROR = 'GET_MATCHES_ERROR';

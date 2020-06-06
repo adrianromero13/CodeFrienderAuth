@@ -7,5 +7,4 @@ router.post('/signUp', signUp);
 router.post('/signIn', requireSignIn, signIn);
 
 
-
 module.exports = router;

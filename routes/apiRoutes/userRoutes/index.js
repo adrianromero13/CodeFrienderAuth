@@ -14,7 +14,7 @@ router.route('/')
   .get(getUsers);
 
 router.route('/:id')
-  .get(getCurrentUser);
+  .get(requireAuth, getCurrentUser);
 
 router.route('/matches') // collaborate
   .get(requireAuth, getMatches);
