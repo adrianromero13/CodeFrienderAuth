@@ -11,7 +11,18 @@ module.exports = {
     }
   },
 
+  getCurrentUser: async (req, res) => {
+    const id = req.params;
+    try {
+      const userData = await User.find({ _id: id  });
+      return res.json(userData);
+    } catch (e) {
+      return res.status(403).json({ e });
+    }
+  },
+
   getMatches: async (req, res) => {
+    // we need too grab current user to be able to match
     try {
       const { strength, weakness } = req.user;
       const best = await User.find({ strength: weakness, weakness: strength });
