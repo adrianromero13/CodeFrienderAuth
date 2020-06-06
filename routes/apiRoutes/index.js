@@ -11,7 +11,7 @@ router.use('/auth', authRoutes);
 // declare '/api/users
 router.use('/users', userRoutes);
 
-//declare '/api/messages
+// declare '/api/messages
 router.use('/messages', messageRoutes);
 
 
