@@ -1,0 +1,5 @@
+.selfImage {
+    background-image: url(./assets/images/me.jpg);
+    width: auto;
+    /* height: fit-content; */
+}

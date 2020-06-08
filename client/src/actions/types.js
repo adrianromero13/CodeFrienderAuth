@@ -6,8 +6,10 @@ export const GET_ALL_TODOS = 'GET_ALL_TODOS';
 export const GET_ALL_TODOS_ERROR = 'GET_ALL_TODOS_ERROR';
 
 // Current User Section
-export const GET_CURRENT_USER = 'GET_CURRENT_USER';
-export const GET_CURRENT_USER_ERROR = 'GET_CURRENT_USER_ERROR';
+// export const GET_CURRENT_USER = 'GET_CURRENT_USER';
+// export const GET_CURRENT_USER_ERROR = 'GET_CURRENT_USER_ERROR';
+export const GET_USER_DATA = 'GET_USER_DATA';
+export const GET_USER_DATA_ERROR = 'GET_USER_DATA_ERROR';
 
 // Users Section
 export const GET_USERS = 'GET_USERS';
