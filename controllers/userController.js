@@ -11,14 +11,14 @@ module.exports = {
     }
   },
 
-  getCurrentUser: async (req, res) => {
-    try {
-      const userData = await User.find({ currentUser: req.user._id });
-      return res.json(userData);
-    } catch (e) {
-      return res.status(403).json({ e });
-    }
-  },
+  // getCurrentUser: async (req, res) => {
+  //   try {
+  //     const userData = await User.find({ currentUser: req.user._id });
+  //     return res.json(userData);
+  //   } catch (e) {
+  //     return res.status(403).json({ e });
+  //   }
+  // },
 
   getMatches: async (req, res) => {
     // we need too grab current user to be able to match

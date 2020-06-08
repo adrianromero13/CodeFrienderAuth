@@ -7,15 +7,18 @@ import requireAuth from './../../hoc/requireAuth';
 
 import { Grid, Header, Container } from 'semantic-ui-react';
 
-import { getAllMatches, getCurrentUserData } from './../../actions/users';
-import { GET_MATCHES, GET_MATCHES_ERROR } from '../../actions/types';
+import { getAllMatches } from './../../actions/users';
+import { getUserData } from './../../actions/profile';
+import { GET_MATCHES, GET_MATCHES_ERROR, GET_USER_DATA, GET_USER_DATA_ERROR } from '../../actions/types';
 
 import matchesCard from './matchesCard';
+import { fromAddress } from 'react-geocode';
 
 class Match extends Component {
 
-    componentDidMount() {
+    async componentDidMount() {
         this.props.getAllMatches();
+        this.props.getUserData();
         console.log('LOOK HERE IDIOT', this.props)
         // try {
         //     const { data } = await axios.get('/api/users/matches', { headers: { 'authorization': localStorage.getItem('token') } });
@@ -25,9 +28,9 @@ class Match extends Component {
         // }
     }
 
-    componentWillMount() {
-        this.props.getCurrentUserData();
-    }
+    // componentWillMount() {
+    //     this.props.getCurrentUserData();
+    // }
 
 
     render() {
@@ -66,15 +69,16 @@ class Match extends Component {
 }
 
 function mapStateToProps(state) {
-    return { 
+    return {
         allMatches: state.users.allMatches,
         allMatchesError: state.users.allMatchesError,
-        currentUser: state.users.currentUser,
-        getCurrentUserError: state.users.getCurrentUserError,
+        currentUser: state.currentUser.getUserData,
+        getCurrentUserError: state.currentUser.getServerError,
+        getServerError: state.currentUser.getClientError,
     };
 }
 
 export default compose(
-    connect(mapStateToProps, { getAllMatches, getCurrentUserData }),
+    connect(mapStateToProps, { getAllMatches, getUserData }),
     requireAuth
 )(Match);

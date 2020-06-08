@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
-import { Form, Segment, Button, Menu, Label } from 'semantic-ui-react';
 import { email, required } from 'redux-form-validators';
+import { Form, Button } from 'semantic-ui-react';
 
 import axios from 'axios';
 import { AUTH_USER } from '../../actions/types';
@@ -11,16 +11,16 @@ class SignIn extends Component {
   onSubmit = async (formValues, dispatch) => {
     try {
       const { data } = await axios.post('/api/auth/signin', formValues);
-      console.log(data);
+      console.log('axios call happened', data);
       //set the token in a key valued pair inside of local storage 
       localStorage.setItem('token', data.token);
-      dispatch({ type: AUTH_USER, payload: data })
-      this.props.history.push('/profile'); //redirects user to counter page
+      dispatch({ type: AUTH_USER, payload: data });
+      this.props.history.push('/profile');
     } catch (e) {
       //error catching different for signing in
       throw new SubmissionError({
-        email: 'Please try again',
-        password: 'You entered a bad password',
+        email: 'email incorrect',
+        password: 'password incorrect',
         _error: 'Login Failed'
       });
     }
@@ -32,7 +32,7 @@ class SignIn extends Component {
         {...input}
         error={meta.touched && meta.error}
         icon='user'
-        style={{maxWidth: 'auto'}}
+        style={{ width: 'auto' }}
         label={label}
         iconPosition='left'
         autoComplete='off'
@@ -47,7 +47,7 @@ class SignIn extends Component {
         error={meta.touched && meta.error}
         type='password'
         icon='lock'
-        style={{maxWidth: 'auto'}}
+        style={{ width: 'auto' }}
         placeholder='password'
         autoComplete='off'
         iconPosition='left'
@@ -62,28 +62,28 @@ class SignIn extends Component {
           <Field
             name='email'
             component={this.renderEmail}
-            // validate={
-            //   [
-            //     required({ msg: 'Email is required' }),
-            //     email({ msg: 'You must provide a valid email address' })
-            //   ]
-            // }
+            validate={
+              [
+                required({ msg: 'Email is required' }),
+                email({ msg: 'You must provide a valid email address' })
+              ]
+            }
           />
           <Field
             name='password'
             component={this.renderPassword}
-            // validate={
-            //   [
-            //     required({ msg: 'You must provide a password' })
-            //   ]
-            // }
+            validate={
+              [
+                required({ msg: 'You must provide a password' })
+              ]
+            }
           />
           <Button
             content='Sign In'
             color='teal'
             size='tiny'
             type='submit'
-            disabled={submitting}
+            disabled={invalid || submitting || submitFailed}
           />
         </Form.Group>
       </Form>
@@ -91,4 +91,6 @@ class SignIn extends Component {
   }
 }
 
-export default reduxForm({ form: 'signin' })(SignIn);
+export default reduxForm({
+  form: 'signin',
+})(SignIn);

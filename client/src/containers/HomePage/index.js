@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
 import {
   Button,
   Container,
@@ -17,8 +18,11 @@ import {
   Visibility,
 } from 'semantic-ui-react';
 
+import './styles.css';
+
 
 import SignIn from './../SignIn';
+// import { connect } from 'mongoose';
 
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
@@ -91,8 +95,8 @@ class DesktopContainer extends Component {
           <Segment
             inverted
             textAlign='center'
-            style={{ minHeight: 700, padding: '1em 0em' }}
-            vertical
+            // style={{ minHeight: 700, padding: '1em 0em' }}
+            // vertical
           >
             <Menu
               fixed={fixed ? 'top' : null}
@@ -109,7 +113,7 @@ class DesktopContainer extends Component {
                 <Menu.Item as={Link} to='/profile'>Profiles</Menu.Item>
                 <Menu.Item as={Link} to='/dashboard'>DashBoard?</Menu.Item>
                 <Menu.Item position='right'>
-                  <SignIn/>
+                  <SignIn authenticated={this.props.authenticated}/>
                 </Menu.Item>
               </Container>
             </Menu>
@@ -160,7 +164,7 @@ class MobileContainer extends Component {
           {/* change this if not using */}
           <Menu.Item as={Link} to='/dashboard'>DashBoard?</Menu.Item>
           <Menu.Item stackable>
-          <SignIn/>
+          <SignIn authenticated={this.props.authenticated}/>
           </Menu.Item>
         </Sidebar>
 
@@ -177,7 +181,7 @@ class MobileContainer extends Component {
                   <Icon name='sidebar' />
                 </Menu.Item>
                 <Menu.Item position='right'>
-                  <SignIn/>
+                  <SignIn authenticated={this.props.authenticated}/>
                 </Menu.Item>
               </Menu>
             </Container>
@@ -334,4 +338,10 @@ const HomepageLayout = () => (
   </ResponsiveContainer>
 )
 
-export default HomepageLayout
+function mapstateToProps(state) {
+  return { authenticated: state.auth.authenticated };
+}
+// export default HomepageLayout
+
+// export default connect(mapstateToProps)(HomepageLayout);
+export default connect(mapstateToProps)(DesktopContainer);

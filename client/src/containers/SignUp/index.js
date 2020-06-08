@@ -5,13 +5,13 @@ import { email, length, required } from 'redux-form-validators'; //validators
 
 import axios from 'axios';
 
-import { AUTH_USER, AUTH_USER_ERROR, STRENGTH, WEAKNESS } from '../../actions/types';
+import { AUTH_USER, AUTH_USER_ERROR } from '../../actions/types';
 // import { STATES } from 'mongoose';
 
 
 class SignUp extends Component { //Must define statelss funciton outside of the render()
 
-   skills = [
+  skills = [
     { text: 'HTML-GIT-CSS', value: 'HTML-GIT-CSS' },
     { text: 'CSS-Bootstrap', value: 'CSS-Bootstrap' },
     { text: 'JavaScript', value: 'JavaScript' },
@@ -25,10 +25,10 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
     { text: 'MVC', value: 'MVC' },
     { text: 'React', value: 'React' },
     { text: 'State', value: 'State' },
-  ]
-//set const for dropdown
+  ];
+  //set const for dropdown
   onSubmit = async (formValues, dispatch) => {
-    console.log('formvalues', formValues);
+    // console.log('formvalues', formValues);
     try {
       //formvalues looks like this { email: 'someEmail@.com, password: '123456' }
       const { data } = await axios.post('/api/auth/signup', formValues);
@@ -84,13 +84,12 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
     )
   }
   renderSkills = (field) => {
-    console.log('field',field);
     return (
       <Form.Select
         {...field.input}
         value={field.input.value}
         //redux form with semantic drop down select
-        onChange={(param,data) => field.input.onChange(data.value)}
+        onChange={(param, data) => field.input.onChange(data.value)}
         label={field.label}
         type='option'
         placeholder={field.label}
@@ -128,7 +127,7 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
                 ]
               }
             />
-            <Field 
+            <Field
               name='weakness'
               label='Weakness'
               component={this.renderSkills}
@@ -172,7 +171,7 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
                 ]
               }
             />
-            <Field 
+            <Field
               name='bio'
               label='Bio'
               component={this.renderInput}
@@ -183,7 +182,7 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
               fluid
               size='large'
               type='submit'
-              disabled={ invalid || submitting || submitFailed}
+              disabled={invalid || submitting || submitFailed}
             />
           </Segment>
         </Form>
@@ -192,12 +191,12 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
   }
 }
 
-const asyncValidate = async formValues => {
+const asyncValidate = async ({ email }) => {
 
   // add asyncValidation for github username
-  
+
   try {
-    const { data } = await axios.get(`/api/users/emails?email=${formValues.email}`);
+    const { data } = await axios.get(`/api/users/emails?email=${email}`);
     if (data) {
       throw new Error('Email already exists, please sign up with a different email');
     }
@@ -206,4 +205,8 @@ const asyncValidate = async formValues => {
   }
 }
 
-export default reduxForm({ form: 'signup', asyncValidate, asyncChangeFields: ['email'] })(SignUp);
+export default reduxForm({
+  form: 'signup',
+  asyncValidate,
+  asyncChangeFields: ['email'],
+})(SignUp);
