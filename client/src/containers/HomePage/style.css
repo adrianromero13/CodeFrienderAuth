@@ -3,7 +3,7 @@
     /* background-color: purple !important ; */
     /* background-image: linear-gradient(bottom, pink, purple, grey) !important; */
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
     height: auto;
     width: auto;
     background-attachment: fixed;
@@ -11,4 +11,10 @@
 
 #grad {
     background-image: linear-gradient(red, yellow);
+};
+
+.shadow {
+    /* color: white; */
+    text-shadow: 2px 2px 4px #000000;
+
 };

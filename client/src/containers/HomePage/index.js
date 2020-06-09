@@ -40,7 +40,8 @@ const getWidth = () => {
  */
 const HomepageHeading = ({ mobile }) => (
   <Container text>
-    <Header
+    <Header 
+    className='shadow'
       as='h1'
       inverted
       style={{
@@ -51,7 +52,7 @@ const HomepageHeading = ({ mobile }) => (
       }}
     >
         <Icon name='code branch'/>
-        CodeFriender
+        <span className='shadow' style={{textShadow: '2px 2px 6px #000000'}}>Code Friender</span>
     </Header>
     <Header
       as='h2'
