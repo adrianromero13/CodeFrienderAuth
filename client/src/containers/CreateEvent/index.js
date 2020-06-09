@@ -9,7 +9,7 @@ import DatePicker from 'react-datepicker';
 import './createevent.css'
 import { compose } from 'redux';
 import { getUserEvents, selectEvent, selectedEvent } from '../../actions/event'
-
+import "react-datepicker/dist/react-datepicker.css";
 import { ADD_USER_EVENT } from '../../actions/types'
 
 
@@ -39,10 +39,10 @@ class CreateEvent extends Component {
 
   onSubmit = async (formValues, dispatch) => {
     try {
-      const { data } = await axios.post('/api/event/create', formValues,  { headers: { 'authorization': localStorage.getItem('token')}});
+      const { data } = await axios.post('/api/events', formValues,  { headers: { 'authorization': localStorage.getItem('token')}});
       dispatch({ type: ADD_USER_EVENT })
       await this.props.selectEvent(data._id);
-      this.props.history.push('/eventsdashboard');
+      this.props.history.push('/eventspage');
     } catch (e) {
       throw new SubmissionError({
         password: 'Wrong pin',

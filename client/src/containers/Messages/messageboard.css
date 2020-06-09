@@ -1,0 +1,57 @@
+
+.view-messages {
+  height: 500px !important;
+  overflow: scroll;
+  scroll-behavior: smooth !important;
+  white-space: nowrap;
+  border: 20px solid #000000;
+  box-shadow: 10px 5px 5px 0px rgba(0,0,0,0.95)!important;
+  border-radius: 5px !important;
+
+
+}
+
+
+
+.message-userName {
+  letter-spacing: 0.45px;
+    background-color: indianred;
+    font-family: 'Lato', sans-serif;
+  text-transform: capitalize;
+}
+
+
+
+.message-time {
+  color: black !important;
+  font-family: 'Fugaz One', cursive;
+}
+
+.ui.comments .comment .text {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+}
+
+.message-posting {
+  box-shadow: 10px 5px 5px 0px rgba(0,0,0,0.15)!important;
+  border-radius: 25px;
+  color: black !important;
+}
+
+
+
+
+.ui.comments .comment .avatar img, .ui.comments .comment img.avatar {
+  display: block;
+  margin: 0 auto;
+  width: 70%;
+  height: 70%;
+  border-radius: .25rem;
+}
+
+.ui.comments .comment .avatar img, .ui.comments .comment img.avatar {
+  display: inline;
+  height: 24px;
+  width: 24px;
+
+}
