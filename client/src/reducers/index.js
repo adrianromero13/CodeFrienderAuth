@@ -5,7 +5,9 @@ import { ADD_TODO } from '../actions/types';
 import usersReducer from './usersReducer';
 import matchesReducer from './matchesReducer';
 import eventReducer from './eventReducer';
+import messageReducer from './messageReducer';
 import profileReducer from './profileReducer';
+
 
 export default combineReducers({
   event: eventReducer,
@@ -13,6 +15,7 @@ export default combineReducers({
   users: usersReducer,
   auth: authReducer,
   matches: matchesReducer,
+  messages: messageReducer,
   form: formReducer.plugin({
     'addTodo': (state, action) => {
       switch (action.type) {
