@@ -1,0 +1,14 @@
+.landingImage {
+    background-image: url('./assets/images/devcollab.png') !important;
+    /* background-color: purple !important ; */
+    /* background-image: linear-gradient(bottom, pink, purple, grey) !important; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    width: auto;
+    background-attachment: fixed;
+};
+
+#grad {
+    background-image: linear-gradient(red, yellow);
+};
