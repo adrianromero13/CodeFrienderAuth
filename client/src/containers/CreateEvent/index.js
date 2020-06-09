@@ -114,7 +114,29 @@ class CreateEvent extends Component {
                       }
               component={this.renderDatePicker}
             />
-            <h3 className='form-headers' align='left' >Describe the event for your guests.</h3>
+            <h3 className='form-headers' align='left'>Time of the event</h3>
+            <Field
+              
+              name='time'
+              validate={
+                [
+                  required({ msg: 'Please enter a starting time (ex: 3:00 PM)' })
+                ]
+              }
+              component={this.renderInput}
+            />
+            <h3 className='form-headers' align='left'>Location of the event</h3>
+            <Field
+              
+              name='location'
+              validate={
+                [
+                  required({ msg: 'Please enter a venue' })
+                ]
+              }
+              component={this.renderInput}
+            />
+            <h3 className='form-headers' align='left' >Decription</h3>
             <Field
             
               className='text-area'
@@ -127,8 +149,8 @@ class CreateEvent extends Component {
               component={this.renderInput}
 
             />
-            <h3 className='form-headers' align='left'>4-Digit access code</h3>
-            <p>This will be used for inviting guest who can update the event.</p>
+            <h3 className='form-headers' align='left'>4-Digit pin code</h3>
+            <p>Please use this invitation code for your event</p>
             <Field
               name='pin'
               label='password'
@@ -159,7 +181,7 @@ class CreateEvent extends Component {
               color='red'
               disabled={ invalid || submitting || submitFailed }
             >
-              <Button.Content visible>Reset Event</Button.Content>
+              <Button.Content visible>Clear Form</Button.Content>
               <Button.Content hidden>
                 <Icon name='long arrow alternate left' />
               </Button.Content>

@@ -31,14 +31,14 @@ class App extends Component {
         <Route exact path='/createevent' component={Banner}/>
         <Route exact path='/match' component={Banner}/>
         <Route exact path='/signUp' component={Banner}/>
-        <Route exact path='/events' component={Banner}/>
+        <Route exact path='/eventspage' component={Banner}/>
         <Route exact path='/home' component={SignIn}/>
         <Route exact path='/signOut' component={SignOut}/>
         <Route exact path='/signUp' component={SignUp}/>
         <Route exact path='/profile' component={AllCodeFrienders}/>
         <Route exact path='/match' component={Match}/>
         <Route exact path = '/createevent' component = {CreateEvent} />
-        <Route exact path = '/events' component = {EventsPage} />
+        <Route exact path = '/eventspage' component = {EventsPage} />
 
       </div>
     );
