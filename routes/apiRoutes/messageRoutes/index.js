@@ -8,4 +8,6 @@ router.route('/')
   .get(requireAuth, getAllMessages)
   .post(requireAuth, sendMessage);
 
+  
+
 module.exports = router;

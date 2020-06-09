@@ -9,7 +9,7 @@ import {
   
   export const postMessage = (id) => async (dispatch) => {
     try {
-      const { data } = await axios.post(`/api/user/messages/${id}`, {
+      const { data } = await axios.post(`/api/messages/${id}`, {
         headers: { authorization: localStorage.getItem("token") },
       });
       dispatch({ type: POST_MESSAGE, payload: data });
@@ -24,7 +24,7 @@ import {
   
   export const getAllMessages = (id) => async (dispatch) => {
     try {
-      const { data } = await axios.get(`/api/dashboard/get/${id}`, {
+      const { data } = await axios.get(`/api/messages/${id}`, {
         headers: { authorization: localStorage.getItem("token") },
       });
       dispatch({ type: GET_MESSAGE, payload: data });
