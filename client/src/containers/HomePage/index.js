@@ -348,5 +348,5 @@ function mapstateToProps(state) {
 }
 // export default HomepageLayout
 
-// export default connect(mapstateToProps)(HomepageLayout);
-export default connect(mapstateToProps)(DesktopContainer);
+export default connect(mapstateToProps)(HomepageLayout);
+// export default connect(mapstateToProps)(DesktopContainer);

@@ -9,7 +9,7 @@ import DatePicker from 'react-datepicker';
 import './createevent.css'
 import { compose } from 'redux';
 import { getUserEvents, selectEvent, selectedEvent } from '../../actions/event'
-
+import "react-datepicker/dist/react-datepicker.css";
 import { ADD_USER_EVENT } from '../../actions/types'
 
 
@@ -39,10 +39,10 @@ class CreateEvent extends Component {
 
   onSubmit = async (formValues, dispatch) => {
     try {
-      const { data } = await axios.post('/api/event/create', formValues,  { headers: { 'authorization': localStorage.getItem('token')}});
+      const { data } = await axios.post('/api/events', formValues,  { headers: { 'authorization': localStorage.getItem('token')}});
       dispatch({ type: ADD_USER_EVENT })
       await this.props.selectEvent(data._id);
-      this.props.history.push('/eventsdashboard');
+      this.props.history.push('/eventspage');
     } catch (e) {
       throw new SubmissionError({
         password: 'Wrong pin',
@@ -114,7 +114,29 @@ class CreateEvent extends Component {
                       }
               component={this.renderDatePicker}
             />
-            <h3 className='form-headers' align='left' >Describe the event for your guests.</h3>
+            <h3 className='form-headers' align='left'>Time of the event</h3>
+            <Field
+              
+              name='time'
+              validate={
+                [
+                  required({ msg: 'Please enter a starting time (ex: 3:00 PM)' })
+                ]
+              }
+              component={this.renderInput}
+            />
+            <h3 className='form-headers' align='left'>Location of the event</h3>
+            <Field
+              
+              name='location'
+              validate={
+                [
+                  required({ msg: 'Please enter a venue' })
+                ]
+              }
+              component={this.renderInput}
+            />
+            <h3 className='form-headers' align='left' >Decription</h3>
             <Field
             
               className='text-area'
@@ -127,8 +149,8 @@ class CreateEvent extends Component {
               component={this.renderInput}
 
             />
-            <h3 className='form-headers' align='left'>4-Digit access code</h3>
-            <p>This will be used for inviting guest who can update the event.</p>
+            <h3 className='form-headers' align='left'>4-Digit pin code</h3>
+            <p>Please use this invitation code for your event</p>
             <Field
               name='pin'
               label='password'
@@ -159,7 +181,7 @@ class CreateEvent extends Component {
               color='red'
               disabled={ invalid || submitting || submitFailed }
             >
-              <Button.Content visible>Reset Event</Button.Content>
+              <Button.Content visible>Clear Form</Button.Content>
               <Button.Content hidden>
                 <Icon name='long arrow alternate left' />
               </Button.Content>
