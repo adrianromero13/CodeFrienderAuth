@@ -3,8 +3,8 @@ import {
     GET_USERS_ERROR,
     GET_MATCHES,
     GET_MATCHES_ERROR,
-    GET_CURRENT_USER,
-    GET_CURRENT_USER_ERROR,
+    // GET_CURRENT_USER,
+    // GET_CURRENT_USER_ERROR,
 } from '../types';
 
 
@@ -19,14 +19,14 @@ export const getAllUsers = () => async dispatch => {
     }
 };
 
-export const getCurrentUserData = (id) => async dispatch => {
-    try {
-        const { data } = await axios.get(`/api/users/${id}`, { headers: { 'authorization': localStorage.getItem('token') } });
-        dispatch({ type: GET_CURRENT_USER, payload: data });
-    } catch (e) {
-        dispatch({ type: GET_CURRENT_USER_ERROR, payload: 'Something went wrong, please refresh and try again' })
-    }
-}
+// export const getCurrentUserData = (id) => async dispatch => {
+//     try {
+//         const { data } = await axios.get(`/api/users/${id}`, { headers: { 'authorization': localStorage.getItem('token') } });
+//         dispatch({ type: GET_CURRENT_USER, payload: data });
+//     } catch (e) {
+//         dispatch({ type: GET_CURRENT_USER_ERROR, payload: 'Something went wrong, please refresh and try again' })
+//     }
+// }
 
 export const getAllMatches = () => async dispatch => {
     try {

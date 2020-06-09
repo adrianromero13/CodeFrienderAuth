@@ -5,16 +5,19 @@ const {
   getMatches,
   getAllUserEmails,
   getAllUserGitHub,
-  getCurrentUser,
 } = require('../../../controllers/userController');
+const { getCurrentUser } = require('../../../controllers/profileController');
 
 
 // '/api/users' prepended to every route.
 router.route('/')
   .get(getUsers);
 
-router.route('/:id')
+router.route('/profile')
   .get(requireAuth, getCurrentUser);
+
+// router.route('/:id')
+//   .get(requireAuth, getCurrentUser);
 
 router.route('/matches') // collaborate
   .get(requireAuth, getMatches);
