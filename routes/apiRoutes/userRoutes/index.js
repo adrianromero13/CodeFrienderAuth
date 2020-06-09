@@ -3,6 +3,7 @@ const { requireAuth } = require('../../../middlewares/authMiddlewares');
 const {
   getUsers,
   getMatches,
+  // getAllMatches,
   getAllUserEmails,
   getAllUserGitHub,
 } = require('../../../controllers/userController');
@@ -21,6 +22,9 @@ router.route('/profile')
 
 router.route('/matches') // collaborate
   .get(requireAuth, getMatches);
+
+// router.route('/allmatches')
+//   .get(requireAuth, getAllMatches);
 
 router.get('/emails', getAllUserEmails);
 router.get('/github', getAllUserGitHub);
