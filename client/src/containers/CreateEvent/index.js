@@ -136,7 +136,7 @@ class CreateEvent extends Component {
               }
               component={this.renderInput}
             />
-            <h3 className='form-headers' align='left' >Decription</h3>
+            <h3 className='form-headers' align='left' >Description</h3>
             <Field
             
               className='text-area'
@@ -149,14 +149,14 @@ class CreateEvent extends Component {
               component={this.renderInput}
 
             />
-            <h3 className='form-headers' align='left'>4-Digit pin code</h3>
+            <h3 className='form-headers' align='left'>4-Digit invite code</h3>
             <p>Please use this invitation code for your event</p>
             <Field
               name='pin'
               label='password'
               validate={
                 [
-                  required({ msg: '4-digit pin is required' }),
+                  required({ msg: '4-digit code is required' }),
                   length({ minimum: 4, maximum: 4, msg: 'example: 0000'})
                 ]
               }

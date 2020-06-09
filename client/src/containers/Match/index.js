@@ -22,6 +22,9 @@ class Match extends Component {
   }
 
     render() {
+      console.log(this.props.best.length);
+      console.log(this.props.forMe.length);
+      console.log(this.props.forThem.length);
       return (
         <Container>
           <Grid columns={2}>
@@ -34,17 +37,17 @@ class Match extends Component {
                   <Header>Best Matches</Header>
                   <Grid.Row columns={3}>
                     <p>Collaborate</p>
-                    {this.props.allMatches?.best?.map((person) => <MatchesCard allMatches={person} />)}
+                    {this.props.best?.map((person) => <MatchesCard allMatches={person} />)}
                   </Grid.Row>
                   <Header>Best Matches For Them</Header>
                   <Grid.Row columns={3}>
                     <p>Mentor</p>
-                    {this.props.allMatches?.forThem?.map((person) => <MatchesCard allMatches={person} />)}
+                    {this.props.forThem?.map((person) => <MatchesCard allMatches={person} />)}
                   </Grid.Row>
                   <Header>Best Matches For Me</Header>
                   <Grid.Row columns={3}>
                     <p>Apprentice</p>
-                    {this.props.allMatches?.forMe?.map((person) => <MatchesCard allMatches={person} />)}
+                    {this.props.forMe?.map((person) => <MatchesCard allMatches={person} />)}
                   </Grid.Row>
                 </Grid>
               </Grid.Column>
@@ -58,7 +61,9 @@ class Match extends Component {
 
 function mapStateToProps(state) {
   return {
-    allMatches: state.matches.allMatches,
+    forMe: state.matches.allMatches.forMe,
+    forThem: state.matches.allMatches.forThem,
+    best: state.matches.allMatches.best,
     allMatchesError: state.matches.allMatchesError,
     currentUser: state.currentUser.getUserData,
     getCurrentUserError: state.currentUser.getServerError,

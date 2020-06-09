@@ -21,7 +21,7 @@ class Messages extends Component {
       const {
         data,
       } = await axios.post(
-        `/api/dashboard/comment/${this.props.eventId}`, //gotta create messages routes
+        `/api/messages/${this.props.eventId}`, //gotta create messages routes
         formValues,
         { headers: { authorization: localStorage.getItem("token") } }
       );

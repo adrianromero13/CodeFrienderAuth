@@ -4,11 +4,16 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  allMatches: [],
+  allMatches: {
+    forMe: [],
+    forThem: [],
+    best: []
+  },
   allMatchesError: '',
 };
 
 export default function (state = INITIAL_STATE, action) {
+  console.log(action.payload)
   switch (action.type) {
     case GET_MATCHES:
       return { ...state, allMatches: action.payload, getUsersError: '' };
