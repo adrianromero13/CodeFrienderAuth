@@ -29,47 +29,50 @@ class AllCodeFrienders extends Component {
   }
 
   render() {
-    console.log('onsignin',this.props.allUsers.length);
-        return (
-          <>
-            <Container>
-              <Grid columns={2}>
-                <AllProfileHeader/>
-              </Grid>
-              <Grid.Row>
-                <Grid columns={2}>
+    console.log('onsignin', this.props.allUsers.length);
+    return (
+      <>
+        <Container>
+          <Grid columns={2}>
+            <AllProfileHeader />
+          </Grid>
+          <Grid.Row>
+            <Grid columns={2}>
 
-                  <Grid.Column width={4}>
-                    <Responsive minWidth={768}>
-                      
-                      {/* <UsersCard/> */}
+              <Grid.Column width={4}>
+                <Responsive minWidth={768}>
 
-                    </Responsive>
-                  </Grid.Column>
+                  {/* <UsersCard/> */}
 
-                  <Grid.Column width={12}>
-                    {/* create responsive for smaller screens */}
-                    <Responsive>
-                      <Card.Group fluid itemsPerRow={3}>
-                        <CodeFriendersCard allUsers={this.props.allUsers}/>
-                      </Card.Group>
-                    </Responsive>
-                  </Grid.Column>
-                </Grid>
-              </Grid.Row>
-            </Container>
-          </>
-          //           {this.state.allUsers.length && this.state.allUsers.slice(0, this.state.allUsers.length - 1).map(CodeFrienderUsers => (
-          //             <CodeFriendersCard codeFrienderUsers={CodeFrienderUsers} />
-          //             )
-          //             )}
-        )
-    }
-  };
+                </Responsive>
+              </Grid.Column>
+
+              <Grid.Column width={12}>
+                {/* create responsive for smaller screens */}
+                <Responsive>
+                  <Card.Group fluid itemsPerRow={3}>
+                    <CodeFriendersCard allUsers={this.props.allUsers} />
+                  </Card.Group>
+                </Responsive>
+              </Grid.Column>
+            </Grid>
+          </Grid.Row>
+        </Container>
+      </>
+      //           {this.state.allUsers.length && this.state.allUsers.slice(0, this.state.allUsers.length - 1).map(CodeFrienderUsers => (
+      //             <CodeFriendersCard codeFrienderUsers={CodeFrienderUsers} />
+      //             )
+      //             )}
+    )
+  }
+};
 
 
 function mapStateToProps(state) {
-  return { allUsers: state.users.allUsers, getUsersError: state.users.getUsersError };
+  return {
+    allUsers: state.users.allUsers,
+    getUsersError: state.users.getUsersError
+  };
 }
 
 // export default connect(mapStateToProps, { getAllUsers })(AllCodeFrienders);

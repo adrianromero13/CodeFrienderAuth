@@ -28,6 +28,7 @@ export const getAllUsers = () => async dispatch => {
 //     }
 // }
 
+// {best: data.best, forThem: data.forThem, forMe: data.forMe }
 export const getAllMatches = () => async dispatch => {
     try {
         const { data } = await axios.get('/api/users/matches', { headers: { 'authorization': localStorage.getItem('token') } });
