@@ -18,7 +18,8 @@ import {
   Visibility,
 } from 'semantic-ui-react';
 
-import './styles.css';
+import './style.css';
+// import imageBG from './assets/images/devcollab.png';
 
 
 import SignIn from './../SignIn';
@@ -86,7 +87,9 @@ class DesktopContainer extends Component {
     const { fixed } = this.state
 
     return (
-      <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
+      <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}
+        // id="landingImage"
+        >
         <Visibility
           once={false}
           onBottomPassed={this.showFixedMenu}
@@ -95,7 +98,8 @@ class DesktopContainer extends Component {
           <Segment
             inverted
             textAlign='center'
-            // style={{ minHeight: 700, padding: '1em 0em' }}
+            className='landingImage'            
+            style={{ minHeight: '100vh', padding: '1em 0em' }}
             // vertical
           >
             <Menu
@@ -213,7 +217,8 @@ ResponsiveContainer.propTypes = {
 // change to match the CodeFriender's mission statement
 //show off the features of the CodeFriender's application as much as possible
 const HomepageLayout = () => (
-  <ResponsiveContainer>
+  <ResponsiveContainer
+  className="landingImage">
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Grid container stackable verticalAlign='middle'>
         <Grid.Row>
