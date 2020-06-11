@@ -14,8 +14,6 @@ module.exports = {
         user: req.user._id,
         event: eventId,
       }).save();
-      req.user.messages.push(message);
-      // req.user.events.messages.push(newMessage);
       await req.user.save();
       const sentMessage = await Message.find({ event: eventId }).populate(
         'user',
