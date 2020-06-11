@@ -20,6 +20,7 @@ import Banner from '../Banner';
 import HomePage from '../HomePage';
 import CreateEvent from '../CreateEvent';
 import EventsPage from '../../components/EventsPage';
+import './ImageBackGround.css';
 
 class App extends Component {
   render () {
