@@ -7,6 +7,10 @@ import requireAuth from './../../hoc/requireAuth';
 
 import { Grid, Header, Container, Card } from 'semantic-ui-react';
 
+import Carousel from 'semantic-ui-carousel-react';
+
+
+
 import { getAllMatches } from './../../actions/users';
 import { getUserData } from './../../actions/profile';
 // import { GET_MATCHES, GET_MATCHES_ERROR, GET_USER_DATA, GET_USER_DATA_ERROR } from '../../actions/types';
@@ -19,50 +23,88 @@ import './style.css';
 
 class Match extends Component {
 
-  async componentDidMount() {
-    this.props.getAllMatches();
-    this.props.getUserData();
+  state = {
+    best: [],
+    forThem: [],
+    forMe: []
   }
 
-    render() {
-      console.log(this.props.best.length);
-      console.log(this.props.forMe.length);
-      console.log(this.props.forThem.length);
-      return (
-        <Container>
-          <Grid columns={2}>
-            <Grid.Row>
-              <Grid.Column width={4}>
-               <UserProfile currentUser={this.props.currentUser}/>
-              </Grid.Column>
-              <Grid.Column width={12} textAlign='center'>
-                <Grid centered>
-                  <Header>Best Matches</Header>
-                  <Grid.Row columns={3}>
-                    <Card.Group itemsPerRow={3}>
-                    {this.props.best?.map((person) => <MatchesCard allMatches={person} />)}
-                    </Card.Group>
-                  </Grid.Row>
-                  <Header>Best Matches For Them</Header>
-                  <Grid.Row columns={3}>
-                    <Card.Group itemsPerRow={3}>
-                    {this.props.forThem?.map((person) => <MatchesCard allMatches={person} />)}
-                    </Card.Group>
-                  </Grid.Row>
-                  <Header>Apprentice</Header>
-                  <Grid.Row columns={3}>
-                    <Card.Group itemsPerRow={3}>
-                    {this.props.forMe?.map((person) => <MatchesCard allMatches={person} />)}
-                    </Card.Group>
-                  </Grid.Row>
-                </Grid>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Container>
-      )
-    };
+  async componentDidMount() {
+    await this.props.getAllMatches();
+    await this.props.getUserData();
+    this.renderCarouselData();
+  }
+
+  renderCarouselData = () => {
+    let best = [];
+    this.props.best.forEach(person => {
+      let obj = { render: () => <MatchesCard allMatches={person} /> };
+      best.push(obj);
+    })
+    let forThem = [];
+    this.props.forThem.forEach(person => {
+      let obj = { render: () => <MatchesCard allMatches={person} /> };
+      forThem.push(obj);
+    })
+    let forMe = [];
+    this.props.forMe.forEach(person => {
+      let obj = { render: () => <MatchesCard allMatches={person} /> };
+      forMe.push(obj);
+    })
+    this.setState({ best, forThem, forMe });
+  }
+  
+  render() {
+    return (
+      <Container>
+        <Grid columns={2}>
+          <Grid.Row>
+            <Grid.Column width={4}>
+              <p>Your Profile</p>
+            </Grid.Column>
+            <Grid.Column width={12} textAlign='center'>
+              <Grid centered>
+                <Header>Best Matches</Header>
+                <Grid.Row columns={3}>
+                  <p>Collaborate</p>
+                  <Carousel
+                    elements={this.state.best}
+                    // duration={3000}
+                    animation='slide left'
+                    showNextPrev={true}
+                    showIndicators={true}
+                  />
+                </Grid.Row>
+                <Header>Best Matches For Them</Header>
+                <Grid.Row columns={3}>
+                  <p>Mentor</p>
+                  <Carousel
+                    elements={this.state.forThem}
+                    // duration={3000}
+                    animation='slide left'
+                    showNextPrev={true}
+                    showIndicators={true}
+                  />
+                </Grid.Row>
+                <Header>Best Matches For Me</Header>
+                <Grid.Row columns={3}>
+                  <p>Apprentice</p>
+                  <Carousel
+                    elements={this.state.forMe}
+                    // duration={3000}
+                    animation='slide left'
+                    showNextPrev={true}
+                    showIndicators={true}
+                  />
+                </Grid.Row>
+              </Grid>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Container>
+    )
   };
+};
 
 
 function mapStateToProps(state) {
