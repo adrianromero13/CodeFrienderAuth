@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { email, required } from 'redux-form-validators';
 import { Form, Button } from 'semantic-ui-react';
+import  { withRouter } from 'react-router-dom';
 
 import axios from 'axios';
 import { AUTH_USER } from '../../actions/types';
@@ -11,10 +12,11 @@ class SignIn extends Component {
   onSubmit = async (formValues, dispatch) => {
     try {
       const { data } = await axios.post('/api/auth/signin', formValues);
-      console.log('axios call happened', data);
+    
       //set the token in a key valued pair inside of local storage 
       localStorage.setItem('token', data.token);
       dispatch({ type: AUTH_USER, payload: data });
+      // //failing to take in this.props
       this.props.history.push('/profile');
     } catch (e) {
       //error catching different for signing in
@@ -91,6 +93,6 @@ class SignIn extends Component {
   }
 }
 
-export default reduxForm({
+export default withRouter(reduxForm({
   form: 'signin',
-})(SignIn);
+})(SignIn));
