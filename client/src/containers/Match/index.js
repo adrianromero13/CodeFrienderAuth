@@ -69,7 +69,6 @@ class Match extends Component {
                   <p>Collaborate</p>
                   <Carousel
                     elements={this.state.best}
-                    // duration={3000}
                     animation='slide left'
                     showNextPrev={true}
                     showIndicators={true}
@@ -80,7 +79,6 @@ class Match extends Component {
                   <p>Mentor</p>
                   <Carousel
                     elements={this.state.forThem}
-                    // duration={3000}
                     animation='slide left'
                     showNextPrev={true}
                     showIndicators={true}
@@ -91,7 +89,6 @@ class Match extends Component {
                   <p>Apprentice</p>
                   <Carousel
                     elements={this.state.forMe}
-                    // duration={3000}
                     animation='slide left'
                     showNextPrev={true}
                     showIndicators={true}
