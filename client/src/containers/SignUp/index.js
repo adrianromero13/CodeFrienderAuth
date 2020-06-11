@@ -35,9 +35,13 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
       localStorage.setItem('token', data.token);
       dispatch({ type: AUTH_USER, payload: data });
       this.props.history.push('/profile');
+      console.log('intrycatch', this.props.history);
+
     } catch (e) {
       dispatch({ type: AUTH_USER_ERROR, payload: e });
     }
+    console.log('in onSubmit', this.props.history);
+
   }
 
   renderEmail = ({ input, meta }) => {

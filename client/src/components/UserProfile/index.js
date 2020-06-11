@@ -1,29 +1,28 @@
 import React from 'react';
 import { Card, Icon, Image, Grid } from 'semantic-ui-react';
 
-function UserProfile(props) {
-    return (
+export default(props) => {
+  const { _id, badge, firstName, lastName, strength, weakness, bio, email } = props.currentUser;
+  return (
       <Grid.Column width={5}>
-        <Card color={props.color}>
-          <Image src={props.user.badge} wrapped ui={false} />
+        <Card color='teal' key={_id}>
+          <Image src={badge} wrapped ui={false} />
           <Card.Content>
-            <Card.Header>{props.user.first_name} {props.user.last_name}</Card.Header>
+            <Card.Header>{firstName} {lastName}</Card.Header>
             <Card.Meta>
-              <span>Strength:{props.user.strength} </span>
+              <span>Strength:{strength} </span>
               <br></br>
-              <span>Weakness:{props.user.weakness} </span>
+              <span>Weakness:{weakness} </span>
             </Card.Meta>
             <Card.Description>
-              {props.user.bio}
+              {bio}
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
               <Icon name='user' />
-              {props.user.email}
+              {email}
           </Card.Content>
         </Card>
       </Grid.Column>
     )
 };
-
-export default UserProfile;

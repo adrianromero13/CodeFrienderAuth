@@ -18,6 +18,6 @@ router.use('/messages', messageRoutes);
 // declare 'api/events
 router.use('/events', eventRoutes);
 
-//declare '/api/eventspage route
+// declare '/api/eventspage route
 
 module.exports = router;
