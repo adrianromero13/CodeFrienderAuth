@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { requireAuth } = require('../../../middlewares/authMiddlewares');
-const { joinEvent, createEvent, getEvent, deleteEvent, specificEvent, updateTitle, updateDescription, updateLocation } = require('../../../controllers/eventController')
+const { createEvent, getEvent, deleteEvent, specificEvent, updateTitle, updateDescription, updateLocation } = require('../../../controllers/eventController')
 
 // has /api/events prepended to everything
 

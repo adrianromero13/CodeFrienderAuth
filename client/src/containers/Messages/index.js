@@ -12,6 +12,7 @@ import "./messageboard.css";
 
 class Messages extends Component {
   componentDidMount() {
+      console.log("look", this.props) //this.props.eventId
     this.props.getAllMessages(this.props.eventId);
   }
 
@@ -33,6 +34,7 @@ class Messages extends Component {
   };
 
   renderInput = ({ input, meta }) => {
+    console.log(this.props) //this.props.messages.message
     return (
       <Form.TextArea
         {...input}
@@ -47,15 +49,15 @@ class Messages extends Component {
     return (
       <Comment key={idx}>
         <Comment.Content>
-          <Comment.Avatar src={message.user.Gender} />
+          <Comment.Avatar src={message.user.badge} />
           <Comment.Author className="message-userName">
-            {message.user.userName}
+            {message.user.firstName} {message.user.lastName}
           </Comment.Author>
           <Comment.Metadata className="message-time">
             {moment(message.date).format("h:mma MMM Do, YYYY")}
           </Comment.Metadata>
           <Comment.Text className="message-userPost">
-            {message.text}
+            {message.message}
           </Comment.Text>
         </Comment.Content>
       </Comment>
@@ -87,7 +89,7 @@ class Messages extends Component {
           <Segment stacked>
             <h2 align="left">Add Your Message Here</h2>
             <Field
-              name="text"
+              name="message"
               validate={required({ msg: "Please add a message" })}
               component={this.renderInput}
             />

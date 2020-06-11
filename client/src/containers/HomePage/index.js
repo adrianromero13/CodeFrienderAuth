@@ -122,7 +122,7 @@ class DesktopContainer extends Component {
                 <Menu.Item as={Link} to='/profile'><span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Profile</span></Menu.Item>
                 <Menu.Item as={Link} to='/dashboard'><span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Dashboard</span></Menu.Item>
                 <Menu.Item position='right'>
-                  <SignIn authenticated={this.props.authenticated} />
+                  <SignIn/>
                 </Menu.Item>
               </Container>
             </Menu>
@@ -173,7 +173,7 @@ class MobileContainer extends Component {
           {/* change this if not using */}
           <Menu.Item as={Link} to='/dashboard'>DashBoard?</Menu.Item>
           <Menu.Item stackable>
-            <SignIn authenticated={this.props.authenticated} />
+          <SignIn/>
           </Menu.Item>
         </Sidebar>
 
@@ -190,7 +190,7 @@ class MobileContainer extends Component {
                   <Icon name='sidebar' />
                 </Menu.Item>
                 <Menu.Item position='right'>
-                  <SignIn authenticated={this.props.authenticated} />
+                  <SignIn/>
                 </Menu.Item>
               </Menu>
             </Container>
@@ -353,9 +353,8 @@ const HomepageLayout = () => (
 )
 
 function mapstateToProps(state) {
+  console.log(state);
   return { authenticated: state.auth.authenticated };
 }
-// export default HomepageLayout
 
 export default connect(mapstateToProps)(HomepageLayout);
-// export default connect(mapstateToProps)(DesktopContainer);

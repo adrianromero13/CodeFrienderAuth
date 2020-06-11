@@ -44,13 +44,11 @@ module.exports = {
         .json({ error: 'You must provide email and password' });
     }
     if (!isEmail(email)) {
-      console.log('email error', email);
       return res
         .status(403)
         .json({ error: 'You must provide a valid email address' });
     }
     if (!isLength(password, { min: 6 })) {
-      console.log('password error', password);
       return res
         .status(403)
         .json({ error: 'Your password must be at least 6 characters long' });
@@ -58,7 +56,6 @@ module.exports = {
     try {
       // See if a user with the given email exists
       const existingUser = await User.findOne({ email });
-      console.log('existingUser', existingUser);
       if (existingUser) {
         return res
           .status(403)
@@ -76,8 +73,6 @@ module.exports = {
         badge,
       }).save();
       const currentUser = await User.findById(user._id).select('-password');
-      console.log('SignedUpUser', currentUser);
-      console.log('returned SignedUpUser', user);
       // Eventually we will send a token
       return res.json({ token: tokenForUser(user), user: currentUser });
     } catch (e) {
@@ -88,7 +83,6 @@ module.exports = {
   },
   signIn: async (req, res) => {
     const currentUser = await User.findOne({ email: req.user.email }).select('-password');
-    console.log('SignedIn User', currentUser);
     res.json({ token: tokenForUser(req.user), user: currentUser });
   },
 };

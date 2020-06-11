@@ -26,21 +26,18 @@ class App extends Component {
   render () {
     return (
       <div>
-        {/* <Banner/> */}
         <Route exact path='/' component={HomePage}/>
         <Route exact path='/profile' component={Banner}/>
         <Route exact path='/createevent' component={Banner}/>
         <Route exact path='/match' component={Banner}/>
         <Route exact path='/eventspage' component={Banner}/>
         <Route exact path='/signup' component={Banner}/>
-        <Route exact path='/home' component={SignIn}/>
-        <Route exact path='/signout' component={SignOut}/>
         <Route exact path='/signup' component={SignUp}/>
+        <Route exact path='/signout' component={SignOut}/>
         <Route exact path='/profile' component={AllCodeFrienders}/>
         <Route exact path='/match' component={Match}/>
         <Route exact path = '/createevent' component = {CreateEvent} />
         <Route exact path = '/eventspage' component = {EventsPage} />
-
       </div>
     );
   }

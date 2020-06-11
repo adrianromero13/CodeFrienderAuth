@@ -7,7 +7,6 @@ const { requireAuth } = require('../../../middlewares/authMiddlewares');
 router.route('/')
   .get(requireAuth, getAllMessages)
   .post(requireAuth, sendMessage);
-
-  
+// router.route('/')
 
 module.exports = router;

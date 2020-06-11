@@ -81,6 +81,7 @@ class CreateEvent extends Component {
   }
 
   render() {
+    console.log(this.props);
     const { handleSubmit, invalid, submitting, submitFailed } = this.props;
     return (
 
