@@ -5,7 +5,7 @@ import { compose } from 'redux';
 
 import requireAuth from './../../hoc/requireAuth';
 
-import { Grid, Header, Container } from 'semantic-ui-react';
+import { Grid, Header, Container, Card } from 'semantic-ui-react';
 
 import Carousel from 'semantic-ui-carousel-react';
 
@@ -13,10 +13,13 @@ import Carousel from 'semantic-ui-carousel-react';
 
 import { getAllMatches } from './../../actions/users';
 import { getUserData } from './../../actions/profile';
-import { GET_MATCHES, GET_MATCHES_ERROR, GET_USER_DATA, GET_USER_DATA_ERROR } from '../../actions/types';
+// import { GET_MATCHES, GET_MATCHES_ERROR, GET_USER_DATA, GET_USER_DATA_ERROR } from '../../actions/types';
 
+import UserProfile from './../../components/UserProfile';
 import MatchesCard from './MatchesCard';
-import { fromAddress } from 'react-geocode';
+// import { fromAddress } from 'react-geocode';
+
+import './style.css';
 
 class Match extends Component {
 
@@ -50,7 +53,7 @@ class Match extends Component {
     })
     this.setState({ best, forThem, forMe });
   }
-
+  
   render() {
     return (
       <Container>
