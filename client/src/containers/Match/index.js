@@ -73,7 +73,6 @@ class Match extends Component {
                 <Grid.Row columns={3}>
                   <Carousel
                     elements={this.state.best}
-                    // duration={3000}
                     animation='slide left'
                     showNextPrev={true}
                     showIndicators={true}
@@ -83,7 +82,6 @@ class Match extends Component {
                 <Grid.Row columns={3}>
                   <Carousel
                     elements={this.state.forThem}
-                    // duration={3000}
                     animation='slide left'
                     showNextPrev={true}
                     showIndicators={true}
@@ -93,7 +91,6 @@ class Match extends Component {
                 <Grid.Row columns={3}>
                   <Carousel
                     elements={this.state.forMe}
-                    // duration={3000}
                     animation='slide left'
                     showNextPrev={true}
                     showIndicators={true}
