@@ -1,11 +1,11 @@
 import React from 'react';
 import { Icon, Card, Image } from 'semantic-ui-react';
-
+import './../style.css';
 
 export default (props) => {
     const { _id, badge, firstName, lastName, strength, weakness, bio, email } = props.allMatches;
     return (
-        <Card centered color={'red'} key={_id}>
+        <Card className='customCard' centered color={'red'} key={_id}>
             <Image src={badge} wrapped ui={false} />
             <Card.Content>
                 <Card.Header>{firstName} {lastName}</Card.Header>

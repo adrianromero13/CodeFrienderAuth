@@ -1,11 +1,12 @@
 .scrolling-wrapper-flexbox {
     display: flex;
     flex-wrap: nowrap;
-    overflow-x: auto;
-  
-    .card {
-      flex: 0 0 auto;
-    }
+    overflow-x: auto;  
+  }
+
+  .customCard {
+    margin-right: 5px;
+    flex: 0 0 auto;
   }
 /* .scrolling-wrapper {
   overflow-x: scroll;
@@ -16,4 +17,5 @@
     display: inline-block;
   }
 } */
+
   
