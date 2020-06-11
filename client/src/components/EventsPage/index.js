@@ -28,7 +28,7 @@ class EventPage extends Component {
       const eventId = this.props.specificEvent;
       await this.props.selectedEvent(eventId);
       await this.props.selectedEvent(this.props.specificEvent);
-      await this.props.getAddress(this.props.userSpecificEvent.directions);
+      await this.props.getAddress(this.props.SpecificEvent.location);
     } catch (e) {}
   }
 
@@ -49,6 +49,7 @@ class EventPage extends Component {
   };
 
   render() {
+    console.log('check this', this.props)
     return (
       <div>
         <Container>
