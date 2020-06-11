@@ -9,27 +9,25 @@ import { Grid, Container, Responsive, Card } from 'semantic-ui-react';
 
 import requireAuth from '../../hoc/requireAuth';
 import { getAllUsers } from '../../actions/users';
+import { getUserData } from './../../actions/profile';
+
 
 import { GET_USERS, GET_USERS_ERROR } from '../../actions/types';
 
 import AllProfileHeader from '../../components/AllProfileHeader';
 import CodeFriendersCard from './CodeFriendersCard';
 import UsersCard from './UsersCard';
+import UserProfile from './../../components/UserProfile';
 
 class AllCodeFrienders extends Component {
 
-  // state = {
-  //   activePage: 1,
-  //   start: 0,
-  //   end: 10
-  // }
-
   componentDidMount() {
     this.props.getAllUsers();
+    this.props.getUserData();
   }
-
+  
   render() {
-    console.log('onsignin', this.props.allUsers.length);
+    console.log('find currentUser', this.props.currentUser);
     return (
       <>
         <Container>
@@ -41,12 +39,9 @@ class AllCodeFrienders extends Component {
 
               <Grid.Column width={4}>
                 <Responsive minWidth={768}>
-
-                  {/* <UsersCard/> */}
-
+                  <UserProfile currentUser={this.props.currentUser}/>
                 </Responsive>
               </Grid.Column>
-
               <Grid.Column width={12}>
                 {/* create responsive for smaller screens */}
                 <Responsive>
@@ -59,10 +54,6 @@ class AllCodeFrienders extends Component {
           </Grid.Row>
         </Container>
       </>
-      //           {this.state.allUsers.length && this.state.allUsers.slice(0, this.state.allUsers.length - 1).map(CodeFrienderUsers => (
-      //             <CodeFriendersCard codeFrienderUsers={CodeFrienderUsers} />
-      //             )
-      //             )}
     )
   }
 };
@@ -70,26 +61,14 @@ class AllCodeFrienders extends Component {
 
 function mapStateToProps(state) {
   return {
+    currentUser: state.currentUser.getUserData,
     allUsers: state.users.allUsers,
     getUsersError: state.users.getUsersError
   };
 }
 
-// export default connect(mapStateToProps, { getAllUsers })(AllCodeFrienders);
 
 export default compose(
-  connect(mapStateToProps, { getAllUsers }),
+  connect(mapStateToProps, { getAllUsers, getUserData }),
   requireAuth
 )(AllCodeFrienders);
-// function mapStateToProps({ users: allUsers, getUsersError }) {
-//   return {
-//     users: allUsers,
-//     error: getUsersError,
-//   };
-// }
-
-// export default compose(
-//   //   reduxForm({ form: 'addTodo' }),
-//   // requireAuth,
-//   connect(mapStateToProps, { getAllUsers })
-// )(AllCodeFrienders);
