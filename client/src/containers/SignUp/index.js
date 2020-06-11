@@ -26,22 +26,17 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
     { text: 'React', value: 'React' },
     { text: 'State', value: 'State' },
   ];
-  //set const for dropdown
+
   onSubmit = async (formValues, dispatch) => {
-    // console.log('formvalues', formValues);
     try {
       //formvalues looks like this { email: 'someEmail@.com, password: '123456' }
       const { data } = await axios.post('/api/auth/signup', formValues);
       localStorage.setItem('token', data.token);
       dispatch({ type: AUTH_USER, payload: data });
       this.props.history.push('/profile');
-      console.log('intrycatch', this.props.history);
-
     } catch (e) {
       dispatch({ type: AUTH_USER_ERROR, payload: e });
     }
-    console.log('in onSubmit', this.props.history);
-
   }
 
   renderEmail = ({ input, meta }) => {
@@ -196,7 +191,6 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
 }
 
 const asyncValidate = async ({ email }) => {
-
   // add asyncValidation for github username
 
   try {
