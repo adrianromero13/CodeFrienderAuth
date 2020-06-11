@@ -3,7 +3,6 @@ import { Icon, Card, Image } from 'semantic-ui-react';
 
 
 export default (props) => {
-    console.log('inside of cardrender', props);
     const { _id, badge, firstName, lastName, strength, weakness, bio, email } = props.allMatches;
     return (
         <Card centered color={'red'} key={_id}>
