@@ -60,7 +60,7 @@ class EventPage extends Component {
             titleUpdate={this.updateTitle}
             descriptionUpdate={this.updateDescription}
             locationUpdate={this.updateLocation}
-            location={this.props.userSpecificEvent.directions}
+            location={this.props.userSpecificEvent.location}
             dateUpdate={this.props.userSpecificEvent.updateEventDate}
           />
 
