@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   Button,
@@ -24,6 +24,7 @@ import './style.css';
 
 import SignIn from './../SignIn';
 // import { connect } from 'mongoose';
+import BgImage from './assets/images/devcollab.png';
 
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
@@ -39,9 +40,9 @@ const getWidth = () => {
  * such things.
  */
 const HomepageHeading = ({ mobile }) => (
-  <Container text>
-    <Header 
-    className='shadow'
+  <Container styles={{ backgroundImage: `url(${BgImage})` }} text>
+    <Header
+      className='shadow'
       as='h1'
       inverted
       style={{
@@ -51,24 +52,27 @@ const HomepageHeading = ({ mobile }) => (
         marginTop: mobile ? '1.5em' : '2em',
       }}
     >
-        <Icon name='code branch'/>
-        <span className='shadow' style={{textShadow: '2px 2px 6px #000000'}}>Code Friender</span>
+      <Icon name='code branch' />
+      <span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Code Friender</span>
     </Header>
     <Header
       as='h2'
-      content='Mentor | Collaborate | Apprentice '
+      content='Mentor | Collaborate | Apprentice'
       inverted
       style={{
+        textShadow: '2px 2px 6px #000000',
         fontSize: mobile ? '1.5em' : '1.7em',
         fontWeight: 'normal',
         marginBottom: '1.7em',
         marginTop: mobile ? '0.5em' : '1.2em',
       }}
     />
-    <Button primary size='huge'>
+    <a href='localhost:3000/signup'>
+    <Button primary size='huge'style={{ textShadow: '2px 2px 6px #000000' }}>
       Let's Get Started
       <Icon name='right arrow' />
     </Button>
+    </a>
   </Container>
 )
 
@@ -89,8 +93,8 @@ class DesktopContainer extends Component {
 
     return (
       <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}
-        // id="landingImage"
-        >
+      // id="landingImage"
+      >
         <Visibility
           once={false}
           onBottomPassed={this.showFixedMenu}
@@ -99,9 +103,9 @@ class DesktopContainer extends Component {
           <Segment
             inverted
             textAlign='center'
-            className='landingImage'            
+            className='landingImage'
             style={{ minHeight: '100vh', padding: '1em 0em' }}
-            // vertical
+          // vertical
           >
             <Menu
               fixed={fixed ? 'top' : null}
@@ -112,13 +116,13 @@ class DesktopContainer extends Component {
             >
               <Container>
                 <Menu.Item as={Link} to='/homepage' active>
-                  Home
+                  <span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Home</span>
                 </Menu.Item>
-                <Menu.Item as={Link} to='/match'>Match</Menu.Item>
-                <Menu.Item as={Link} to='/profile'>Profiles</Menu.Item>
-                <Menu.Item as={Link} to='/dashboard'>DashBoard?</Menu.Item>
+                <Menu.Item as={Link} to='/match'><span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Match</span></Menu.Item>
+                <Menu.Item as={Link} to='/profile'><span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Profile</span></Menu.Item>
+                <Menu.Item as={Link} to='/dashboard'><span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Dashboard</span></Menu.Item>
                 <Menu.Item position='right'>
-                  <SignIn authenticated={this.props.authenticated}/>
+                  <SignIn authenticated={this.props.authenticated} />
                 </Menu.Item>
               </Container>
             </Menu>
@@ -169,7 +173,7 @@ class MobileContainer extends Component {
           {/* change this if not using */}
           <Menu.Item as={Link} to='/dashboard'>DashBoard?</Menu.Item>
           <Menu.Item stackable>
-          <SignIn authenticated={this.props.authenticated}/>
+            <SignIn authenticated={this.props.authenticated} />
           </Menu.Item>
         </Sidebar>
 
@@ -186,7 +190,7 @@ class MobileContainer extends Component {
                   <Icon name='sidebar' />
                 </Menu.Item>
                 <Menu.Item position='right'>
-                  <SignIn authenticated={this.props.authenticated}/>
+                  <SignIn authenticated={this.props.authenticated} />
                 </Menu.Item>
               </Menu>
             </Container>
@@ -219,24 +223,31 @@ ResponsiveContainer.propTypes = {
 //show off the features of the CodeFriender's application as much as possible
 const HomepageLayout = () => (
   <ResponsiveContainer
-  className="landingImage">
+    className="landingImage">
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Grid container stackable verticalAlign='middle'>
         <Grid.Row>
           <Grid.Column width={8}>
             <Header as='h3' style={{ fontSize: '2em' }}>
-              We Help Companies and Companions
+              A friend(er) in need
+              ...is a friend indeed
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              We can give your company superpowers to do things that they never thought possible.
-              Let us delight your customers and empower your needs... through pure data analytics.
+              As students of the coding arts, we are fully aware of the need to find a team of like-minded students to fill the gap between classroom and home learning. Now you can find the perfect study buddy to help you crack the code.
             </p>
             <Header as='h3' style={{ fontSize: '2em' }}>
-              We Make Bananas That Can Dance
+              Simple as 1, 2, 3 .....
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              Yes that's right, you thought it was the stuff of dreams, but even bananas can be
-              bioengineered.
+              1. Enter you github username and password
+              <br>
+
+              </br>
+              2. List your strength and weakness in the coding field
+              <br>
+
+              </br>
+              3. Find the perfect Code Friend
             </p>
           </Grid.Column>
           <Grid.Column floated='right' width={6}>
@@ -256,17 +267,17 @@ const HomepageLayout = () => (
         <Grid.Row textAlign='center'>
           <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
             <Header as='h3' style={{ fontSize: '2em' }}>
-              "What a Company"
+              "I felt like I was fighting a war against React"
             </Header>
-            <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
+            <p style={{ fontSize: '1.33em' }}>..until I realized there was an army on my side. Code warriors!!</p>
           </Grid.Column>
           <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
             <Header as='h3' style={{ fontSize: '2em' }}>
-              "I shouldn't have gone with their competitor."
+              "Some of the people I've met on Code Friender have become my fellow employees"
             </Header>
             <p style={{ fontSize: '1.33em' }}>
               <Image avatar src='/images/avatar/large/nan.jpg' />
-              <b>Nan</b> Chief Fun Officer Acme Toys
+              <b></b> Shlomo Pleban- Chief Engineer/MicroSoft
             </p>
           </Grid.Column>
         </Grid.Row>
@@ -276,15 +287,13 @@ const HomepageLayout = () => (
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Container text>
         <Header as='h3' style={{ fontSize: '2em' }}>
-          Breaking The Grid, Grabs Your Attention
+          When you hit a wall...know who to call
         </Header>
         <p style={{ fontSize: '1.33em' }}>
-          Instead of focusing on content creation and hard work, we have learned how to master the
-          art of doing nothing by providing massive amounts of whitespace and generic content that
-          can seem massive, monolithic and worth your attention.
+          We know that learning to communicate with computers can be difficult. Discouraging at best, infuriating at worst. Use the chat component to ask questions without engaging in a full on study session. Get in the zone. Stay in the zone.
         </p>
         <Button as='a' size='large'>
-          Read More
+          Learn about chatting with Code Friends
         </Button>
 
         <Divider
@@ -297,16 +306,15 @@ const HomepageLayout = () => (
         </Divider>
 
         <Header as='h3' style={{ fontSize: '2em' }}>
-          Did We Tell You About Our Bananas?
+          From Code Friend to Colleague 
         </Header>
         <p style={{ fontSize: '1.33em' }}>
-          Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but
-          it's really true. It took years of gene splicing and combinatory DNA research, but our
-          bananas can really dance.
+          You are more likely to gain employment through someone you know outside of the interview environment. Why not increase your chances of getting noticed by sharing your skill set with thousands of local, established and student developers. #friendUp
         </p>
-        <Button as='a' size='large'>
-          I'm Still Quite Interested
-        </Button>
+        <a href="https://www.linkedin.com/pulse/7-reasons-have-study-buddy-carolyn-mcintyre/" target="_blank">
+        <Button as='a' size='large'>7 Reason to join Code Friender</Button>
+        </a>
+        
       </Container>
     </Segment>
 
@@ -326,7 +334,7 @@ const HomepageLayout = () => (
               <List link inverted>
                 <List.Item as='a'>This is Not a Link</List.Item>
                 <List.Item as='a'>CodeFriender FAQ</List.Item>
-               
+
               </List>
             </Grid.Column>
             <Grid.Column width={7}>
