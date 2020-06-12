@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon, Card, Image } from 'semantic-ui-react';
+
 import './../style.css';
 
 export default (props) => {

@@ -17,6 +17,8 @@ import { GET_MATCHES, GET_MATCHES_ERROR, GET_USER_DATA, GET_USER_DATA_ERROR } fr
 
 import UserProfile from './../../components/UserProfile';
 import MatchesCard from './MatchesCard';
+import UsersCard from './../CodeFrienderUsers/UsersCard';
+
 // import { fromAddress } from 'react-geocode';
 
 import './style.css';
@@ -38,27 +40,31 @@ class Match extends Component {
         </Grid>
         <Grid columns={2}>
           <Grid.Row>
-            <Grid.Column width={4}>
+            <Grid.Column width={3}>
               <UserProfile currentUser={this.props.currentUser} />
             </Grid.Column>
-            <Grid.Column width={12} textAlign='center'>
+            <Grid.Column width={13} textAlign='center'>
               <Grid centered>
                 <Header>Collaborate</Header>
                 <Grid.Row columns={3}>
                   <Flexbox element="header" height='auto' className='scrolling-wrapper-flexbox'>
-                    {this.props.best?.map((person) => <MatchesCard allMatches={person} />)}
+                    {/* {this.props.best?.map((person) => <MatchesCard allMatches={person} />)} */}
+                    {/* {this.props.best?.map((person) => <UsersCard users={person} />)} */}
+                    <UsersCard users={this.props.best}/>
                   </Flexbox>
                 </Grid.Row>
                 <Header>Mentor</Header>
                 <Grid.Row columns={3}>
                   <Flexbox element='card' height='auto' className='scrolling-wrapper-flexbox'>
-                    {this.props.forThem?.map((person) => <MatchesCard allMatches={person} />)}
+                    {/* {this.props.forThem?.map((person) => <MatchesCard allMatches={person} />)} */}
+                    <UsersCard users={this.props.forThem}/>
                   </Flexbox>
                 </Grid.Row>
                 <Header>Apprentice</Header>
                 <Grid.Row columns={3}>
                   <Flexbox element='card' height='auto' className='scrolling-wrapper-flexbox'>
-                    {this.props.forMe?.map((person) => <MatchesCard allMatches={person} />)}
+                    {/* {this.props.forMe?.map((person) => <MatchesCard allMatches={person} />)} */}
+                    <UsersCard users={this.props.forMe}/>
                   </Flexbox>
                 </Grid.Row>
               </Grid>
