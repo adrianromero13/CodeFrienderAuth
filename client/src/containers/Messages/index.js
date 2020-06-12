@@ -40,7 +40,7 @@ class Messages extends Component {
         {...input}
         error={meta.touched && meta.error}
         autoComplete="off"
-        placeholder="Add your comment here"
+        placeholder="Add your message here"
       />
     );
   };

@@ -4,7 +4,7 @@ const { requireAuth } = require('../../../middlewares/authMiddlewares');
 
 
 // 'api/messages' prepended
-router.route('/')
+router.route('/:eventId')
   .get(requireAuth, getAllMessages)
   .post(requireAuth, sendMessage);
 // router.route('/')

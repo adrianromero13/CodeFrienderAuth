@@ -21,10 +21,10 @@ Geocode.setApiKey("AIzaSyAX1Pf_z0hAt1q0DIZ8CFUEgC7YeNBbKgI");
 Geocode.setLanguage("en");
 Geocode.setRegion("us");
 
-export const getAddress = (locations) => async dispatch => {
+export const getAddress = (location) => async dispatch => {
   // searched takes a string
   try {
-    Geocode.fromAddress(locations).then(
+    Geocode.fromAddress(location).then(
       response => {
         const { location } = response.results[0].geometry;
         dispatch({ type: GET_COORDINATES, payload: location})
@@ -69,7 +69,7 @@ try {
 
 export const selectedEvent = (id) => async dispatch => {
   try {
-    const { data } = await axios.get(`/api/events/eventSelected/${id}`, { headers: { 'authorization': localStorage.getItem('token') }});
+    const { data } = await axios.get(`/api/events/eventselected/${id}`, { headers: { 'authorization': localStorage.getItem('token') }});
     dispatch({ type: GET_SPECIFIC_EVENT, payload: data })
   } catch (e) {
     dispatch({ type: GET_SPECIFIC_EVENT_ERROR, payload: e})
