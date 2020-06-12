@@ -25,7 +25,7 @@ export default class Banner extends Component {
           </Menu.Item>
             <Menu.Item className='shadow' style={{textShadow: '2px 2px 6px #000000'}}
               as={Link}
-              to='/signUp'
+              to='/'
               name='home'
               active={activeItem === 'home'}
               onClick={this.handleItemClick}
@@ -46,9 +46,9 @@ export default class Banner extends Component {
             />
             <Menu.Item className='shadow' style={{textShadow: '2px 2px 6px #000000'}}
               as={Link}
-              to='/messages'
-              name='messages'
-              active={activeItem === 'messages'}
+              to='/createevent'
+              name='createEvent'
+              active={activeItem === 'createevent'}
               onClick={this.handleItemClick}
             />
         </Menu>
