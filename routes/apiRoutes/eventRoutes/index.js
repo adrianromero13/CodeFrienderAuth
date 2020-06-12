@@ -8,7 +8,7 @@ router.route('/')
   .get(requireAuth, getEvent)
   .post(requireAuth, createEvent);
 router.delete('/delete/:eventId', requireAuth, deleteEvent);
-router.get('/eventSelected/:eventId', requireAuth, specificEvent);
+router.get('/eventselected/:eventId', requireAuth, specificEvent);
 router.put('/title/:eventId', requireAuth, updateTitle);
 router.put('/description/:eventId', requireAuth, updateDescription);
 router.put('/location/:eventId', requireAuth, updateLocation);
