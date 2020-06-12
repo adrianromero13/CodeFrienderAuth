@@ -44,6 +44,13 @@ export default class Banner extends Component {
               active={activeItem === 'allProfiles'}
               onClick={this.handleItemClick}
             />
+            <Menu.Item className='shadow' style={{textShadow: '2px 2px 6px #000000'}}
+              as={Link}
+              to='/messages'
+              name='messages'
+              active={activeItem === 'messages'}
+              onClick={this.handleItemClick}
+            />
         </Menu>
       </Segment>
     )

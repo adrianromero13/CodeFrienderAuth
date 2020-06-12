@@ -117,4 +117,4 @@ export default compose(
   reduxForm({
     form: "CreateEvent",
   })
-)(Messages);
+)(Messages); //do i need to export Messages?
