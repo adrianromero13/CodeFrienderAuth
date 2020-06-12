@@ -29,14 +29,12 @@ class AllCodeFrienders extends Component {
   render() {
     console.log('find currentUser', this.props.currentUser);
     return (
-      <>
         <Container>
           <Grid columns={2}>
             <AllProfileHeader />
           </Grid>
           <Grid.Row>
             <Grid columns={2}>
-
               <Grid.Column width={4}>
                 <Responsive minWidth={768}>
                   <UserProfile currentUser={this.props.currentUser}/>
@@ -46,14 +44,14 @@ class AllCodeFrienders extends Component {
                 {/* create responsive for smaller screens */}
                 <Responsive>
                   <Card.Group fluid itemsPerRow={3}>
-                    <CodeFriendersCard allUsers={this.props.allUsers} />
+                    {/* <CodeFriendersCard allUsers={this.props.allUsers} /> */}
+                    <UsersCard users={this.props.allUsers} />
                   </Card.Group>
                 </Responsive>
               </Grid.Column>
             </Grid>
           </Grid.Row>
         </Container>
-      </>
     )
   }
 };

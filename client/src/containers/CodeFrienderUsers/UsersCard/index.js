@@ -1,34 +1,47 @@
-import React from 'react';
-import { Card, Icon, Header, Grid, Image } from 'semantic-ui-react';
+import React from 'react'
+import { Button, Card, Image, Icon, Header } from 'semantic-ui-react';
 
 export default (props) => {
-  console.log('userscard', props);
-  if (props.currentUser?.length === 0) {
+  if (props.users.length === 0) {
     return <Header content='No users yet, please wait for new Users' />
   } else {
-    return props.currentUser.map(({ _id, badge, firstName, lastName, strength, weakness, bio, email }) => {
+    return props.users.map(({ _id, badge, firstName, lastName, strength, weakness, bio, email }) => {
       return (
-        <Grid.Column width={5}>
-          <Card color={'teal'} key={_id}>
-            <Image src={badge} wrapped ui={false} />
-            <Card.Content>
-              <Card.Header>{firstName} {lastName}</Card.Header>
-              <Card.Meta>
-                <span>Strength:{strength} </span>
-                <br></br>
-                <span>Weakness:{weakness} </span>
-              </Card.Meta>
-              <Card.Description>
-                {bio}
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <Icon name='user' />
-              {email}
-            </Card.Content>
-          </Card>
-        </Grid.Column>
+        <Card key={_id} color='teal' className='customCard' style={{marginRight: '10px'}}>
+          <Card.Content>
+            <Image
+              src={badge}
+              size='tiny'
+              floated='left'
+            />
+            <Card.Header textAlign='center'>{firstName} {lastName}</Card.Header>
+            <Card.Meta>CodeFriender since: <span>date</span></Card.Meta>
+          </Card.Content>
+          <Card.Content description={bio} />
+          <Card.Content extra>
+            <Button
+              fluid
+              color='black'
+              attached='right'>
+              <Icon name='certificate' iconPosition='left' />
+              <span>Strength: {strength} </span>
+            </Button>
+            <Button
+              fluid
+              color='grey'
+              attached='right'
+            >
+              <Icon name='cog' iconPosition='left' />
+              <span>Weakness: {weakness} </span>
+            </Button>
+
+          </Card.Content>
+          <Card.Content extra link>
+            <Icon name='user secret' iconPosition='left' />
+            {email}
+          </Card.Content>
+        </Card>
       )
-    });
+    })
   }
 };
