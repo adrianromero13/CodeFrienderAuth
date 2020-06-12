@@ -16,7 +16,6 @@ import { getUserData } from './../../actions/profile';
 import { GET_MATCHES, GET_MATCHES_ERROR, GET_USER_DATA, GET_USER_DATA_ERROR } from '../../actions/types';
 
 import UserProfile from './../../components/UserProfile';
-import MatchesCard from './MatchesCard';
 import UsersCard from './../CodeFrienderUsers/UsersCard';
 
 // import { fromAddress } from 'react-geocode';

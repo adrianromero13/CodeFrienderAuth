@@ -15,7 +15,6 @@ import { getUserData } from './../../actions/profile';
 import { GET_USERS, GET_USERS_ERROR } from '../../actions/types';
 
 import AllProfileHeader from '../../components/AllProfileHeader';
-import CodeFriendersCard from './CodeFriendersCard';
 import UsersCard from './UsersCard';
 import UserProfile from './../../components/UserProfile';
 
@@ -44,7 +43,6 @@ class AllCodeFrienders extends Component {
                 {/* create responsive for smaller screens */}
                 <Responsive>
                   <Card.Group fluid itemsPerRow={3}>
-                    {/* <CodeFriendersCard allUsers={this.props.allUsers} /> */}
                     <UsersCard users={this.props.allUsers} />
                   </Card.Group>
                 </Responsive>
