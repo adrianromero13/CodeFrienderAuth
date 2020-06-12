@@ -2,20 +2,19 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;  
+    align-items: stretch;
+    /* justify-content: space-between; */
+    align-items: baseline;
   }
 
   .customCard {
-    margin-right: 5px;
     flex: 0 0 auto;
+    height: inherit;
+
   }
-/* .scrolling-wrapper {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-  
-  .card {
-    display: inline-block;
+  .scrolling-wrapper-flexbox::-webkit-scrollbar {
+    display: none;
   }
-} */
+
 
   
