@@ -67,12 +67,12 @@ const HomepageHeading = ({ mobile }) => (
         marginTop: mobile ? '0.5em' : '1.2em',
       }}
     />
-    <a href='localhost:3000/signup'>
-    <Button primary size='huge'style={{ textShadow: '2px 2px 6px #000000' }}>
+    
+    <Button as={Link} to='/signup' active primary size='huge'style={{ textShadow: '2px 2px 6px #000000' }}>
       Let's Get Started
       <Icon name='right arrow' />
     </Button>
-    </a>
+    
   </Container>
 )
 
@@ -115,7 +115,7 @@ class DesktopContainer extends Component {
               size='large'
             >
               <Container>
-                <Menu.Item as={Link} to='/homepage' active>
+                <Menu.Item as={Link} to='' active>
                   <span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Home</span>
                 </Menu.Item>
                 <Menu.Item as={Link} to='/match'><span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Match</span></Menu.Item>
@@ -251,7 +251,7 @@ const HomepageLayout = () => (
             </p>
           </Grid.Column>
           <Grid.Column floated='right' width={6}>
-            <Image bordered rounded size='large' src='/images/wireframe/white-image.png' />
+            <Image bordered rounded size='large' src='/assets/images/back-end.jpg'/>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
@@ -276,7 +276,7 @@ const HomepageLayout = () => (
               "Some of the people I've met on Code Friender have become my fellow employees"
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              <Image avatar src='/images/avatar/large/nan.jpg' />
+              <Image avatar src='' />
               <b></b> Shlomo Pleban- Chief Engineer/MicroSoft
             </p>
           </Grid.Column>
