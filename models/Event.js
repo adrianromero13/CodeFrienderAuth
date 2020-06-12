@@ -20,7 +20,6 @@ const EventSchema = new Schema({
     type: String,
   },
   attending: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   messages: [{ type: Schema.Types.ObjectId, ref: 'Message' }],
   pin: {
     type: Number,

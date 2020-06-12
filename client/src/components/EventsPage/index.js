@@ -78,6 +78,7 @@ class EventPage extends Component {
                 location={this.props.eventCoordinates}
                 directions={this.props.userSpecificEvent.directions}
               /> */}
+              <h3> {this.props.userSpecificEvent.location} </h3>
             </Grid.Column>
           </Grid>
         </Container>
