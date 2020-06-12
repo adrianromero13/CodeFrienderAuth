@@ -13,7 +13,7 @@ import Flexbox from 'flexbox-react';
 
 import { getAllMatches } from './../../actions/users';
 import { getUserData } from './../../actions/profile';
-import { GET_MATCHES, GET_MATCHES_ERROR, GET_USER_DATA, GET_USER_DATA_ERROR } from '../../actions/types';
+// import { GET_MATCHES, GET_MATCHES_ERROR, GET_USER_DATA, GET_USER_DATA_ERROR } from '../../actions/types';
 
 import UserProfile from './../../components/UserProfile';
 import MatchesCard from './MatchesCard';
@@ -31,19 +31,18 @@ class Match extends Component {
     await this.props.getUserData();
   }
 
-
   render() {
     return (
       <Container>
         <Grid columns={2}>
           <AllProfileHeader />
         </Grid>
-        <Grid columns={2}>
+        <Grid columns={2} padded='vertically'>
           <Grid.Row>
-            <Grid.Column width={3}>
+            <Grid.Column width={4}>
               <UserProfile currentUser={this.props.currentUser} />
             </Grid.Column>
-            <Grid.Column width={13} textAlign='center'>
+            <Grid.Column width={12} textAlign='center'>
               <Grid centered>
                 <Header>Collaborate</Header>
                 <Grid.Row columns={3}>
