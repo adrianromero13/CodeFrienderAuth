@@ -11,6 +11,7 @@ import { compose } from 'redux';
 import { getUserEvents, selectEvent, selectedEvent } from '../../actions/event'
 import "react-datepicker/dist/react-datepicker.css";
 import { ADD_USER_EVENT } from '../../actions/types'
+import JoinEvent from '../JoinEvent';
 
 
 
@@ -189,6 +190,9 @@ class CreateEvent extends Component {
             </Button>
           </Segment>
         </Form>
+        </Container>
+        <Container>
+          <JoinEvent/>
         </Container>
       </Container>
     )

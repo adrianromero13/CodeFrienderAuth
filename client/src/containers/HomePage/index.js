@@ -68,12 +68,10 @@ const HomepageHeading = ({ mobile }) => (
         marginTop: mobile ? '0.5em' : '1.2em',
       }}
     />
-
     <Button as={Link} to='/signup' active primary size='huge' style={{ textShadow: '2px 2px 6px #000000' }}>
       Let's Get Started
       <Icon name='right arrow' />
     </Button>
-
   </Container>
 )
 
@@ -116,7 +114,7 @@ class DesktopContainer extends Component {
               size='large'
             >
               <Container>
-                <Menu.Item as={Link} to='' active>
+                <Menu.Item as={Link} to='/homepage' active>
                   <span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Home</span>
                 </Menu.Item>
                 <Menu.Item as={Link} to='/match'><span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Match</span></Menu.Item>
@@ -316,7 +314,6 @@ const HomepageLayout = () => (
 
       </Container>
     </Segment>
-
     <Segment style='grad' inverted vertical style={{ padding: '5em 0em' }}>
 
       <Container className='grad'>
