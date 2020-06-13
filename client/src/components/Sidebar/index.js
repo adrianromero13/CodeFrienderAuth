@@ -9,7 +9,7 @@ class Sidebar extends Component {
       <div className="attending-main-div">
         <Segment className="view-attending">
           <Header as="h3" dividing>
-            Who's Going?
+            Attending:
           </Header>
           <Comment.Group>
             {this.props.attending?.map((user, idx) => (

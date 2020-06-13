@@ -12,8 +12,7 @@ import "./messageboard.css";
 
 class Messages extends Component {
   componentDidMount() {
-      console.log("look", this.props) //this.props.eventId
-    this.props.getAllMessages(this.props.eventId);
+    this.props.getAllMessages();
   }
 
   onSubmit = async (formValues, dispatch) => {
@@ -22,7 +21,7 @@ class Messages extends Component {
       const {
         data,
       } = await axios.post(
-        `/api/messages/${this.props.eventId}`, //gotta create messages routes
+        `/api/messages/${this.props.eventId}`,
         formValues,
         { headers: { authorization: localStorage.getItem("token") } }
       );
@@ -109,7 +108,9 @@ class Messages extends Component {
 }
 
 function mapStateToProps(state) {
-  return { messages: state.messages.content };
+  return { messages: state.messages.content,
+    specificEvent: state.event.specificEvent
+  };
 }
 
 export default compose(

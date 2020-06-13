@@ -35,6 +35,7 @@ class EventPage extends Component {
   updateTitle = (_id) => {
     let newEdit = prompt("Edit Something");
     this.props.updateEventTitle(newEdit, this.props.userSpecificEvent._id);
+    this.componentDidMount();
   };
   updateDescription = (_id) => {
     let newEdit = prompt("Edit Something");
@@ -42,10 +43,12 @@ class EventPage extends Component {
       newEdit,
       this.props.userSpecificEvent._id
     );
+    this.componentDidMount();
   };
   updateLocation = (_id) => {
     let newEdit = prompt("Input A Location/Address");
     this.props.updateEventLocation(newEdit, this.props.userSpecificEvent._id);
+    this.componentDidMount();
   };
 
   render() {
@@ -64,21 +67,13 @@ class EventPage extends Component {
             dateUpdate={this.props.userSpecificEvent.updateEventDate}
           />
 
-          <Grid columns={3} stackable>
+          <Grid columns={2} stackable>
             <Grid.Column>
               <Messages eventId={this.props.specificEvent} />
             </Grid.Column>
             <Grid.Column>
-              <Sidebar className="sidebar" />
+              <Sidebar className="sidebar" eventId = {this.props.specificEvent} />
               {/* <TaskContainer eventId={this.props.specificEvent} /> */}
-            </Grid.Column>
-            <Grid.Column>
-              <h1>You'll be going here:</h1>
-              {/* <GoogleApiWrapper
-                location={this.props.eventCoordinates}
-                directions={this.props.userSpecificEvent.directions}
-              /> */}
-              <h3> {this.props.userSpecificEvent.location} </h3>
             </Grid.Column>
           </Grid>
         </Container>
@@ -95,6 +90,7 @@ function mapStateToProps(state) {
     deleteEventError: state.event.deleteEventError,
     eventCoordinates: state.event.eventCoordinates,
     eventCoordinatesError: state.event.eventCoordnatesError,
+    attending: state.event.userSpecificEvent.attending
   };
 }
 
