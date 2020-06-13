@@ -23,6 +23,7 @@ import EventsPage from '../../components/EventsPage';
 import Messages from '../Messages';
 import JoinEvent from '../JoinEvent';
 import './ImageBackGround.css';
+import MyProfile from '../MyProfile';
 
 class App extends Component {
   render () {
@@ -44,6 +45,8 @@ class App extends Component {
         <Route exact path = '/eventspage' component = {EventsPage} />
         <Route exact path = '/messages' component = {Messages}/>
         <Route exact path = '/joinevent' component = {JoinEvent}/>
+        <Route exact path = '/myprofile' component= {MyProfile}/>
+
       </div>
     );
   }
