@@ -10,8 +10,6 @@ import {
   DELETE_SPECIFIC_EVENT_BY_ID_ERROR,
   GET_SPECIFIC_EVENT,
   GET_SPECIFIC_EVENT_ERROR,
-  GET_COORDINATES,
-  GET_COORDINATES_ERROR,
 } from '../actions/types'
 
 
@@ -25,8 +23,6 @@ const INITIAL_STATE = {
   specificEventError: '',
   userSpecificEvent: [],
   userSpecificEventError: '',
-  eventCoordinates: {},
-  eventCoordinatesError: '',
 };
 
 export default function (state = INITIAL_STATE, action) {
@@ -53,10 +49,6 @@ export default function (state = INITIAL_STATE, action) {
       return {...state, userSpecificEvent: action.payload, userSpecificEventError: ''};
     case GET_SPECIFIC_EVENT_ERROR:
       return {...state, userSpecificEventError: action.payload };
-    case GET_COORDINATES:
-      return {...state, eventCoordinates: action.payload, eventCoordinatesError: '' };
-    case GET_COORDINATES_ERROR:
-      return {...state, eventCoordinatesError: action.payload };
     default:
       return state;
   }

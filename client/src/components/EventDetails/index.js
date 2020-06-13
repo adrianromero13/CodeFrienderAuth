@@ -7,7 +7,6 @@ import './eventdetails.css';
 
 const buttonFunction = () => {
  let newEdit = prompt("Edit Something");
- console.log(newEdit)
 }
 
 
