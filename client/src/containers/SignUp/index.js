@@ -43,7 +43,7 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
     return (
       <Form.Input
         {...input}
-        label='Email Adress'
+        label='Email Address'
         error={meta.touched && meta.error}
         fluid
         icon='user'

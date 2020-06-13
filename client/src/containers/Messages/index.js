@@ -12,7 +12,7 @@ import "./messageboard.css";
 
 class Messages extends Component {
   componentDidMount() {
-    this.props.getAllMessages();
+    this.props.getAllMessages(this.props.eventId);
   }
 
   onSubmit = async (formValues, dispatch) => {
