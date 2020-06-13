@@ -19,12 +19,13 @@ import {
 } from 'semantic-ui-react';
 
 import './style.css';
-// import imageBG from './assets/images/devcollab.png';
+
 
 
 import SignIn from './../SignIn';
 // import { connect } from 'mongoose';
 import BgImage from './assets/images/devcollab.png';
+import DevImage from './assets/images/backend.jpg';
 
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
@@ -93,7 +94,7 @@ class DesktopContainer extends Component {
 
     return (
       <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}
-      // id="landingImage"
+     
       >
         <Visibility
           once={false}
@@ -251,12 +252,12 @@ const HomepageLayout = () => (
             </p>
           </Grid.Column>
           <Grid.Column floated='right' width={6}>
-            <Image bordered rounded size='large' src={BgImage} />
+            <Image bordered rounded size='large' src={DevImage} />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign='center'>
-            <Button size='huge'>Check Them Out</Button>
+            
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -292,9 +293,7 @@ const HomepageLayout = () => (
         <p style={{ fontSize: '1.33em' }}>
           We know that learning to communicate with computers can be difficult. Discouraging at best, infuriating at worst. Use the chat component to ask questions without engaging in a full on study session. Get in the zone. Stay in the zone.
         </p>
-        <Button as='a' size='large'>
-          Learn about chatting with Code Friends
-        </Button>
+        
 
         <Divider
           as='h4'
