@@ -53,6 +53,13 @@ handleItemClick = (e, { name }) => this.setState({ activeItem: name })
               active={activeItem === 'createevent'}
               onClick={this.handleItemClick}
             />
+            <Menu.Item className='shadow' style={{textShadow: '2px 2px 6px #000000'}}
+              as={Link}
+              to='/joinevent'
+              name='joinEvent'
+              active={activeItem === 'joinevent'}
+              onClick={this.handleItemClick}
+            />
         </Menu>
       </Segment>
     )
