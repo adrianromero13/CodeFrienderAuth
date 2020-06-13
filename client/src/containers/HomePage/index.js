@@ -67,12 +67,12 @@ const HomepageHeading = ({ mobile }) => (
         marginTop: mobile ? '0.5em' : '1.2em',
       }}
     />
-    
-    <Button as={Link} to='/signup' active primary size='huge'style={{ textShadow: '2px 2px 6px #000000' }}>
+    <a href='localhost:3000/signup'>
+    <Button primary size='huge'style={{ textShadow: '2px 2px 6px #000000' }}>
       Let's Get Started
       <Icon name='right arrow' />
     </Button>
-    
+    </a>
   </Container>
 )
 
@@ -115,7 +115,7 @@ class DesktopContainer extends Component {
               size='large'
             >
               <Container>
-                <Menu.Item as={Link} to='' active>
+                <Menu.Item as={Link} to='/homepage' active>
                   <span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Home</span>
                 </Menu.Item>
                 <Menu.Item as={Link} to='/match'><span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Match</span></Menu.Item>
@@ -251,7 +251,7 @@ const HomepageLayout = () => (
             </p>
           </Grid.Column>
           <Grid.Column floated='right' width={6}>
-            <Image bordered rounded size='large' src='/assets/images/back-end.jpg'/>
+            <Image bordered rounded size='large' src='/images/wireframe/white-image.png' />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
@@ -276,7 +276,7 @@ const HomepageLayout = () => (
               "Some of the people I've met on Code Friender have become my fellow employees"
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              <Image avatar src='' />
+              <Image avatar src='/images/avatar/large/nan.jpg' />
               <b></b> Shlomo Pleban- Chief Engineer/MicroSoft
             </p>
           </Grid.Column>
@@ -318,14 +318,13 @@ const HomepageLayout = () => (
       </Container>
     </Segment>
 
-    <Segment style='grad' inverted vertical style={{padding: '5em 0em' }}>
-    
-      <Container className='grad'>
+    <Segment inverted vertical style={{ padding: '5em 0em' }}>
+      <Container>
         <Grid divided inverted stackable>
           <Grid.Row>
             <Grid.Column width={3}>
               <Header inverted as='h4' content='About' />
-              <List className= 'grad' link inverted>
+              <List link inverted>
                 <List.Item as='a'>Sitemap</List.Item>
                 <List.Item as='a'>Contact Us</List.Item>
               </List>

@@ -1,23 +1,6 @@
 const { User, Event } = require("../models/index");
 
 module.exports = {
-  joinEvent: async (req, res) => {
-    const { pin, username } = req.body;
-
-    try {
-      const findEventToJoin = await Event.find({ pin, userName: username });
-      const joinedEventId = findEventToJoin[0]._id;
-      if (!findEventToJoin.length) {
-        return res.status(401).json({ error: "No event found with that pin" });
-      }
-      const joinAttending = await Event.findByIdAndUpdate(joinedEventId, {
-        $push: { attending: req.user._id },
-      });
-      return res.json(joinAttending);
-    } catch (e) {
-      return res.status(403).json({ e });
-    }
-  },
 
   createEvent: async (req, res) => {
     const { title, description, date, pin, location } = req.body;
@@ -141,6 +124,23 @@ module.exports = {
         { new: true },
       );
       return res.json(joinAttending);
+    } catch (e) {
+      return res.status(403).json({ e });
+    }
+  },
+  joinEvent: async (req, res) => {
+    const { pin } = req.body;
+
+    try {
+      const findEvent = await Event.find({ pin });
+      const joinEventId = findEvent[0]._id;
+      if (!findEvent.length) {
+        return res.status(401).json({ error: 'Event not found, try another code'});
+      }
+      const addToAttending = await Event.findByIdAndUpdate(joinEventId, {
+        $push: { attending: req.user._id },
+      });
+      return res.json(addToAttending);
     } catch (e) {
       return res.status(403).json({ e });
     }
