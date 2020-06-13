@@ -318,13 +318,14 @@ const HomepageLayout = () => (
       </Container>
     </Segment>
 
-    <Segment inverted vertical style={{ padding: '5em 0em' }}>
-      <Container>
+    <Segment style='grad' inverted vertical style={{padding: '5em 0em' }}>
+    
+      <Container className='grad'>
         <Grid divided inverted stackable>
           <Grid.Row>
             <Grid.Column width={3}>
               <Header inverted as='h4' content='About' />
-              <List link inverted>
+              <List className= 'grad' link inverted>
                 <List.Item as='a'>Sitemap</List.Item>
                 <List.Item as='a'>Contact Us</List.Item>
               </List>

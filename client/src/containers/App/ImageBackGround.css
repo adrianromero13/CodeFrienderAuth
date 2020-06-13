@@ -7,7 +7,8 @@ body {
     height: auto;
     width: auto;
     background-attachment: fixed;
-    background-color: rgba(35, 29, 106, 0.796);
+    
+    background-color:#04a0d8;
     /* background: linear-gradient(rgb(42, 118, 145), black, rgb(42, 118, 145)); */
     /* opacity: 0.2; */
     /* background: rgba(0,0,0,0.1) !important; */
@@ -16,3 +17,8 @@ body {
 /* background-image: {
     opacity: 0.5
 }; */
+
+#grad {
+    background-image: linear-gradient(#5769a0,#04a0d8);
+  };
+  
