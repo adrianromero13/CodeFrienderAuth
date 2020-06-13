@@ -67,12 +67,12 @@ const HomepageHeading = ({ mobile }) => (
         marginTop: mobile ? '0.5em' : '1.2em',
       }}
     />
-    
-    <Button as={Link} to='/signup' active primary size='huge'style={{ textShadow: '2px 2px 6px #000000' }}>
+
+    <Button as={Link} to='/signup' active primary size='huge' style={{ textShadow: '2px 2px 6px #000000' }}>
       Let's Get Started
       <Icon name='right arrow' />
     </Button>
-    
+
   </Container>
 )
 
@@ -122,7 +122,7 @@ class DesktopContainer extends Component {
                 <Menu.Item as={Link} to='/profile'><span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Profile</span></Menu.Item>
                 <Menu.Item as={Link} to='/dashboard'><span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Dashboard</span></Menu.Item>
                 <Menu.Item position='right'>
-                  <SignIn/>
+                  <SignIn />
                 </Menu.Item>
               </Container>
             </Menu>
@@ -173,7 +173,7 @@ class MobileContainer extends Component {
           {/* change this if not using */}
           <Menu.Item as={Link} to='/dashboard'>DashBoard?</Menu.Item>
           <Menu.Item stackable>
-          <SignIn/>
+            <SignIn />
           </Menu.Item>
         </Sidebar>
 
@@ -190,7 +190,7 @@ class MobileContainer extends Component {
                   <Icon name='sidebar' />
                 </Menu.Item>
                 <Menu.Item position='right'>
-                  <SignIn/>
+                  <SignIn />
                 </Menu.Item>
               </Menu>
             </Container>
@@ -230,13 +230,13 @@ const HomepageLayout = () => (
           <Grid.Column width={8}>
             <Header as='h3' style={{ fontSize: '2em' }}>
               A friend(er) in need
-              ...is a friend indeed
+              ...is a friend indeed.
             </Header>
             <p style={{ fontSize: '1.33em' }}>
               As students of the coding arts, we are fully aware of the need to find a team of like-minded students to fill the gap between classroom and home learning. Now you can find the perfect study buddy to help you crack the code.
             </p>
             <Header as='h3' style={{ fontSize: '2em' }}>
-              Simple as 1, 2, 3 .....
+              Simple as 1, 2, 3...
             </Header>
             <p style={{ fontSize: '1.33em' }}>
               1. Enter you github username and password
@@ -251,7 +251,7 @@ const HomepageLayout = () => (
             </p>
           </Grid.Column>
           <Grid.Column floated='right' width={6}>
-            <Image bordered rounded size='large' src='/assets/images/back-end.jpg'/>
+            <Image bordered rounded size='large' src='/assets/images/back-end.jpg' />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
@@ -273,11 +273,11 @@ const HomepageLayout = () => (
           </Grid.Column>
           <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
             <Header as='h3' style={{ fontSize: '2em' }}>
-              "Some of the people I've met on Code Friender have become my fellow employees"
+              "Some of the people I've met on Code Friender have become my fellow employees."
             </Header>
             <p style={{ fontSize: '1.33em' }}>
               <Image avatar src='' />
-              <b></b> Shlomo Pleban- Chief Engineer/MicroSoft
+              <b></b> Shlomo Pleban - Chief Engineer/Microsoft
             </p>
           </Grid.Column>
         </Grid.Row>
@@ -287,7 +287,7 @@ const HomepageLayout = () => (
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Container text>
         <Header as='h3' style={{ fontSize: '2em' }}>
-          When you hit a wall...know who to call
+          When you hit a wall...know who to call.
         </Header>
         <p style={{ fontSize: '1.33em' }}>
           We know that learning to communicate with computers can be difficult. Discouraging at best, infuriating at worst. Use the chat component to ask questions without engaging in a full on study session. Get in the zone. Stay in the zone.
@@ -306,26 +306,26 @@ const HomepageLayout = () => (
         </Divider>
 
         <Header as='h3' style={{ fontSize: '2em' }}>
-          From Code Friend to Colleague 
+          From Code Friend to Colleague
         </Header>
         <p style={{ fontSize: '1.33em' }}>
-          You are more likely to gain employment through someone you know outside of the interview environment. Why not increase your chances of getting noticed by sharing your skill set with thousands of local, established and student developers. #friendUp
+          You are more likely to gain employment through someone you know outside of the interview environment. Why not increase your chances of getting noticed by sharing your skill set with thousands of local, established, and learning developers. #friendUp
         </p>
-        <a href="https://www.linkedin.com/pulse/7-reasons-have-study-buddy-carolyn-mcintyre/" target="_blank">
-        <Button as='a' size='large'>7 Reason to join Code Friender</Button>
+        <a href="https://www.linkedin.com/pulse/7-reasons-have-study-buddy-carolyn-mcintyre/" target="_blank" rel="noopener noreferrer">
+          <Button as='a' size='large'>7 reasons to join Code Friender</Button>
         </a>
-        
+
       </Container>
     </Segment>
 
-    <Segment style='grad' inverted vertical style={{padding: '5em 0em' }}>
-    
+    <Segment style='grad' inverted vertical style={{ padding: '5em 0em' }}>
+
       <Container className='grad'>
         <Grid divided inverted stackable>
           <Grid.Row>
             <Grid.Column width={3}>
               <Header inverted as='h4' content='About' />
-              <List className= 'grad' link inverted>
+              <List className='grad' link inverted>
                 <List.Item as='a'>Sitemap</List.Item>
                 <List.Item as='a'>Contact Us</List.Item>
               </List>
@@ -333,18 +333,44 @@ const HomepageLayout = () => (
             <Grid.Column width={3}>
               <Header inverted as='h4' content='Services' />
               <List link inverted>
-                <List.Item as='a'>This is Not a Link</List.Item>
-                <List.Item as='a'>CodeFriender FAQ</List.Item>
+                <List.Item as='a'>Careers</List.Item>
+                <List.Item as='a'>Code Friender FAQ</List.Item>
 
               </List>
             </Grid.Column>
-            <Grid.Column width={7}>
+            <Grid.Column width={5}>
               <Header as='h4' inverted>
                 The Developers
               </Header>
-              <p>
-                This is where we should put some links to our github/linkedIn/ or something...
-              </p>
+
+                <Grid columns={2}>
+                <Grid.Row>
+                  <Grid.Column stretched='true'>
+                    <Menu.Item as='a' name='profile' href='https://github.com/adrianromero13' target='_blank' rel="noopener noreferrer">
+                      <Icon name='user' />
+                Adrian Romero
+              </Menu.Item>
+
+                    <Menu.Item as='a' name='profile' href='https://github.com/armande925' target='_blank' rel="noopener noreferrer">
+                      <Icon name='user' />
+                Armande Milhouse
+              </Menu.Item>
+                  </Grid.Column>
+
+                  <Grid.Column stretched='true'>
+                    <Menu.Item as='a' name='profile' href='https://github.com/markmesina' target='_blank' rel="noopener noreferrer">
+                      <Icon name='user' />
+                Mark Mesina
+              </Menu.Item>
+
+                    <Menu.Item as='a' name='profile' href='https://github.com/markyounan11' target='_blank' rel="noopener noreferrer">
+                      <Icon name='user' />
+                Mark Younan
+              </Menu.Item>
+                  </Grid.Column>
+                </Grid.Row>
+                </Grid>
+
             </Grid.Column>
           </Grid.Row>
         </Grid>
