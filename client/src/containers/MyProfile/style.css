@@ -1,0 +1,17 @@
+.customLabel {
+    background-color: rgba(0,0,0,0)!important;
+    /* background-color: inherit; */
+    /* background: rgba(0,0,0,0); */
+}
+
+.customText {
+    color: olivedrab;
+}
+
+/* .customPadding {
+    
+} */
+
+.customHeight {
+    min-height: inherit;
+}
