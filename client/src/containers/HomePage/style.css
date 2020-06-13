@@ -1,7 +1,6 @@
 .landingImage {
     background-image: url('./assets/images/devcollab.png') !important;
     background-color: purple !important ;
-    background-image: linear-gradient(bottom, pink, purple, grey) !important;
     background-repeat: no-repeat;
     background-size: auto;
     height: auto;
@@ -14,15 +13,14 @@
 };
 
 .shadow {
-    /* color: white; */
+  
     text-shadow: 2px 2px 4px #000000;
 
 };
 
 .imageOpacity {
     background-image: url('./assets/images/devcollab.png') !important;
-    /* background-color: purple !important ; */
-    /* background-image: linear-gradient(bottom, pink, purple, grey) !important; */
+  
     background-repeat: no-repeat;
     background-size: auto;
     height: auto;
