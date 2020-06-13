@@ -12,9 +12,9 @@ import {
 import { required } from "redux-form-validators";
 import axios from "axios";
 
-import requireAuth from "./../../hoc/requireAuth";
 import { compose } from "redux";
 import { connect } from "react-redux";
+import requireAuth from "./../../hoc/requireAuth";
 import { ADD_USER_EVENT } from "../../actions/types";
 import { getUserEvents, selectEvent } from "../../actions/event";
 
@@ -74,7 +74,7 @@ class JoinEvent extends Component {
                 size="massive"
                 className="sign-in-icon"
               />
-              <Divider horizontal> Join an Event </Divider>
+              <Divider horizontal> <h2>Join an Event</h2>  </Divider>
             </Header>
   
             <Form size="large" onSubmit={handleSubmit(this.onSubmit)}>

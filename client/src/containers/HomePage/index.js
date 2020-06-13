@@ -296,7 +296,7 @@ const HomepageLayout = () => (
         <Divider
           as='h4'
           className='header'
-          horizontal
+          al
           style={{ margin: '3em 0em', textTransform: 'uppercase' }}
         >
           <a href='#'>Case Studies</a>
