@@ -22,6 +22,7 @@ import CreateEvent from '../CreateEvent';
 import EventsPage from '../../components/EventsPage';
 import Messages from '../Messages'
 import './ImageBackGround.css';
+import MyProfile from '../MyProfile';
 
 class App extends Component {
   render () {
@@ -41,6 +42,7 @@ class App extends Component {
         <Route exact path = '/createevent' component = {CreateEvent} />
         <Route exact path = '/eventspage' component = {EventsPage} />
         <Route exact path = '/Messages' component = {Messages}/>
+        <Route exact path = '/myprofile' component= {MyProfile}/>
       </div>
     );
   }

@@ -4,9 +4,11 @@ import { Menu, Header, Segment, Icon } from 'semantic-ui-react'
 
 
 export default class Banner extends Component {
-  state = { activeItem: 'home' }
+  state = { 
+    activeItem: '' 
+  }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
     const { activeItem } = this.state
