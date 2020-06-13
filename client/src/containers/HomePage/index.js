@@ -312,7 +312,7 @@ const HomepageLayout = () => (
           You are more likely to gain employment through someone you know outside of the interview environment. Why not increase your chances of getting noticed by sharing your skill set with thousands of local, established, and learning developers. #friendUp
         </p>
         <a href="https://www.linkedin.com/pulse/7-reasons-have-study-buddy-carolyn-mcintyre/" target="_blank" rel="noopener noreferrer">
-          <Button as='a' size='large'>7 reasons to join Code Friender</Button>
+          <Button size='large'>7 reasons to join Code Friender</Button>
         </a>
 
       </Container>
@@ -345,26 +345,26 @@ const HomepageLayout = () => (
 
                 <Grid columns={2}>
                 <Grid.Row>
-                  <Grid.Column stretched='true'>
+                  <Grid.Column stretched={true}>
                     <Menu.Item as='a' name='profile' href='https://github.com/adrianromero13' target='_blank' rel="noopener noreferrer">
-                      <Icon name='user' />
+                    <Image src='https://avatars0.githubusercontent.com/u/25410826?v=4' alt='avatar' avatar={true}/>
                 Adrian Romero
               </Menu.Item>
 
                     <Menu.Item as='a' name='profile' href='https://github.com/armande925' target='_blank' rel="noopener noreferrer">
-                      <Icon name='user' />
+                    <Image src='https://avatars0.githubusercontent.com/u/58568984?v=4' alt='avatar' avatar={true}/>
                 Armande Milhouse
               </Menu.Item>
                   </Grid.Column>
 
-                  <Grid.Column stretched='true'>
+                  <Grid.Column stretched={true}>
                     <Menu.Item as='a' name='profile' href='https://github.com/markmesina' target='_blank' rel="noopener noreferrer">
-                      <Icon name='user' />
+                      <Image src='https://avatars1.githubusercontent.com/u/58279053?v=4' alt='avatar' avatar={true}/>
                 Mark Mesina
               </Menu.Item>
 
                     <Menu.Item as='a' name='profile' href='https://github.com/markyounan11' target='_blank' rel="noopener noreferrer">
-                      <Icon name='user' />
+                    <Image src='https://avatars1.githubusercontent.com/u/55516573?v=4' alt='avatar' avatar={true}/>
                 Mark Younan
               </Menu.Item>
                   </Grid.Column>
