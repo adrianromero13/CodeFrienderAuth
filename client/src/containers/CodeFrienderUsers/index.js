@@ -26,32 +26,39 @@ class AllCodeFrienders extends Component {
     this.props.getAllUsers();
     this.props.getUserData();
   }
-  
+
   render() {
     console.log('find currentUser', this.props.currentUser);
     return (
-        <Container>
-          <Grid columns={2}>
-            <AllProfileHeader />
+      <Container>
+        <Grid columns={2}>
+          <AllProfileHeader />
+        </Grid>
+        <Grid.Row>
+          <Grid columns={2} Container stackable centered>
+            {/* <Grid.Column> */}
+
+                <Grid.Column width={4}>
+            <Responsive minWidth={768}>
+
+                {/* this minWidth hides component if screen reaches less than 768 */}
+                <UserProfile currentUser={this.props.currentUser} />
+
+                {/* <Responsive> */}
+            </Responsive>
+                </Grid.Column>
+            {/* </Grid.Column> */}
+
+            <Grid.Column width={12} className='customScroll'>
+              {/* create responsive for smaller screens */}
+              <Card.Group fluid stackable doubling itemsPerRow={3} >
+                <UsersCard users={this.props.allUsers} />
+              </Card.Group>
+            </Grid.Column>
+            {/* </Responsive> */}
           </Grid>
-          <Grid.Row>
-            <Grid columns={2}>
-              <Grid.Column width={4}>
-                <Responsive minWidth={768}>
-                  <UserProfile currentUser={this.props.currentUser}/>
-                </Responsive>
-              </Grid.Column>
-              <Grid.Column width={12} className='customScroll'>
-                {/* create responsive for smaller screens */}
-                <Responsive>
-                  <Card.Group fluid itemsPerRow={3}>
-                    <UsersCard users={this.props.allUsers} />
-                  </Card.Group>
-                </Responsive>
-              </Grid.Column>
-            </Grid>
-          </Grid.Row>
-        </Container>
+        </Grid.Row>
+      </Container>
     )
   }
 };

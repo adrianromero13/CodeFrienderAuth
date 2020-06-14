@@ -1,13 +1,15 @@
 import React from 'react'
 import { Button, Card, Image, Icon, Header } from 'semantic-ui-react';
 
+import './../scrollableContainer.css';
+
 export default (props) => {
   if (props.users.length === 0) {
     return <Header content='No users yet, please wait for new Users' />
   } else {
     return props.users.map(({ _id, badge, firstName, lastName, strength, weakness, bio, email }) => {
       return (
-        <Card key={_id} color='teal' className='customCard' style={{marginRight: '5px'}}>
+        <Card key={_id} color='teal' className='customCard' >
           <Card.Content>
             <Image
               src={badge}
@@ -17,7 +19,7 @@ export default (props) => {
             <Card.Header textAlign='center'>{firstName} {lastName}</Card.Header>
             <Card.Meta>CodeFriender since: <span>date</span></Card.Meta>
           </Card.Content>
-          <Card.Content description={bio} />
+          <Card.Content className='customText' description={bio} />
           <Card.Content extra>
             <Button
               fluid

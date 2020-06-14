@@ -6,7 +6,7 @@ import UserProfileHeader from './userProfileHeader';
 
 export default () => {
   return (
-    <Grid.Row>
+    <Grid.Row textAlign='center' centered>
       <UserProfileHeader/>
       <AllUsersHeader/>
     </Grid.Row>
