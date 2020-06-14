@@ -1,67 +1,79 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, Header, Segment, Icon } from 'semantic-ui-react'
+import { connect } from 'react-redux';
+
+import { Menu, Header, Container, Icon } from 'semantic-ui-react'
 
 
-export default class Banner extends Component {
+import './shadows.css';
+
+class Banner extends Component {
   state = { 
-    activeItem: '' 
+    activeItem: ''
   }
 
 handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
+
   render() {
     const { activeItem } = this.state
-
     return (
-      <Segment style={{backgroundColor: '#5769a0'}}inverted fluid>
-        <Menu inverted pointing secondary size='large'>
+      // <Segment style={{backgroundColor: '#5769a0'}} inverted fluid>
+      // <Container>
+        <Menu 
+          className='bannerBackground'
+          fluid
+          inverted 
+          pointing 
+          secondary 
+          size='large'
+          >
           <Menu.Item>
           <Header as="h3" inverted >
             <Icon name='code branch' />
             <Header.Content>
-            <span className='shadow' style={{textShadow: '2px 2px 6px #000000'}}>Code Friender</span>
-          <Header.Subheader><span className='shadow' style={{textShadow: '2px 2px 6px #000000'}}>Mentor | Collaborate | Apprentice</span></Header.Subheader>
+            <span className='customShadows'>Code Friender</span>
+          <Header.Subheader><span className='customShadows'>Mentor | Collaborate | Apprentice</span></Header.Subheader>
             </Header.Content>
           </Header>
           </Menu.Item>
-            <Menu.Item className='shadow' style={{textShadow: '2px 2px 6px #000000'}}
+            <Menu.Item 
+              className='customShadows'
               as={Link}
               to='/'
               name='home'
               active={activeItem === 'home'}
               onClick={this.handleItemClick}
             />
-            <Menu.Item className='shadow' style={{textShadow: '2px 2px 6px #000000'}}
+            <Menu.Item className='customShadows'
               as={Link}
               to='/match'
               name='match'
               active={activeItem === 'match'}
               onClick={this.handleItemClick}
             />          
-            <Menu.Item className='shadow' style={{textShadow: '2px 2px 6px #000000'}}
+            <Menu.Item className='customShadows'
               as={Link}
               to='/profile'
               name='allProfiles'
               active={activeItem === 'allProfiles'}
               onClick={this.handleItemClick}
             />
-            <Menu.Item className='shadow' style={{textShadow: '2px 2px 6px #000000'}}
+            <Menu.Item className='customShadows'
               as={Link}
               to='/createevent'
               name='createEvent'
               active={activeItem === 'createevent'}
               onClick={this.handleItemClick}
             />
-            <Menu.Item className='shadow' style={{textShadow: '2px 2px 6px #000000'}}
+            <Menu.Item className='customShadows'
               as={Link}
               to='/joinevent'
               name='joinEvent'
               active={activeItem === 'joinevent'}
               onClick={this.handleItemClick}
             />
-            <Menu.Item className='shadow' style={{textShadow: '2px 2px 6px #000000'}}
-              // padded
+            <Menu.Item className='customShadows'
               position='right'
               as={Link}
               to='/signout'
@@ -70,7 +82,15 @@ handleItemClick = (e, { name }) => this.setState({ activeItem: name })
               onClick={this.handleItemClick}
               />
         </Menu>
-      </Segment>
+        // </Container>
+
+      // </Segment>
     )
   }
 }
+
+function mapStateToProps(state) {
+  return { authenticated: state.auth.authenticated };
+}
+
+export default connect(mapStateToProps)(Banner);
