@@ -1,5 +1,4 @@
 
-import Geocode from "react-geocode";
 
 import {
   GET_USER_EVENTS,
@@ -9,34 +8,11 @@ import {
   DELETE_SPECIFIC_EVENT_BY_ID_ERROR,
   GET_SPECIFIC_EVENT,
   GET_SPECIFIC_EVENT_ERROR,
-  GET_COORDINATES,
-  GET_COORDINATES_ERROR,
 } from '../types';
 
 
 
 import axios from 'axios';
-
-Geocode.setApiKey("AIzaSyAX1Pf_z0hAt1q0DIZ8CFUEgC7YeNBbKgI");
-Geocode.setLanguage("en");
-Geocode.setRegion("us");
-
-export const getAddress = (location) => async dispatch => {
-  // searched takes a string
-  try {
-    Geocode.fromAddress(location).then(
-      response => {
-        const { location } = response.results[0].geometry;
-        dispatch({ type: GET_COORDINATES, payload: location})
-      },
-      error => {
-        dispatch({ type: GET_COORDINATES_ERROR, payload: error})
-      }
-    );
-  } catch (e) {
-
-  }
-}
 
 export const getUserEvents = () => async dispatch => {
   try {

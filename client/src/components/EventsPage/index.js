@@ -7,8 +7,6 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import requireAuth from "./../../hoc/requireAuth";
 import { reduxForm } from "redux-form";
-// import TaskContainer from "./../../containers/taskBox"; //dont need
-// import GoogleApiWrapper from "./../GoogleMap";
 import { Container, Grid } from "semantic-ui-react";
 import "./dashboard.css";
 import {
@@ -18,7 +16,6 @@ import {
   selectedEvent,
   updateEventTitle,
   updateEventDescription,
-  getAddress,
   updateEventLocation,
 } from "../../actions/event";
 
@@ -52,7 +49,6 @@ class EventPage extends Component {
   };
 
   render() {
-    console.log('check this', this.props)
     return (
       <div>
         <Container>
@@ -73,7 +69,6 @@ class EventPage extends Component {
             </Grid.Column>
             <Grid.Column>
               <Sidebar className="sidebar" eventId = {this.props.specificEvent} />
-              {/* <TaskContainer eventId={this.props.specificEvent} /> */}
             </Grid.Column>
           </Grid>
         </Container>
@@ -88,8 +83,6 @@ function mapStateToProps(state) {
     specificEvent: state.event.specificEvent,
     specificEventError: state.event.specificEventError,
     deleteEventError: state.event.deleteEventError,
-    eventCoordinates: state.event.eventCoordinates,
-    eventCoordinatesError: state.event.eventCoordnatesError,
     attending: state.event.userSpecificEvent.attending
   };
 }
@@ -103,7 +96,6 @@ const composedComponent = compose(
     selectedEvent,
     updateEventTitle,
     updateEventDescription,
-    getAddress,
     updateEventLocation,
   })
 )(EventPage);
