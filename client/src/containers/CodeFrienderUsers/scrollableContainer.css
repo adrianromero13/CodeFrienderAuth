@@ -1,0 +1,7 @@
+.customScroll {
+    overflow: auto;
+    max-height: 100vh;
+}
+.customScroll::-webkit-scrollbar {
+    display: none;
+}

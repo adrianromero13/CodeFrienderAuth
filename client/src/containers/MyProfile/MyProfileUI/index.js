@@ -14,14 +14,30 @@ import {
 
 
 class MyProfileUI extends Component {
-  state = { activeItem: 'friends' }
+  state = { activeItem: 'friends' };
 
-  // handleItemClick () => {
-  // {activeItem: name}
-  // }
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
 
   // renderSection Function (to handle swtich case)
+
+  renderFriends() {
+
+    return (
+      <>
+      <Header.Subheader content='Following'/>
+      </>
+    )
+  }
+
+  renderContributions() {
+    return (
+      <>
+      <Header.Subheader content='Repositories'/>
+      </>
+    )
+  }
+
   render() {
     const { activeItem } = this.state;
 
@@ -67,11 +83,8 @@ class MyProfileUI extends Component {
             if more activeItems use switch case to return corrisponding component */}
           </Container>
           <Container>
-            the friends section
-      </Container>
-          <Container>
-            the contributions section
-      </Container>
+            {this.state.activeItem === 'friends' ? this.renderFriends() : this.renderContributions()}
+          </Container>
         </Grid.Row>
 
       </Grid.Column>
