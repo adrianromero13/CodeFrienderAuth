@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-import { Menu, Header, Container, Icon } from 'semantic-ui-react'
+import { Menu, Header, Container, Icon, Responsive } from 'semantic-ui-react'
 
 
 import './shadows.css';
@@ -21,6 +21,7 @@ handleItemClick = (e, { name }) => this.setState({ activeItem: name })
       // <Segment style={{backgroundColor: '#5769a0'}} inverted fluid>
       // <Container>
         <Menu 
+        stackable
           className='bannerBackground'
           fluid
           inverted 
@@ -28,7 +29,7 @@ handleItemClick = (e, { name }) => this.setState({ activeItem: name })
           secondary 
           size='large'
           >
-          <Menu.Item>
+          <Menu.Item as={Link} to='/'>
           <Header as="h3" inverted >
             <Icon name='code branch' />
             <Header.Content>
@@ -37,14 +38,14 @@ handleItemClick = (e, { name }) => this.setState({ activeItem: name })
             </Header.Content>
           </Header>
           </Menu.Item>
-            <Menu.Item 
+            {/* <Menu.Item 
               className='customShadows'
               as={Link}
               to='/'
               name='home'
               active={activeItem === 'home'}
               onClick={this.handleItemClick}
-            />
+            /> */}
             <Menu.Item className='customShadows'
               as={Link}
               to='/match'
@@ -63,14 +64,14 @@ handleItemClick = (e, { name }) => this.setState({ activeItem: name })
               as={Link}
               to='/createevent'
               name='createEvent'
-              active={activeItem === 'createevent'}
+              active={activeItem === 'createEvent'}
               onClick={this.handleItemClick}
             />
             <Menu.Item className='customShadows'
               as={Link}
               to='/joinevent'
               name='joinEvent'
-              active={activeItem === 'joinevent'}
+              active={activeItem === 'joinEvent'}
               onClick={this.handleItemClick}
             />
             <Menu.Item className='customShadows'
@@ -78,8 +79,6 @@ handleItemClick = (e, { name }) => this.setState({ activeItem: name })
               as={Link}
               to='/signout'
               name='signout'
-              active={activeItem === 'signout'}
-              onClick={this.handleItemClick}
               />
         </Menu>
         // </Container>

@@ -47,8 +47,10 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Switch>
         <Route exact path='/' component={HomePage} />
         <Route component={this.renderWithBanner} />
+        </Switch>
         {/* <Route exact path='/profile' component={Banner}/>
         <Route exact path='/createevent' component={Banner}/>
         <Route exact path='/match' component={Banner}/>
