@@ -17,11 +17,11 @@ import { getUserData } from './../../actions/profile';
 
 import UserProfile from './../../components/UserProfile';
 import UsersCard from './../CodeFrienderUsers/UsersCard';
+import AllProfileHeader from '../../components/AllProfileHeader';
 
 // import { fromAddress } from 'react-geocode';
-
+import './../CodeFrienderUsers/scrollableContainer.css';
 import './style.css';
-import AllProfileHeader from '../../components/AllProfileHeader';
 
 class Match extends Component {
 
@@ -41,8 +41,8 @@ class Match extends Component {
             <Grid.Column width={4}>
               <UserProfile currentUser={this.props.currentUser} />
             </Grid.Column>
-            <Grid.Column width={12} textAlign='center'>
-              <Grid centered>
+            <Grid.Column width={12} textAlign='center'className='customScroll'>
+              <Grid padded centered>
                 <Header>Collaborate</Header>
                 <Grid.Row columns={3}>
                   <Flexbox element="header" height='auto' className='scrolling-wrapper-flexbox'>

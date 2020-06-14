@@ -114,7 +114,7 @@ class DesktopContainer extends Component {
               size='large'
             >
               <Container>
-                <Menu.Item as={Link} to='/homepage' active>
+                <Menu.Item as={Link} to='/' active>
                   <span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Home</span>
                 </Menu.Item>
                 <Menu.Item as={Link} to='/match'><span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Match</span></Menu.Item>
