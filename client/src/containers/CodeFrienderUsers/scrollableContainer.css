@@ -1,6 +1,7 @@
 .customScroll {
     overflow: auto;
     max-height: 100vh;
+    -ms-overflow-style: none;
 }
 .customScroll::-webkit-scrollbar {
     display: none;
