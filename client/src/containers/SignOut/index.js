@@ -13,13 +13,16 @@ class SignOut extends Component {
   
   render() {
     return (
-      <Container>
-        <Message negative header="We're sorry to see you go :(" />
-        <Button as ={Link} to='/' content='Go back to sign up' />
+      <Container text textAlign='center'>
+        <Message color='red' inverted negative header="We're sorry to see you go :(" />
+        <Button 
+        as ={Link} 
+        to='/' content='Go Back to CodeFriender' 
+        color='black'
+        />
       </Container>
     );
   }
 }
 
-//no need for mapStateToProps() so set to null, but connect needs to be made
 export default connect(null, { signOut })(SignOut);

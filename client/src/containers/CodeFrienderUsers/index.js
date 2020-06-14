@@ -18,6 +18,8 @@ import AllProfileHeader from '../../components/AllProfileHeader';
 import UsersCard from './UsersCard';
 import UserProfile from './../../components/UserProfile';
 
+import './scrollableContainer.css';
+
 class AllCodeFrienders extends Component {
 
   componentDidMount() {
@@ -39,7 +41,7 @@ class AllCodeFrienders extends Component {
                   <UserProfile currentUser={this.props.currentUser}/>
                 </Responsive>
               </Grid.Column>
-              <Grid.Column width={12}>
+              <Grid.Column width={12} className='customScroll'>
                 {/* create responsive for smaller screens */}
                 <Responsive>
                   <Card.Group fluid itemsPerRow={3}>

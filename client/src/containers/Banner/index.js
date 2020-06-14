@@ -60,6 +60,15 @@ handleItemClick = (e, { name }) => this.setState({ activeItem: name })
               active={activeItem === 'joinevent'}
               onClick={this.handleItemClick}
             />
+            <Menu.Item className='shadow' style={{textShadow: '2px 2px 6px #000000'}}
+              // padded
+              position='right'
+              as={Link}
+              to='/signout'
+              name='signout'
+              active={activeItem === 'signout'}
+              onClick={this.handleItemClick}
+              />
         </Menu>
       </Segment>
     )
