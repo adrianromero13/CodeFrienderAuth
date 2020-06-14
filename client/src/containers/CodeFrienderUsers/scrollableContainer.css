@@ -6,3 +6,12 @@
 .customScroll::-webkit-scrollbar {
     display: none;
 }
+
+.customCard {
+    margin-right: 5px !important;
+    /* width: 33% !important; */
+}
+
+.customText {
+    word-wrap: break-word;
+}
