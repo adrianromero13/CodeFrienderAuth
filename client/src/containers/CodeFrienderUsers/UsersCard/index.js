@@ -15,7 +15,7 @@ export default (props) => {
               floated='left'
             />
             <Card.Header textAlign='center'>{firstName} {lastName}</Card.Header>
-            <Card.Meta>CodeFriender since: <span>date</span></Card.Meta>
+            <Card.Meta>Code Friender since: <span>date</span></Card.Meta>
           </Card.Content>
           <Card.Content description={bio} />
           <Card.Content extra>
