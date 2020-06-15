@@ -1,11 +1,13 @@
 import React from 'react';
-import { Card, Icon, Image, Grid } from 'semantic-ui-react';
+import { Card, Icon, Image } from 'semantic-ui-react';
+
+import './../../containers/CodeFrienderUsers/scrollableContainer.css';
 
 export default (props) => {
   const { _id, badge, firstName, lastName, strength, weakness, bio, email } = props.currentUser;
   return (
-    <Grid.Column width={5}>
-      <Card color='teal' key={_id}>
+
+      <Card color='teal' key={_id} className='customUserCardPadding'>
         <Image src={badge} wrapped ui={false} />
         <Card.Content>
           <Card.Header>{firstName} {lastName}</Card.Header>
@@ -23,6 +25,5 @@ export default (props) => {
           {email}
         </Card.Content>
       </Card>
-    </Grid.Column>
   )
 };

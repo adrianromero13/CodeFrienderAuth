@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
-import { reduxForm, Field, SubmissionError } from 'redux-form';
-import { Form, Segment, Button, Icon, Container, Header } from 'semantic-ui-react';
+import { reduxForm, Field, SubmissionError, reset } from 'redux-form';
+import { Form, Segment, Button, Icon, Container, Header, Divider } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { length, required} from 'redux-form-validators';
 import axios from 'axios';
-import requireAuth from '../../hoc/requireAuth';
 import DatePicker from 'react-datepicker';
-import './createevent.css'
 import { compose } from 'redux';
+import requireAuth from '../../hoc/requireAuth';
 import { getUserEvents, selectEvent, selectedEvent } from '../../actions/event'
+import { ADD_USER_EVENT } from '../../actions/types';
+import './createevent.css'
 import "react-datepicker/dist/react-datepicker.css";
-import { ADD_USER_EVENT } from '../../actions/types'
-import JoinEvent from '../JoinEvent';
 
-
-
-import HorizontalDivider from './../../components/HorizontalDivider';
 
 
 class CreateEvent extends Component {
@@ -82,8 +78,7 @@ class CreateEvent extends Component {
   }
 
   render() {
-    console.log(this.props);
-    const { handleSubmit, invalid, submitting, submitFailed } = this.props;
+    const { handleSubmit, invalid, submitting, submitFailed, reset, pristine } = this.props;
     return (
 
       
@@ -91,9 +86,11 @@ class CreateEvent extends Component {
         <Container className='formFields'>
           <Header as='h2' icon textAlign='center'>
             <Icon name='add to calendar' circular size='massive' className='list-icon'/>
-            <HorizontalDivider title="Create An Event"/>
+            <Divider horizontal>
+              <h2>Create Event</h2>
+            </Divider>
           </Header>
-        <Form size='large' onSubmit={handleSubmit(this.onSubmit)}>
+        <Form size='large' onSubmit={handleSubmit(this.onSubmit)} >
           <Segment>
             <h2 className='form-headers' align='left'>Name of event</h2>
             <Field
@@ -181,18 +178,16 @@ class CreateEvent extends Component {
               type='button'
               size='large'
               color='red'
-              disabled={ invalid || submitting || submitFailed }
+              onClick={reset}
+              disabled={ pristine || submitting  }
             >
-              <Button.Content visible>Clear Form</Button.Content>
+              <Button.Content visible >Clear Form</Button.Content>
               <Button.Content hidden>
                 <Icon name='long arrow alternate left' />
               </Button.Content>
             </Button>
           </Segment>
         </Form>
-        </Container>
-        <Container>
-          <JoinEvent/>
         </Container>
       </Container>
     )

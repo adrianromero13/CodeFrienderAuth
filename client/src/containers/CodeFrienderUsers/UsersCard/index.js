@@ -1,13 +1,17 @@
 import React from 'react'
-import { Button, Card, Image, Icon, Header } from 'semantic-ui-react';
+import { Button, Card, Image, Icon, Header, Menu } from 'semantic-ui-react';
+
+import moment from 'moment';
+
+import './../scrollableContainer.css';
 
 export default (props) => {
   if (props.users.length === 0) {
     return <Header content='No users yet, please wait for new Users' />
   } else {
-    return props.users.map(({ _id, badge, firstName, lastName, strength, weakness, bio, email }) => {
+    return props.users.map(({ _id, badge, firstName, lastName, strength, weakness, bio, email, dateCreated }) => {
       return (
-        <Card key={_id} color='teal' className='customCard' style={{marginRight: '5px'}}>
+        <Card key={_id} color={props.color} className='customCard' >
           <Card.Content>
             <Image
               src={badge}
@@ -15,9 +19,10 @@ export default (props) => {
               floated='left'
             />
             <Card.Header textAlign='center'>{firstName} {lastName}</Card.Header>
-            <Card.Meta>Code Friender since: <span>date</span></Card.Meta>
+            <Card.Meta>CodeFriender since:</Card.Meta>
+            <Card.Meta><span>{moment(dateCreated).fromNow()}</span></Card.Meta>
           </Card.Content>
-          <Card.Content description={bio} />
+          <Card.Content className='customText' description={bio} />
           <Card.Content extra>
             <Button
               fluid
@@ -34,12 +39,11 @@ export default (props) => {
               <Icon name='cog' iconPosition='left' />
               <span>Weakness: {weakness} </span>
             </Button>
-
           </Card.Content>
-          <Card.Content extra link>
-            <Icon name='user secret' iconPosition='left' />
+          <Menu.Item as='a'>
+            <Icon name='mail square' iconPosition='left' />
             {email}
-          </Card.Content>
+          </Menu.Item>
         </Card>
       )
     })

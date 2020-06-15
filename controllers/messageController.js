@@ -25,9 +25,9 @@ module.exports = {
   },
 
   getAllMessages: async (req, res) => {
-    const { id } = req.params;
+    const { eventId } = req.params;
     try {
-      const sentMessages = await Message.find({ event: id }).populate('user');
+      const sentMessages = await Message.find({ event: eventId }).populate('user');
       return res.status(200).json(sentMessages);
     } catch (e) {
       return res.status(403).json({ e });
@@ -35,4 +35,4 @@ module.exports = {
   },
 
 
-}
+};
