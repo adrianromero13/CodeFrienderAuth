@@ -11,7 +11,7 @@ export default (props) => {
   } else {
     return props.users.map(({ _id, badge, firstName, lastName, strength, weakness, bio, email, dateCreated }) => {
       return (
-        <Card key={_id} color='red' className='customCard' >
+        <Card key={_id} color={props.color} className='customCard' >
           <Card.Content>
             <Image
               src={badge}

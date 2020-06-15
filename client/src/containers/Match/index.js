@@ -16,6 +16,11 @@ import './../CodeFrienderUsers/scrollableContainer.css';
 import './style.css';
 
 class Match extends Component {
+  state = {
+    red: 'red',
+    teal: 'teal',
+    yellow: 'yellow',
+  }
 
   async componentDidMount() {
     await this.props.getAllMatches();
@@ -23,6 +28,7 @@ class Match extends Component {
   }
 
   render() {
+    const { red, teal, yellow } = this.state;
     return (
       <Container>
         <Grid columns={2}>
@@ -38,19 +44,19 @@ class Match extends Component {
                 <Header>Collaborate</Header>
                 <Grid.Row columns={3}>
                   <Flexbox element="header" height='auto' className='scrolling-wrapper-flexbox'>
-                    <UsersCard users={this.props.best} color='red' />
+                    <UsersCard users={this.props.best} color={teal} />
                   </Flexbox>
                 </Grid.Row>
                 <Header>Mentor</Header>
                 <Grid.Row columns={3}>
                   <Flexbox element='card' height='auto' className='scrolling-wrapper-flexbox'>
-                    <UsersCard users={this.props.forThem}/>
+                    <UsersCard users={this.props.forThem} color={yellow} />
                   </Flexbox>
                 </Grid.Row>
                 <Header>Apprentice</Header>
                 <Grid.Row columns={3}>
                   <Flexbox element='card' height='auto' className='scrolling-wrapper-flexbox'>
-                    <UsersCard users={this.props.forMe}/>
+                    <UsersCard users={this.props.forMe} color={red} />
                   </Flexbox>
                 </Grid.Row>
               </Grid>
