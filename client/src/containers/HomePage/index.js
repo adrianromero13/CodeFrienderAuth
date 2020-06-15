@@ -275,8 +275,8 @@ const HomepageLayout = () => (
               "Some of the people I've met on Code Friender have become my fellow employees."
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              <Image avatar src='' />
-              <b></b> Shlomo Pleban - Chief Engineer/Microsoft
+             
+            -Shlomo Pleban - Chief Engineer/Microsoft
             </p>
           </Grid.Column>
         </Grid.Row>
