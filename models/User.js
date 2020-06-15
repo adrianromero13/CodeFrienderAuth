@@ -24,17 +24,12 @@ const UserSchema = new Schema({
   },
   github: {
     type: String,
-    // unique: true,
-    // required: [true, 'You must provide a GitHub username'],
-
   },
   strength: {
     type: String,
-    // required: [true, 'You must select a Strength'],
   },
   weakness: {
     type: String,
-    // required: [true, 'You must select a Weakness'],
   },
   bio: {
     type: String,
@@ -78,7 +73,6 @@ UserSchema.methods.toJSON = function () {
   return obj;
 };
 
-
 UserSchema.methods.comparePassword = async function (candidatePassword) {
   const user = this;
   try {
@@ -90,18 +84,14 @@ UserSchema.methods.comparePassword = async function (candidatePassword) {
 };
 
 UserSchema.pre('save', async function (next) {
-  // gets access to the user model that is currently being saved
   const user = this;
   if (user.isModified('password')) {
     try {
       const salt = await bcrypt.genSalt();
       const hash = await bcrypt.hash(user.password, salt);
-      // overwrite the plain text password with our hash
       user.password = hash;
-      // Finally call save
       next();
     } catch (e) {
-      // Call save with an error
       next(e);
     }
   }

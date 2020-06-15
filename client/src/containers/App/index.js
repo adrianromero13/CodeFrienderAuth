@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Grid } from 'semantic-ui-react';
-
-// import Counter from '../Counter';
-// import AllTodosList from '../AllTodosList';
-// import UserTodoList from '../UserTodoList';
 
 import SignUp from '../SignUp';
 import SignOut from '../SignOut';
-// import SignOut from '../SignOut';
-// import SignIn from '../SignIn';
-// import Navbar from './../../components/Navbar';
 import { connect } from 'react-redux';
 
-import SignIn from './../SignIn';
 import AllCodeFrienders from './../CodeFrienderUsers'
 import Match from './../Match'
 import Banner from '../Banner';
@@ -51,13 +42,6 @@ class App extends Component {
         <Route exact path='/' component={HomePage} />
         <Route component={this.renderWithBanner} />
         </Switch>
-        {/* <Route exact path='/profile' component={Banner}/>
-        <Route exact path='/createevent' component={Banner}/>
-        <Route exact path='/match' component={Banner}/>
-        <Route exact path='/eventspage' component={Banner}/>
-        <Route exact path='/messages' component={Banner}/>
-        <Route exact path='/signup' component={Banner}/>
-        <Route exact path='/joinevent' component={Banner}/> */}
       </div>
     );
   }

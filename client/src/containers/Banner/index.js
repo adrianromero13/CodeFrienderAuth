@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-import { Menu, Header, Container, Icon, Responsive } from 'semantic-ui-react'
+import { Menu, Header, Icon } from 'semantic-ui-react'
 
 
 import './shadows.css';
@@ -18,8 +18,6 @@ handleItemClick = (e, { name }) => this.setState({ activeItem: name })
   render() {
     const { activeItem } = this.state
     return (
-      // <Segment style={{backgroundColor: '#5769a0'}} inverted fluid>
-      // <Container>
         <Menu 
         stackable
           className='bannerBackground'
@@ -38,14 +36,6 @@ handleItemClick = (e, { name }) => this.setState({ activeItem: name })
             </Header.Content>
           </Header>
           </Menu.Item>
-            {/* <Menu.Item 
-              className='customShadows'
-              as={Link}
-              to='/'
-              name='home'
-              active={activeItem === 'home'}
-              onClick={this.handleItemClick}
-            /> */}
             <Menu.Item className='customShadows'
               as={Link}
               to='/match'
@@ -81,9 +71,6 @@ handleItemClick = (e, { name }) => this.setState({ activeItem: name })
               name='signout'
               />
         </Menu>
-        // </Container>
-
-      // </Segment>
     )
   }
 }

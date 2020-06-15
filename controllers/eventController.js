@@ -1,4 +1,4 @@
-const { User, Event } = require("../models/index");
+const { User, Event } = require('../models/index');
 
 module.exports = {
 
@@ -7,7 +7,7 @@ module.exports = {
     if (!title || !description || !date || !pin) {
       return res
         .status(400)
-        .json({ error: "You must input a title, description, date, and pin!" });
+        .json({ error: 'You must input a title, description, date, and pin!' });
     }
     try {
       const existingPin = await Event.findOne({
@@ -15,7 +15,7 @@ module.exports = {
         userName: req.user.userName,
       });
       if (existingPin) {
-        return res.status(403).json({ error: "You used this pin already" });
+        return res.status(403).json({ error: 'You used this pin already' });
       }
 
       const newEvent = await new Event({
@@ -58,7 +58,7 @@ module.exports = {
       if (!eventToDelete) {
         return res
           .status(401)
-          .json({ error: "That event had already been deleted" });
+          .json({ error: 'That event had already been deleted' });
       }
       if (req.user._id.toString() !== eventToDelete.host.toString()) {
         // considering checking (if this is true maybe we just remove you from attendance array instead of deleting the event)
@@ -78,7 +78,7 @@ module.exports = {
     const { eventId } = req.params;
 
     try {
-      const eventFound = await Event.findById(eventId).populate("attending");
+      const eventFound = await Event.findById(eventId).populate('attending');
 
       return res.json(eventFound);
     } catch (e) {
@@ -134,7 +134,7 @@ module.exports = {
       const findEvent = await Event.find({ pin });
       const joinEventId = findEvent[0]._id;
       if (!findEvent.length) {
-        return res.status(401).json({ error: 'Event not found, try another code'});
+        return res.status(401).json({ error: 'Event not found, try another code' });
       }
       const addToAttending = await Event.findByIdAndUpdate(joinEventId, {
         $push: { attending: req.user._id },
