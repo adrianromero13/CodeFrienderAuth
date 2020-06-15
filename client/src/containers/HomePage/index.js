@@ -19,6 +19,7 @@ import {
 } from 'semantic-ui-react';
 
 import './style.css';
+import './../Banner/shadows.css';
 
 
 
@@ -28,7 +29,7 @@ import BgImage from './assets/images/devcollab.png';
 import DevImage from './assets/images/backend.jpg';
 
 // Heads up!
-// We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
+// We are using React Static to prerender our docs with server side rendering, this is a quite simple solution.
 // For more advanced usage please check Responsive docs under the "Usage" section.
 const getWidth = () => {
   const isSSR = typeof window === 'undefined'
@@ -41,9 +42,10 @@ const getWidth = () => {
  * such things.
  */
 const HomepageHeading = ({ mobile }) => (
-  <Container styles={{ backgroundImage: `url(${BgImage})` }} text>
+  <Container className='customShadows' styles={{ backgroundImage: `url(${BgImage})` }} text>
     <Header
-      className='shadow'
+    
+      // className='customShadows'
       as='h1'
       inverted
       style={{
@@ -54,22 +56,22 @@ const HomepageHeading = ({ mobile }) => (
       }}
     >
       <Icon name='code branch' />
-      <span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Code Friender</span>
+      Code Friender
     </Header>
     <Header
       as='h2'
       content='Mentor | Collaborate | Apprentice'
       inverted
       style={{
-        textShadow: '2px 2px 6px #000000',
+        // textShadow: '2px 2px 6px #000000',
         fontSize: mobile ? '1.5em' : '1.7em',
         fontWeight: 'normal',
         marginBottom: '1.7em',
         marginTop: mobile ? '0.5em' : '1.2em',
       }}
     />
-    <Button as={Link} to='/signup' active primary size='huge' style={{ textShadow: '2px 2px 6px #000000' }}>
-      Let's Get Started
+    <Button as={Link} to='/signup' active primary size='huge'>
+      <span className='customShadows'>Let's Get Started</span>
       <Icon name='right arrow' />
     </Button>
   </Container>
@@ -102,9 +104,8 @@ class DesktopContainer extends Component {
           <Segment
             inverted
             textAlign='center'
-            className='landingImage'
-            style={{ minHeight: '100vh', padding: '1em 0em' }}
-          // vertical
+            className='landingImage customDimmension'
+           
           >
             <Menu
               fixed={fixed ? 'top' : null}
@@ -114,12 +115,12 @@ class DesktopContainer extends Component {
               size='large'
             >
               <Container>
-                <Menu.Item as={Link} to='/homepage' active>
-                  <span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Home</span>
+                <Menu.Item as={Link} to='/' active>
+                  <span className='customShadows' >Home</span>
                 </Menu.Item>
-                <Menu.Item as={Link} to='/match'><span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Match</span></Menu.Item>
-                <Menu.Item as={Link} to='/profile'><span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Profile</span></Menu.Item>
-                <Menu.Item as={Link} to='/dashboard'><span className='shadow' style={{ textShadow: '2px 2px 6px #000000' }}>Dashboard</span></Menu.Item>
+                <Menu.Item as={Link} to='/match'><span className='customShadows'>Match</span></Menu.Item>
+                <Menu.Item as={Link} to='/profile'><span className='customShadows'>Profile</span></Menu.Item>
+                <Menu.Item as={Link} to='/dashboard'><span className='customShadows'>Dashboard</span></Menu.Item>
                 <Menu.Item position='right'>
                   <SignIn />
                 </Menu.Item>
@@ -177,10 +178,9 @@ class MobileContainer extends Component {
         </Sidebar>
 
         <Sidebar.Pusher dimmed={sidebarOpened}>
-          <Segment
+          <Segment className='segstyle'
             inverted
             textAlign='center'
-            style={{ minHeight: 350, padding: '1em 0em' }}
             vertical
           >
             <Container>
@@ -296,7 +296,7 @@ const HomepageLayout = () => (
         <Divider
           as='h4'
           className='header'
-          horizontal
+          al
           style={{ margin: '3em 0em', textTransform: 'uppercase' }}
         >
           <a href='#'>Case Studies</a>

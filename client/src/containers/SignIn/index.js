@@ -12,14 +12,10 @@ class SignIn extends Component {
   onSubmit = async (formValues, dispatch) => {
     try {
       const { data } = await axios.post('/api/auth/signin', formValues);
-    
-      //set the token in a key valued pair inside of local storage 
       localStorage.setItem('token', data.token);
       dispatch({ type: AUTH_USER, payload: data });
-      // //failing to take in this.props
       this.props.history.push('/profile');
     } catch (e) {
-      //error catching different for signing in
       throw new SubmissionError({
         email: 'email incorrect',
         password: 'password incorrect',

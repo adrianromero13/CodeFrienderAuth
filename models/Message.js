@@ -10,7 +10,7 @@ const MessageSchema = new Schema({
     default: new Date(),
   },
   user: { type: Schema.Types.ObjectId, ref: 'User' },
-  event: { type: Schema.Types.ObjectId, ref: 'Event'}
+  event: { type: Schema.Types.ObjectId, ref: 'Event' },
 });
 
 module.exports = model('Message', MessageSchema);

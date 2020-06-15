@@ -12,7 +12,7 @@ import "./messageboard.css";
 
 class Messages extends Component {
   componentDidMount() {
-    this.props.getAllMessages();
+    this.props.getAllMessages(this.props.eventId);
   }
 
   onSubmit = async (formValues, dispatch) => {
@@ -33,7 +33,6 @@ class Messages extends Component {
   };
 
   renderInput = ({ input, meta }) => {
-    console.log(this.props) //this.props.messages.message
     return (
       <Form.TextArea
         {...input}
@@ -118,4 +117,4 @@ export default compose(
   reduxForm({
     form: "CreateEvent",
   })
-)(Messages); //do i need to export Messages?
+)(Messages);

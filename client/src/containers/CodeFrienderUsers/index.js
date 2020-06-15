@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
-// import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-
 import { Grid, Container, Responsive, Card } from 'semantic-ui-react';
 
-// import axios from 'axios';
 
-import requireAuth from '../../hoc/requireAuth';
-import { getAllUsers } from '../../actions/users';
 import { getUserData } from './../../actions/profile';
-
-
-import { GET_USERS, GET_USERS_ERROR } from '../../actions/types';
+import { getAllUsers } from '../../actions/users';
+import requireAuth from '../../hoc/requireAuth';
 
 import AllProfileHeader from '../../components/AllProfileHeader';
-import UsersCard from './UsersCard';
 import UserProfile from './../../components/UserProfile';
+import UsersCard from './UsersCard';
+
+import './scrollableContainer.css';
 
 class AllCodeFrienders extends Component {
 
@@ -24,32 +20,29 @@ class AllCodeFrienders extends Component {
     this.props.getAllUsers();
     this.props.getUserData();
   }
-  
+
   render() {
     console.log('find currentUser', this.props.currentUser);
     return (
-        <Container>
-          <Grid columns={2}>
-            <AllProfileHeader />
+      <Container>
+        <Grid columns={2}>
+          <AllProfileHeader />
+        </Grid>
+        <Grid.Row>
+          <Grid columns={2} Container stackable centered>
+            <Grid.Column width={4}>
+              <Responsive minWidth={768}>
+                <UserProfile currentUser={this.props.currentUser} />
+              </Responsive>
+            </Grid.Column>
+            <Grid.Column width={12} className='customScroll'>
+              <Card.Group fluid stackable doubling itemsPerRow={3} >
+                <UsersCard users={this.props.allUsers} />
+              </Card.Group>
+            </Grid.Column>
           </Grid>
-          <Grid.Row>
-            <Grid columns={2}>
-              <Grid.Column width={4}>
-                <Responsive minWidth={768}>
-                  <UserProfile currentUser={this.props.currentUser}/>
-                </Responsive>
-              </Grid.Column>
-              <Grid.Column width={12}>
-                {/* create responsive for smaller screens */}
-                <Responsive>
-                  <Card.Group fluid itemsPerRow={3}>
-                    <UsersCard users={this.props.allUsers} />
-                  </Card.Group>
-                </Responsive>
-              </Grid.Column>
-            </Grid>
-          </Grid.Row>
-        </Container>
+        </Grid.Row>
+      </Container>
     )
   }
 };

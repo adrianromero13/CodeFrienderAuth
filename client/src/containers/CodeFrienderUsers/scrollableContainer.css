@@ -1,0 +1,13 @@
+.customScroll {
+    overflow: auto;
+    max-height: 100vh;
+    -ms-overflow-style: none;
+}
+.customScroll::-webkit-scrollbar {
+    display: none;
+}
+
+.customCard {
+    margin-right: 5px !important;
+}
+

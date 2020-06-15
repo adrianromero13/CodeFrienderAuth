@@ -10,7 +10,7 @@ const CommentSchema = new Schema({
     default: Date.now(),
   },
   event: { type: Schema.Types.ObjectId, ref: 'Event' },
-  user: { type: Schema.Types.ObjectId, ref: 'User'},
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
 });
 
 const Comment = model('Comment', CommentSchema);

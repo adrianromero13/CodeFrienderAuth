@@ -10,8 +10,6 @@ import {
   DELETE_SPECIFIC_EVENT_BY_ID_ERROR,
   GET_SPECIFIC_EVENT,
   GET_SPECIFIC_EVENT_ERROR,
-  GET_COORDINATES,
-  GET_COORDINATES_ERROR,
 } from '../actions/types'
 
 
@@ -25,38 +23,32 @@ const INITIAL_STATE = {
   specificEventError: '',
   userSpecificEvent: [],
   userSpecificEventError: '',
-  eventCoordinates: {},
-  eventCoordinatesError: '',
 };
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case GET_USER_EVENTS:
-      return {...state, userEvents: action.payload, getUserEventServerError: ''};
+      return { ...state, userEvents: action.payload, getUserEventServerError: '' };
     case GET_USER_EVENTS_ERROR:
-      return {...state, getUserEventsServerError: action.payload }
+      return { ...state, getUserEventsServerError: action.payload }
     case ADD_USER_EVENT:
-      return {...state, addUserEventError: ''};
+      return { ...state, addUserEventError: '' };
     case ADD_USER_EVENT_ERROR:
-      return{...state, addUserEventError: action.payload};
+      return { ...state, addUserEventError: action.payload };
     case UPDATE_EVENT_BY_ID_ERROR:
-      return {...state, updateEventByIdError: action.payload}
+      return { ...state, updateEventByIdError: action.payload }
     case DELETE_EVENT_BY_ID_ERROR:
-      return {...state, deleteEventError: action.payload };
+      return { ...state, deleteEventError: action.payload };
     case LOAD_SPECIFIC_EVENT_ID:
-      return {...state, specificEvent: action.payload, specificEventError: '' };
+      return { ...state, specificEvent: action.payload, specificEventError: '' };
     case LOAD_SPECIFIC_EVENT_ID_ERROR:
-      return {...state, specificEventError: action.payload };
+      return { ...state, specificEventError: action.payload };
     case DELETE_SPECIFIC_EVENT_BY_ID_ERROR:
-      return {...state, deleteEventError: action.payload };
+      return { ...state, deleteEventError: action.payload };
     case GET_SPECIFIC_EVENT:
-      return {...state, userSpecificEvent: action.payload, userSpecificEventError: ''};
+      return { ...state, userSpecificEvent: action.payload, userSpecificEventError: '' };
     case GET_SPECIFIC_EVENT_ERROR:
-      return {...state, userSpecificEventError: action.payload };
-    case GET_COORDINATES:
-      return {...state, eventCoordinates: action.payload, eventCoordinatesError: '' };
-    case GET_COORDINATES_ERROR:
-      return {...state, eventCoordinatesError: action.payload };
+      return { ...state, userSpecificEventError: action.payload };
     default:
       return state;
   }
