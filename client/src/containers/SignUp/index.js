@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form'; // Higher order component HOA
+import { Field, reduxForm } from 'redux-form'; 
 import { Form, Segment, Button, Container } from 'semantic-ui-react';
-import { email, length, required } from 'redux-form-validators'; //validators  
+import { email, length, required } from 'redux-form-validators'; 
 
 import axios from 'axios';
 
 import { AUTH_USER, AUTH_USER_ERROR } from '../../actions/types';
-// import { STATES } from 'mongoose';
 
 
-class SignUp extends Component { //Must define statelss funciton outside of the render()
+class SignUp extends Component { 
 
   skills = [
     { text: 'HTML-GIT-CSS', value: 'HTML-GIT-CSS' },
@@ -29,7 +28,6 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
 
   onSubmit = async (formValues, dispatch) => {
     try {
-      //formvalues looks like this { email: 'someEmail@.com, password: '123456' }
       const { data } = await axios.post('/api/auth/signup', formValues);
       localStorage.setItem('token', data.token);
       dispatch({ type: AUTH_USER, payload: data });
@@ -98,7 +96,6 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
     )
   }
 
-  //build the form
   render() {
     console.log('inside of signup render', this.props);
     const { handleSubmit, invalid, submitting, submitFailed } = this.props;
@@ -141,19 +138,17 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
               component={this.renderEmail}
               validate={
                 [
-                  required({ msg: 'Email is required' }), //add settings ie. msg
-                  email({ msg: 'You must provide a valid email address' })  //is this email?
+                  required({ msg: 'Email is required' }),
+                  email({ msg: 'You must provide a valid email address' })
                 ]
               }
             />
-            {/* new field */}
             <Field
               name='password'
               component={this.renderPassword}
               validate={
                 [
                   required({ msg: 'You must provide a password' }),
-                  //make password be minimum length of 6 using validator
                   length({ min: 6, msg: 'Your password must be at least 6 characters long' })
                 ]
               }
@@ -191,8 +186,6 @@ class SignUp extends Component { //Must define statelss funciton outside of the 
 }
 
 const asyncValidate = async ({ email }) => {
-  // add asyncValidation for github username
-
   try {
     const { data } = await axios.get(`/api/users/emails?email=${email}`);
     if (data) {

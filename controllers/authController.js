@@ -5,14 +5,7 @@ const { User } = require('../models');
 const { secret, GITHUB_CLIENT_SECRET } = require('../config');
 
 function tokenForUser(user) {
-  // 1st argument is the information we want to encode
-  // 2nd argument is the secret we are going to use to encrypt it
-  // By convention all json web tokens have a sub property
-  // by sub we mean subject. As in who does this token belong to?
-  // iat or issued at time is another convention by  jwt
   const timeStamp = new Date().getTime();
-  // This subject will become the payload in our strategy
-  // eslint-disable-next-line no-underscore-dangle
   return jwt.encode({ sub: user._id, iat: timeStamp }, process.env.SECRET || secret);
 }
 

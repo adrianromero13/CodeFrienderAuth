@@ -18,10 +18,9 @@ async function getAccessToken(code) {
   const data = await res.text();
   const params = new URLSearchParams(data);
   return params.get('access_token');
-
 }
 
-async function getGithubUserToken (access_token) {
+async function getGithubUserToken(access_token) {
   const req = fetch('https://api.githuv.com/user', {});
 }
 
