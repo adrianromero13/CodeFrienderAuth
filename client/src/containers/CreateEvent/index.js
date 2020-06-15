@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { reduxForm, Field, SubmissionError } from 'redux-form';
+import { reduxForm, Field, SubmissionError, reset } from 'redux-form';
 import { Form, Segment, Button, Icon, Container, Header, Divider } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { length, required} from 'redux-form-validators';
@@ -78,8 +78,7 @@ class CreateEvent extends Component {
   }
 
   render() {
-    console.log(this.props);
-    const { handleSubmit, invalid, submitting, submitFailed } = this.props;
+    const { handleSubmit, invalid, submitting, submitFailed, reset, pristine } = this.props;
     return (
 
       
@@ -91,7 +90,7 @@ class CreateEvent extends Component {
               <h2>Create Event</h2>
             </Divider>
           </Header>
-        <Form size='large' onSubmit={handleSubmit(this.onSubmit)}>
+        <Form size='large' onSubmit={handleSubmit(this.onSubmit)} >
           <Segment>
             <h2 className='form-headers' align='left'>Name of event</h2>
             <Field
@@ -179,9 +178,10 @@ class CreateEvent extends Component {
               type='button'
               size='large'
               color='red'
-              disabled={ invalid || submitting || submitFailed }
+              onClick={reset}
+              disabled={ pristine || submitting  }
             >
-              <Button.Content visible>Clear Form</Button.Content>
+              <Button.Content visible >Clear Form</Button.Content>
               <Button.Content hidden>
                 <Icon name='long arrow alternate left' />
               </Button.Content>

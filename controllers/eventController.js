@@ -92,7 +92,7 @@ module.exports = {
       const joinAttending = await Event.findByIdAndUpdate(
         eventId,
         { title },
-        { new: true }
+        { new: true },
       );
       return res.json(joinAttending);
     } catch (e) {
@@ -100,14 +100,13 @@ module.exports = {
     }
   },
   updateDescription: async (req, res) => {
-    console.log("description back end");
     const { eventId } = req.params;
     const { description } = req.body;
     try {
       const joinAttending = await Event.findByIdAndUpdate(
         eventId,
         { description },
-        { new: true }
+        { new: true },
       );
       return res.json(joinAttending);
     } catch (e) {
