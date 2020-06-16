@@ -5,7 +5,7 @@ import { Grid, Container, Responsive, Card } from 'semantic-ui-react';
 
 
 import { getUserData } from './../../actions/profile';
-import { getAllUsers } from '../../actions/users';
+import { getAllUsers } from '../../actions/Users';
 import requireAuth from '../../hoc/requireAuth';
 
 import AllProfileHeader from '../../components/AllProfileHeader';

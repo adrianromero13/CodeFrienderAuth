@@ -8,7 +8,7 @@ import {
 } from '../types';
 
 
-import axios from 'axios';
+import axios from './node_modules/axios';
 
 export const getAllUsers = () => async dispatch => {
     try {
