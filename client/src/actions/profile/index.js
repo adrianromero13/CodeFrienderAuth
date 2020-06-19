@@ -1,6 +1,8 @@
 import {
   GET_USER_DATA,
   GET_USER_DATA_ERROR,
+  GET_OTHER_USERS,
+  GET_OTHER_USERS_ERROR,
 } from '../types';
 
 
@@ -18,5 +20,16 @@ export const getUserData = () => async (dispatch) => {
       serverError: e,
       clientError: 'Something went wrong please refresh try again',
     });
+  }
+}
+
+export const getOtherUsers = () => async (dispatch) => {
+  try {
+    const { data } = await axios.get('/api/users/profiles', {
+      headers: { authorization: localStorage.getItem('token') },
+    });
+    dispatch({ type: GET_OTHER_USERS, payload: data });
+  } catch (e) {
+    dispatch({ type: GET_OTHER_USERS_ERROR, payload: e });
   }
 };
