@@ -4,8 +4,7 @@ import { compose } from 'redux';
 import { Grid, Container, Responsive, Card } from 'semantic-ui-react';
 
 
-import { getUserData } from './../../actions/profile';
-import { getAllUsers } from '../../actions/users';
+import { getUserData, getOtherUsers } from './../../actions/profile';
 import requireAuth from '../../hoc/requireAuth';
 
 import AllProfileHeader from '../../components/AllProfileHeader';
@@ -17,12 +16,11 @@ import './scrollableContainer.css';
 class AllCodeFrienders extends Component {
 
   componentDidMount() {
-    this.props.getAllUsers();
     this.props.getUserData();
+    this.props.getOtherUsers();
   }
 
   render() {
-    console.log('find currentUser', this.props.currentUser);
     return (
       <Container>
         <Grid columns={2}>
@@ -37,7 +35,7 @@ class AllCodeFrienders extends Component {
             </Grid.Column>
             <Grid.Column width={12} className='customScroll'>
               <Card.Group fluid stackable doubling itemsPerRow={3} >
-                <UsersCard users={this.props.allUsers} />
+                <UsersCard users={this.props.filteredUsers} />
               </Card.Group>
             </Grid.Column>
           </Grid>
@@ -51,13 +49,12 @@ class AllCodeFrienders extends Component {
 function mapStateToProps(state) {
   return {
     currentUser: state.currentUser.getUserData,
-    allUsers: state.users.allUsers,
+    filteredUsers: state.filteredUsers.getOtherUsers,
     getUsersError: state.users.getUsersError
   };
 }
 
-
 export default compose(
-  connect(mapStateToProps, { getAllUsers, getUserData }),
+  connect(mapStateToProps, { getUserData, getOtherUsers }),
   requireAuth
 )(AllCodeFrienders);

@@ -7,7 +7,7 @@ const {
   getAllUserEmails,
   getAllUserGitHub,
 } = require('../../../controllers/userController');
-const { getCurrentUser } = require('../../../controllers/profileController');
+const { getCurrentUser, getFilteredUsers } = require('../../../controllers/profileController');
 
 
 // '/api/users' prepended to every route.
@@ -16,6 +16,9 @@ router.route('/')
 
 router.route('/profile')
   .get(requireAuth, getCurrentUser);
+
+router.route('/profiles')
+  .get(requireAuth, getFilteredUsers);
 
 // router.route('/:id')
 //   .get(requireAuth, getCurrentUser);

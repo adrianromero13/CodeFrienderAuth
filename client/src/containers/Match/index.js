@@ -5,7 +5,7 @@ import Flexbox from 'flexbox-react';
 import { Grid, Header, Container } from 'semantic-ui-react';
 
 import requireAuth from './../../hoc/requireAuth';
-import { getAllMatches } from './../../actions/users';
+import { getAllMatches } from '../../actions/Users';
 import { getUserData } from './../../actions/profile';
 
 import UserProfile from './../../components/UserProfile';
