@@ -66,7 +66,14 @@ class SignUp extends Component {
       />
     )
   }
-  renderInput = ({ input, meta, label, icon, iconPosition }) => {
+  renderInput = ({ 
+    input, 
+    meta, 
+    label, 
+    icon, 
+    iconPosition,
+    maxLength
+  }) => {
     return (
       <Form.Input
         {...input}
@@ -77,6 +84,7 @@ class SignUp extends Component {
         type='name'
         placeholder={label}
         autoComplete='off'
+        maxLength={maxLength}
       />
     )
   }
@@ -97,7 +105,6 @@ class SignUp extends Component {
   }
 
   render() {
-    console.log('inside of signup render', this.props);
     const { handleSubmit, invalid, submitting, submitFailed } = this.props;
     return (
       <Container textAlign='justified'>
@@ -169,6 +176,7 @@ class SignUp extends Component {
               name='bio'
               label='Bio'
               component={this.renderInput}
+              maxLength='100'
             />
             <Button
               content='Sign up'

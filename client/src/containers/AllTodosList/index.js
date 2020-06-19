@@ -8,7 +8,6 @@ import moment from 'moment';
 
 class AllTodosList extends Component {
   componentDidMount() {
-    console.log("Inside of componentDidMount");
     this.props.getAllTodos();
   }
 
@@ -30,7 +29,6 @@ class AllTodosList extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <List celled selection size='huge'>
         { this.props.getAllTodosError ? <Message negative header={this.props.getAllTodosError}/> : null }

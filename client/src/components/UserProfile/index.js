@@ -7,7 +7,7 @@ export default (props) => {
   const { _id, badge, firstName, lastName, strength, weakness, bio, email } = props.currentUser;
   return (
 
-      <Card color='teal' key={_id} className='customUserCardPadding'>
+      <Card color='teal' key={_id} >
         <Image src={badge} wrapped ui={false} />
         <Card.Content>
           <Card.Header>{firstName} {lastName}</Card.Header>

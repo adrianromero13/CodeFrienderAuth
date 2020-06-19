@@ -10,15 +10,15 @@ class SignOut extends Component {
   componentDidMount() {
     this.props.signOut();
   }
-  
+
   render() {
     return (
       <Container text textAlign='center'>
         <Message color='red' inverted negative header="We're sorry to see you go :(" />
-        <Button 
-        as ={Link} 
-        to='/' content='Go Back to CodeFriender' 
-        color='black'
+        <Button
+          as={Link}
+          to='/' content='Go Back to CodeFriender'
+          color='black'
         />
       </Container>
     );

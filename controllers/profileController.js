@@ -14,7 +14,6 @@ module.exports = {
   getFilteredUsers: async (req, res) => {
     try {
       const getOtherUsers = await User.find({ _id: { $ne: req.user._id } });
-      console.log('filtered users', getOtherUsers);
       return res.status(200).json(getOtherUsers);
     } catch (e) {
       return res.status(403).json({ e });
