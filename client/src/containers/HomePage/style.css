@@ -6,20 +6,15 @@
     height: auto;
     width: auto;
     background-attachment: fixed;
+    
 };
 
 #grad {
     background-image: linear-gradient(red, yellow);
 };
 
-.shadow {
-  
-    text-shadow: 2px 2px 4px #000000;
-
-};
-
 .imageOpacity {
-    background-image: url('./assets/images/devcollab.png') !important;
+    background-image: url('./assets/images/devcollab.png');
   
     background-repeat: no-repeat;
     background-size: auto;
@@ -39,4 +34,11 @@
     float: left;
     border: 5px solid yellow !important;
 }
-  
+
+.segstyle {
+    min-height: 350, padding 1em 0em;
+}
+
+.segstyle2 {
+    padding: 8em 0em;
+}
