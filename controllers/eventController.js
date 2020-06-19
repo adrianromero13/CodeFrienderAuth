@@ -3,7 +3,13 @@ const { User, Event } = require('../models/index');
 module.exports = {
 
   createEvent: async (req, res) => {
-    const { title, description, date, pin, location } = req.body;
+    const {
+      title,
+      description,
+      date,
+      pin,
+      location,
+    } = req.body;
     if (!title || !description || !date || !pin) {
       return res
         .status(400)

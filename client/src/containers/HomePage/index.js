@@ -376,7 +376,6 @@ const HomepageLayout = () => (
 )
 
 function mapstateToProps(state) {
-  console.log(state);
   return { authenticated: state.auth.authenticated };
 }
 

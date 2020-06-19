@@ -9,5 +9,6 @@
 
 .customCard {
     margin-right: 5px !important;
+    word-wrap: break-word;
 }
 

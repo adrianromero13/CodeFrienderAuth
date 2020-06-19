@@ -58,7 +58,6 @@ class UserTodoList extends Component {
 
   render() {
     const { handleSubmit } = this.props;
-    console.log(this.props);
     return (
       <>
         <Header as='h2' color='teal' textAlign='center' content='Welcome to do the todo app'/>
