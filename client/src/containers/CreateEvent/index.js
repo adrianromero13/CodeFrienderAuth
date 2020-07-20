@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { reduxForm, Field, SubmissionError, reset } from 'redux-form';
+import { reduxForm, Field, SubmissionError, Reset } from 'redux-form';
 import { Form, Segment, Button, Icon, Container, Header, Divider } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { length, required} from 'redux-form-validators';
